@@ -1,0 +1,312 @@
+:root{
+    --primary-color: #0C131F;
+    /* --secondary-color:  */
+    --background-color: #FFFFFF;
+    --text-color-1: #000000;
+    --text-color-2: #ffffff;
+}
+
+.darkmode{
+    --primary-color: #FFFFFF;
+    --background-color: #0C131F;
+    --text-color-1: #FFFFFF;
+    --text-color-2: #000000;
+}
+
+/*---------------------------------- */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+.navbar{
+    background-color: var(--primary-color);
+    top: 0;
+    position: initial;
+}
+
+.navbar ul li a{
+    color: var(--text-color-2);
+}
+
+.station-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+#inp-station{
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 1.5rem;
+    margin-right: 1%;
+    text-indent: .5rem;
+    height: 35px;
+}
+
+#btn-station{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(31, 31, 31);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-station:hover{
+    background-color: rgb(116, 116, 116);
+}
+
+.select-train-mode div{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0 ;
+}
+
+.select-train-mode button{
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.select-train-mode button:hover{
+    background-color: gray;
+}
+
+#current-mode{
+    background-color: rgb(8, 184, 184);
+}
+
+h1{
+    color: var(--text-color-1);
+    text-align: center;
+    margin: 1rem;
+}
+
+.departures, .arrivals{
+    width: 815px;
+    background-color: rgb(31, 31, 31);
+}
+
+#select-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#select-buttons button{
+    height: 50px;
+    width: 250px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+#departures-btn{
+    background-color: #0053A7;
+    font-family: Roboto;
+}
+
+#arrivals-btn{
+    background-color: #65C352;
+    font-family: Roboto;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+section h2{
+    color: var(--text-color-2);
+    text-indent: 2rem;
+    margin: 1rem 0.2rem;
+}
+
+section ul{
+    margin-bottom: 2rem;
+}
+
+section li{
+    margin: 0rem 2rem;
+    cursor: pointer;
+    border: solid rgb(31, 31, 31);
+}
+
+section li:hover{
+    border: solid white;
+}
+
+.hour{
+    color: #ffff00;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 60px;
+    width: 61px;
+}
+
+.line{
+    color: white;
+    margin-left: 30px;
+    /* background-color: red; */
+    width: 400px;
+    /* position: ; */
+}
+
+/* .line-status{
+    background-color: red;
+    position: absolute;
+    right: 120px;
+    margin-right: 0;
+} 
+
+.destination{
+    background-color: blue;
+}*/
+
+
+/* DEPARTURES */
+
+.departures li, .arrivals li{
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.departures li{
+    background-color: #0053A7;
+}
+
+.departures li:nth-child(even){
+    background-color: #042770;
+}
+
+.arrivals li{
+    background-color: #65C352;
+}
+
+.arrivals li:nth-child(even){
+    background-color: #29883A;
+}
+
+.line-type{
+    /* background: red; */
+    width: 150px;
+    color: white;
+}
+
+.line-type img{
+    /* width: 70px; */
+    height: 33px;
+}
+
+.network{
+    font-weight: normal;
+    /* background-color: red; */
+}
+
+.number{
+    font-size: 0.8rem;
+}
+
+.destination{
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* background-color: red; */
+}
+
+
+
+.line-status{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-left: 50px;
+    width: 150px;
+}
+
+.line-status div{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}
+
+.is-delayed{
+    position: absolute;
+    margin-left: 120px;
+    /* color: white; */
+    /* font-weight: bold; */
+    width: 13%;
+}
+
+.non-delayed{
+    /* background-color: rgb(117, 243, 117); */
+    color: white;
+}
+
+.delayed{
+    /* background-color: rgb(255, 88, 58); */
+    color: rgb(255, 88, 58);
+    font-weight: bold;
+}
+
+
+/* ARRIVALS */
+
+.arrivals{
+    display: none;
+}
+
+.stops-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+
+.stops {
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.stops span{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+@keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .departures, .arrivals{
+        width: 90%;
+    }
+
+    .departures li, .arrivals li{
+        display: grid;
+    }
+
+    .stops{
+        display: none;
+    }
+
+}
