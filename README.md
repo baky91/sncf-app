@@ -13,9 +13,9 @@ Application Web réalisé en HTML, CSS et JavaScript qui permet de consulter les
 
 ## Lancer l'application
 
-Pour le fonctionnement de l'application, une clé API est nécéssaire:
+Pour le fonctionnement de l'application, une clé API est nécessaire:
 - Cliquez sur ce lien : https://numerique.sncf.com/startup/api/
-- Demander une clé d'accès à l'API SNCF en cliquant sur **Commencer à utiliser l'API**
+- Demandeé une clé d'accès à l'API SNCF en cliquant sur **Commencer à utiliser l'API**
 - Dans le fichier **api.js** à la ligne 12 ```export const API_KEY = "API_KEY";```, remplacez "API_KEY" par votre clé API\
 Exemple :
 ```
