@@ -6,9 +6,9 @@ Application Web réalisé en HTML, CSS et JavaScript qui permet de consulter les
 
 ## Fonctionnalités
 
-• Rechercher une gare par son nom
-• Sélectionner une gare parmi différentes possiblités regroupées par ville
-• Afficher les départs en gare et les arrivés en gare
+• Rechercher une gare par son nom\
+• Sélectionner une gare parmi différentes possiblités regroupées par ville\
+• Afficher les départs en gare et les arrivés en gare\
 • Informations sur le type de train, l'heure de départ/arrivée, le retard, la destination/provenance, les arrêts
 
 ## Lancer l'application
