@@ -1,39 +1,3 @@
-:root{
-    --primary-color: #0C131F;
-    /* --secondary-color:  */
-    --background-color: #FFFFFF;
-    --text-color-1: #000000;
-    --text-color-2: #ffffff;
-}
-
-.darkmode{
-    --primary-color: #FFFFFF;
-    --background-color: #0C131F;
-    --text-color-1: #FFFFFF;
-    --text-color-2: #000000;
-}
-
-/*---------------------------------- */
-
-*{
-    padding: 0;
-    margin: 0;
-}
-
-body{
-    background-color: var(--background-color);
-}
-
-.navbar{
-    background-color: var(--primary-color);
-    top: 0;
-    position: initial;
-}
-
-.navbar ul li a{
-    color: var(--text-color-2);
-}
-
 .station-search{
     display: flex;
     justify-content: center;
@@ -119,9 +83,25 @@ h1{
     font-family: Roboto;
 }
 
+#departures-btn:hover{
+    background-color: #0064c7;
+}
+
+#departures-btn:active{
+    background-color: #116fce;
+}
+
 #arrivals-btn{
     background-color: #65C352;
     font-family: Roboto;
+}
+
+#arrivals-btn:hover{
+    background-color: #75e65f;
+}
+
+#arrivals-btn:active{
+    background-color: #59e23e;
 }
 
 section{
@@ -161,24 +141,8 @@ section li:hover{
 .line{
     color: white;
     margin-left: 30px;
-    /* background-color: red; */
     width: 400px;
-    /* position: ; */
 }
-
-/* .line-status{
-    background-color: red;
-    position: absolute;
-    right: 120px;
-    margin-right: 0;
-} 
-
-.destination{
-    background-color: blue;
-}*/
-
-
-/* DEPARTURES */
 
 .departures li, .arrivals li{
     padding: .5rem;
@@ -203,19 +167,16 @@ section li:hover{
 }
 
 .line-type{
-    /* background: red; */
     width: 150px;
     color: white;
 }
 
 .line-type img{
-    /* width: 70px; */
     height: 33px;
 }
 
 .network{
     font-weight: normal;
-    /* background-color: red; */
 }
 
 .number{
@@ -225,7 +186,6 @@ section li:hover{
 .destination{
     font-size: 1.5rem;
     font-weight: bold;
-    /* background-color: red; */
 }
 
 
@@ -247,24 +207,19 @@ section li:hover{
 .is-delayed{
     position: absolute;
     margin-left: 120px;
-    /* color: white; */
-    /* font-weight: bold; */
     width: 13%;
 }
 
 .non-delayed{
-    /* background-color: rgb(117, 243, 117); */
     color: white;
 }
 
 .delayed{
-    /* background-color: rgb(255, 88, 58); */
     color: rgb(255, 88, 58);
     font-weight: bold;
 }
 
 
-/* ARRIVALS */
 
 .arrivals{
     display: none;
@@ -303,6 +258,39 @@ section li:hover{
 
     .departures li, .arrivals li{
         display: grid;
+    }
+    
+    .line-type{
+        background-color: greenyellow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* width: 200px; */
+        /* height: 50px; */
+    }
+
+    .line-img{
+        width: 50%;
+        /* height: 50%; */
+    }
+
+
+
+
+    .is-delayed{
+        background-color: blue;
+        margin-left: 0px;
+        margin-top: -30px;
+        width: 19%;
+        /* display: none; */
+    }
+
+
+    .hour{
+        background: red;
+        margin-left: -60px;
+        margin-top: 15px;
+        /* display: none; */
     }
 
     .stops{
