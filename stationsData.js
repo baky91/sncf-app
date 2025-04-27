@@ -17,6 +17,7 @@ const citiesData = [
       { name: "Paris Gare d'Austerlitz", value: "paris austerlitz" },
       { name: "Paris Gare Montparnasse", value: "paris montparnasse" },
       { name: "Paris Gare Saint-Lazare", value: "paris saint lazare" },
+      { name: "Paris Bercy", value: "bercy" },
     ],
   },
   {

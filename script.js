@@ -29,8 +29,6 @@ export function setScrollSpeedAll(speed = 100) {
   });
 }
 
-// window.addEventListener("load");
-
 window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".cities");
 

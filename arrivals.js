@@ -37,20 +37,15 @@ function displayArrivals(data) {
   let nbArrivals = 0;
   let i = 0;
 
-  const arrivalsNetworks = [
-    "TGV INOUI",
-    "OUIGO",
-    "TGV Lyria",
-    "DB SNCF",
-    "Eurostar",
-    "TER",
-  ];
+  const excludedArrivalsNetworks = ["RER", "TRANSILIEN"];
 
   while (nbArrivals < 10) {
     const arr = data.arrivals[i];
 
     const trainType = arr.display_informations.network;
-    if (arrivalsNetworks.includes(trainType)) {
+    if (!excludedArrivalsNetworks.includes(trainType)) {
+      // console.log("vrai");
+
       const baseArrivalTime = arr.stop_date_time.base_arrival_date_time;
       const realArrivalTime = arr.stop_date_time.arrival_date_time;
       const hour = getTimeHour(baseArrivalTime);
@@ -69,15 +64,20 @@ function displayArrivals(data) {
         realArrivalTime
       );
 
-      if (arrivalsNetworks.includes(trainType)) {
+      if (trainType.includes("TER") || trainType.includes("FLUO")) {
+        lineImg = `./img/lines/train-logo.svg`;
+      } else {
         if (lineCode == "") {
           lineImg = `./img/lines/${trainType}.svg`;
         } else {
           lineImg = `./img/lines/${trainType}_${lineCode}.svg`;
         }
-      } else {
-        lineImg = `./img/lines/Sncf-logo.svg`;
       }
+
+      // if (!excludedArrivalsNetworks.includes(trainType)) {
+      // } else {
+      //   lineImg = `./img/lines/Sncf-logo.svg`;
+      // }
 
       arrivalsRow.innerHTML += `
       <li>
