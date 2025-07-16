@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Departure from "./Departure";
 import TimetableError from "./TimetableError";
 import { useParams } from "react-router-dom";
@@ -9,18 +9,20 @@ function Departures(){
 
     const [nextDepartures, setNextDepartures] = useState([])
     const url = `https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/departures`;
+    const renderAfterCalled = useRef(false)
 
     useEffect(() => {
-        fetch(url, {
-            headers: { Authorization: `${import.meta.env.VITE_API_KEY}`}
-        })
-        .then(res => res.json())
-        .then(data => setNextDepartures(data.departures))
-        .catch(error => console.error("Erreur :", error))
-
+        if (!renderAfterCalled.current){
+            fetch(url, {
+                headers: { Authorization: `${import.meta.env.VITE_API_KEY}`}
+            })
+            .then(res => res.json())
+            .then(data => setNextDepartures(data.departures))
+            .catch(error => console.error("Erreur :", error))
+        }
+        renderAfterCalled.current = true
     }, [stationCode])
-    
-
+   
     return (
         <div className="departures">
             <h2>Départs</h2>
