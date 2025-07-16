@@ -1,0 +1,181 @@
+.timetables {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.select-mode {
+    display: flex;
+    justify-content: center;
+
+    &__buttons {
+        width: 815px;
+
+        button {
+            width: 50%;
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            // border-radius: 5px 5px 0 0;
+            border: transparent;
+            background: transparent;
+            font-family: 'Montserrat';
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background: rgba(170, 170, 170, 0.25);
+        }
+
+        button:active {
+            background: rgba(170, 170, 170, 0.5);
+        }
+
+        button.active {
+            // border-bottom: 3px solid #8de8fe;
+            box-shadow: inset 0 -3px 0 #8de8fe;
+        }
+
+        .departures-btn {
+            border-radius: 10px 0 0 0;
+        }
+
+        .arrivals-btn {
+            border-radius: 0 10px 0 0;
+        }
+
+    }
+
+}
+
+
+.timetables h2 {
+    color: var(--text-color-2);
+    text-indent: 2rem;
+    margin: 1rem 0.2rem;
+}
+
+.timetables ul {
+    margin-bottom: 2rem;
+}
+
+.timetables li {
+    margin: 0rem 2rem;
+    cursor: pointer;
+    border: solid rgb(31, 31, 31);
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.timetables li:hover {
+    border: solid white;
+}
+
+.departures, .arrivals{
+    width: 815px;
+    background-color: rgb(31, 31, 31);
+    padding: .1rem 0;
+}
+
+.hour{
+    color: #ffff00;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 60px;
+    width: 61px;
+}
+
+.line{
+    color: white;
+    margin-left: 30px;
+    width: 400px;
+}
+
+.departures li{
+    background-color: #0053A7;
+}
+
+.departures li:nth-child(even){
+    background-color: #042770;
+}
+
+.arrivals li{
+    background-color: #65C352;
+}
+
+.arrivals li:nth-child(even){
+    background-color: #29883A;
+}
+
+.line-type{
+    width: 150px;
+    color: white;
+}
+
+.line-type img{
+    height: 33px;
+}
+
+.network{
+    font-weight: normal;
+}
+
+.number{
+    font-size: 0.8rem;
+}
+
+.destination{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+// .arrivals {
+//     display: none;
+// }
+
+.line-status{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-left: 50px;
+    width: 150px;
+}
+
+.line-status div{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}
+
+.is-delayed{
+    position: absolute;
+    margin-left: 120px;
+    width: 13%;
+    font-weight: bold;
+}
+
+.non-delayed{
+    color: #82ff69;
+}
+
+.delayed{
+    color: rgb(255, 88, 58);
+}
+
+.stops-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+
+.stops {
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.stops span{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+

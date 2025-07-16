@@ -1,0 +1,30 @@
+@use "./components/header";
+@use "./components/stationSearch";
+@use "./components/cityCard";
+@use "./components/cityCards";
+@use "./components/timetableError";
+@use "./pages/timetable";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --primary-color: #0C131F;
+    --background-color: #FFFFFF;
+    --text-color-1: #000000;
+    --text-color-2: #ffffff;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 101vh;
+}
