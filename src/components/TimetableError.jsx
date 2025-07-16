@@ -1,3 +1,5 @@
+import reloadIcon from "../img/reload.svg"
+
 
 function TimetableError({mode}){
     // mode : départs ou arrivées
@@ -8,7 +10,9 @@ function TimetableError({mode}){
                 className="timetable-error__retry-button"
                 onClick={() => window.location.reload()}
             >
-                Rafraîchir la page
+            <div className="timetable-error__reload-message">
+                Rafraîchir la page <img src={reloadIcon} alt="reload" />
+            </div>
             </button>
         </div>
     )

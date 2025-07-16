@@ -39,4 +39,16 @@
         background-color: #c14444;
     }
 
+    &__reload-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            height: 15px;
+        }
+
+    }
+
 }
