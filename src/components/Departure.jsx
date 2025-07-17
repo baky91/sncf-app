@@ -1,16 +1,6 @@
 import { calculateDelay, getStationName, getTimeHour, getTimeMinutes } from "../utils";
-import TrainStops from "./TrainStops";
 
 function Departure(dep) {
-  const networks = [
-    "RER",
-    "TRANSILIEN",
-    "TGV INOUI",
-    "OUIGO",
-    "TGV Lyria",
-    "DB SNCF",
-    "Eurostar",
-  ];
 
   const departure = {
     direction: getStationName(dep.stop_date_time.links[1].id) || dep.display_informations.direction.split("(", 1),
