@@ -8,8 +8,10 @@ function Arrivals(){
     const {stationCode} = useParams()
 
     const [nextArrivals, setNextArrivals] = useState([])
-    const url = `https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/arrivals`
+    const url = `https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/arrivals?forbidden_id%5B%5D=commercial_mode%3ATNRER&forbidden_id%5B%5D=network%3ASNCF%3ATN&`
+    
     const renderAfterCalled = useRef(false)
+    renderAfterCalled.current = false
 
     useEffect(() => {
         if (!renderAfterCalled.current){
@@ -21,8 +23,7 @@ function Arrivals(){
             .catch(error => console.error("Erreur :", error))
         }
         renderAfterCalled.current = true
-
-    }, [stationCode])
+    }, [stationCode, renderAfterCalled])
 
     return (
         <div className="arrivals">

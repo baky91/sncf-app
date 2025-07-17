@@ -10,6 +10,7 @@ function Departures(){
     const [nextDepartures, setNextDepartures] = useState([])
     const url = `https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/departures`;
     const renderAfterCalled = useRef(false)
+    renderAfterCalled.current = false
 
     useEffect(() => {
         if (!renderAfterCalled.current){
@@ -21,7 +22,7 @@ function Departures(){
             .catch(error => console.error("Erreur :", error))
         }
         renderAfterCalled.current = true
-    }, [stationCode])
+    }, [stationCode, renderAfterCalled])
    
     return (
         <div className="departures">

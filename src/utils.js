@@ -1,8 +1,6 @@
 import stations from "./gares.json";
 
 export function getStationName(stationCode) {
-  console.log("hello");
-
   let stationName = "";
   for (let i = 0; i < stations.results.length; i++) {
     if (stations.results[i].code === stationCode) {
