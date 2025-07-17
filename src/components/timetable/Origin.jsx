@@ -20,7 +20,7 @@ export function Origin({vehicleJourneyId}){
         .catch(error => console.error("Erreur :", error))
       }
       renderAfterCalled.current = true
-    }, [vehicleJourneyId, renderAfterCalled])
+    }, [vehicleJourneyId])
 
     return (
         <p className="destination">{origin}</p>

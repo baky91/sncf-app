@@ -60,6 +60,12 @@
 
 }
 
+.timetable-loading {
+    text-align: center;
+    color: white;
+    font-style: italic;
+}
+
 .departures, .arrivals{
     background-color: rgb(31, 31, 31);
     padding: .1rem 0;
@@ -89,23 +95,23 @@
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.departures li {
+.departures-list li {
     background-color: #0053a7;
 }
 
-.departures li:nth-child(even) {
+.departures-list li:nth-child(even) {
     background-color: #042770;
 }
 
-.arrivals li {
+.arrivals-list li {
     background-color: #65c352;
 }
 
-.arrivals li:nth-child(even) {
+.arrivals-list li:nth-child(even) {
     background-color: #29883a;
 }
 
-.timetables li:hover {
+.departures-list li:hover, .arrivals-list li:hover {
     border-color: white;
 }
 
@@ -116,7 +122,7 @@
     width: 25%;
 }
 
-.line-type img {
+.timetables img {
     height: 40px;
 }
 

@@ -4,6 +4,7 @@
 @use "./components/cityCards";
 @use "./components/timetableError";
 @use "./pages/timetable";
+@use "./components/popup";
 
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
@@ -24,7 +25,17 @@
     --text-color-2: #ffffff;
 }
 
+html {
+  scrollbar-gutter: stable;
+    // overflow-y: scroll;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
-    height: 101vh;
+    min-height: 100vh;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    // padding-right: 15px;
 }

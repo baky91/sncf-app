@@ -1,12 +1,14 @@
 import StationSearch from "../components/StationSearch"
 import { useLocation, useParams } from "react-router-dom"
 import Header from "../components/Header"
-import Departures from "../components/Departures"
-import Arrivals from "../components/Arrivals"
+import Departures from "../components/timetable/Departures"
+import Arrivals from "../components/timetable/Arrivals"
 import { getStationName } from "../utils"
 import { useRef, useState } from "react"
 
 function Timetable(){
+
+    const {stationCode} = useParams()
 
     const location = useLocation()
     const stationName = location.state?.stationName || getStationName(stationCode)

@@ -1,6 +1,6 @@
-import { calculateDelay, getStationName, getTimeHour, getTimeMinutes } from "../utils";
+import { calculateDelay, getStationName, getTimeHour, getTimeMinutes } from "../../utils";
 
-function Departure(dep) {
+function Departure({dep, onClick}) {
 
   const departure = {
     direction: getStationName(dep.stop_date_time.links[1].id) || dep.display_informations.direction.split("(", 1),
@@ -11,15 +11,14 @@ function Departure(dep) {
     vehicleJourneyId: dep.links[1].id,
     number: dep.display_informations.trip_short_name,
     trainType: dep.display_informations.network,
-    lineCode: dep.display_informations.code
+    lineCode: dep.display_informations.code,
+    lineImg: ""
   };
 
-  let lineImg = ""
-
   if (departure.lineCode == "") {
-    lineImg = `./img/lines/${departure.trainType}.svg`;
+    departure.lineImg = `./img/lines/${departure.trainType}.svg`;
   } else {
-    lineImg = `./img/lines/${departure.trainType}_${departure.lineCode}.svg`;
+    departure.lineImg = `./img/lines/${departure.trainType}_${departure.lineCode}.svg`;
   }
 
   const {isDelayed, delayClass} = calculateDelay(departure.baseDepartureTime, departure.realDepartureTime)
@@ -27,11 +26,11 @@ function Departure(dep) {
   const className = `is-delayed ${delayClass}`
 
   return (
-    <li>
+    <li onClick={() => onClick(departure)}>
       <div className="line-type">
         <img 
         className="line-img" 
-        src={lineImg}
+        src={departure.lineImg}
         onError={(e) => {
           e.target.onerror = null
           e.target.src = "./img/lines/train-logo.svg"

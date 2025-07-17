@@ -1,4 +1,4 @@
-import reloadIcon from "../img/reload.svg"
+import reloadIcon from "../../img/reload.svg"
 
 
 function TimetableError({mode}){

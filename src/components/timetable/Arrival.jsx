@@ -1,7 +1,7 @@
-import { calculateDelay, getStationName, getTimeHour, getTimeMinutes } from "../utils";
+import { calculateDelay, getStationName, getTimeHour, getTimeMinutes } from "../../utils";
 import Origin from "./Origin";
 
-function Arrival(arr){
+function Arrival({arr, onClick}){
 
     const arrival = {
         origin: getStationName(arr.stop_date_time.links[0].id),
@@ -13,14 +13,13 @@ function Arrival(arr){
         number: arr.display_informations.trip_short_name,
         lineCode: arr.display_informations.code,
         trainType: arr.display_informations.network,
+        lineImg: ""
     }
-    
-    let lineImg = ""
 
     if (arrival.lineCode == "") {
-        lineImg = `./img/lines/${arrival.trainType}.svg`;
+        arrival.lineImg = `./img/lines/${arrival.trainType}.svg`;
     } else {
-        lineImg = `./img/lines/${arrival.trainType}_${arrival.lineCode}.svg`;
+        arrival.lineImg = `./img/lines/${arrival.trainType}_${arrival.lineCode}.svg`;
     }
 
     const {isDelayed, delayClass} = calculateDelay(arrival.baseArrivalTIme, arrival.realArrivalTime)
@@ -28,10 +27,10 @@ function Arrival(arr){
     const className = `is-delayed ${delayClass}`
 
     return (
-        <li>
+        <li onClick={() => onClick(arrival)}>
             <div className="line-type">
                 <img 
-                src={lineImg} 
+                src={arrival.lineImg} 
                 alt="" 
                 className="logo train" 
                 onError={(e) => {
