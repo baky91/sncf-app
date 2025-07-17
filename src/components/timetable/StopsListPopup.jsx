@@ -1,31 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import useFetch from "../../hooks/useFetch";
 
 function StopsListPopup({ data, onClose }) {
   // data : departure / arrival
-  const [stops, setStops] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-
-  const renderAfterCalled = useRef(false)
-  renderAfterCalled.current = false
-
-  useEffect(() => {
-
-    if (!renderAfterCalled.current){
-      axios(`https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${data.vehicleJourneyId}`, {
-        headers: { Authorization: `${import.meta.env.VITE_API_KEY}`}
-      })
-      .then(res => setStops(res.data.vehicle_journeys[0].stop_times || []))
-      .catch(e => {
-        setError("Erreur :")
-        console.error("Erreur :", e)
-      })
-      .finally(setLoading(false))
-    }
-    renderAfterCalled.current = true
-  }, [data]);
+  const [stopsData, loading, error] = useFetch(`https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${data.vehicleJourneyId}`, [data])
+  const stops = stopsData.vehicle_journeys?.[0].stop_times || []
 
   return (
     <div className="popup-overlay" onClick={onClose}>
