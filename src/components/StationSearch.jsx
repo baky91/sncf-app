@@ -1,6 +1,7 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import stations from "../gares.json"
+import useFetch from "../hooks/useFetch";
 
 function StationSearch() {
   const [research, setResearch] = useState("");
@@ -14,6 +15,28 @@ function StationSearch() {
     }));
   }, []);
 
+  const {data} = useFetch(`https://api.sncf.com/v1/coverage/sncf/places?type%5B%5D=stop_area&count=10&q=${research}&`, [research])
+  
+  const stationsApi = data?.places?.map(station => ({
+    code: station.id,
+    nom: station.name
+  })) || []
+  
+  const handleChange = (e) => {
+    const value = e.target.value
+    setResearch(value)
+
+    if (value.length > 0){
+      setStationsResult(stationsApi)
+      setIsOpen(true)
+    } else {
+      setStationsResult([])
+      setIsOpen(false)
+    }
+
+  }
+
+  /*
   const handleChange = (e) => {
     const value = e.target.value;
     setResearch(value);
@@ -29,6 +52,7 @@ function StationSearch() {
       setIsOpen(false);
     }
   };
+  */
 
   const handleSelectStation = (station) => {
     setResearch(station.nom); // remplir l'input
@@ -60,7 +84,7 @@ function StationSearch() {
       isOpen && 
       stationsResult.length > 0 && (
         <ul className="station-search__list">
-          {stationsResult.map((station) => (
+          {stationsApi.map((station) => (
             <li
               className="station-search__station"
               key={station.code}

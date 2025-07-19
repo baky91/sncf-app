@@ -24,7 +24,7 @@ function useFetch(url, dependancies) {
     renderAfterCalled.current = true;
   }, dependancies);
 
-  return [data, loading, error];
+  return { data, loading, error };
 }
 
 export default useFetch;
