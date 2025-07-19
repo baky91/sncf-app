@@ -71,7 +71,7 @@ function StationSearch() {
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
               <Link
-                to={`/timetable/${station.code}`}
+                to={`/timetable/${station.code}/departures`}
                 state={{ stationName: station.nom }}>
                 <p>
                   {station.nom}

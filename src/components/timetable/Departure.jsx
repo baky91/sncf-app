@@ -16,9 +16,9 @@ function Departure({dep, onClick}) {
   }
 
   if (departure.lineCode == "") {
-    departure.lineImg = `../img/lines/${departure.trainType}.svg`;
+    departure.lineImg = `../../img/lines/${departure.trainType}.svg`;
   } else {
-    departure.lineImg = `../img/lines/${departure.trainType}_${departure.lineCode}.svg`;
+    departure.lineImg = `../../img/lines/${departure.trainType}_${departure.lineCode}.svg`;
   }
 
   const {isDelayed, delayClass} = calculateDelay(departure.baseDepartureTime, departure.realDepartureTime)
@@ -33,7 +33,7 @@ function Departure({dep, onClick}) {
         src={departure.lineImg}
         onError={(e) => {
           e.target.onerror = null
-          e.target.src = "../img/lines/train-logo.svg"
+          e.target.src = "../../img/lines/train-logo.svg"
         }} />
         <p className="number">{departure.number}</p>
       </div>

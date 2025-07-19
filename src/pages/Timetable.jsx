@@ -1,5 +1,5 @@
 import StationSearch from "../components/StationSearch"
-import { useLocation, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import Header from "../components/Header"
 import Departures from "../components/timetable/Departures"
 import Arrivals from "../components/timetable/Arrivals"
@@ -7,15 +7,34 @@ import { getStationName } from "../utils"
 import { useRef, useState } from "react"
 
 function Timetable(){
+    const navigate = useNavigate()
+    const {stationCode, mode} = useParams()
 
-    const {stationCode} = useParams()
+    if (!mode) {
+        // Rediriger vers departures si le mode n'est pas spécifié
+        return <Navigate to={`/timetable/${stationCode}/departures`} replace />;
+    }
 
     const location = useLocation()
     const stationName = location.state?.stationName || getStationName(stationCode)
-    const [departureMode, setDepartureMode] = useState(true)
+    const [departureMode, setDepartureMode] = useState(mode === "departures")
 
     const depRef = useRef()
     const arrRef = useRef()
+
+    const handleClick = (mode) => {
+        setDepartureMode(mode === "departures")
+
+        if(mode === "departures"){
+            depRef.current.classList.add("active")
+            arrRef.current.classList.remove("active")
+        } else {
+            depRef.current.classList.remove("active")
+            arrRef.current.classList.add("active")
+        }
+
+        navigate(`/timetable/${stationCode}/${mode}`)
+    }
 
     return (
         <>
@@ -24,22 +43,18 @@ function Timetable(){
             <div className="select-mode">
                 <div className="select-mode__buttons">
                     <button 
-                    className="departures-btn active" 
+                    className={departureMode ? "departures-btn active" : "departures-btn" }
                     ref={depRef}
                     onClick={() => {
-                        setDepartureMode(true)
-                        depRef.current.classList.add("active")
-                        arrRef.current.classList.remove("active")
+                        handleClick("departures")
                     }}
                     >Afficher les départs</button>
 
                     <button 
-                    className="arrivals-btn" 
+                    className={departureMode ? "arrivals-btn" : "arrivals-btn active" }
                     ref={arrRef}
                     onClick={() => {
-                        setDepartureMode(false)
-                        depRef.current.classList.remove("active")
-                        arrRef.current.classList.add("active")
+                        handleClick("arrivals")
                     }}
                     >Afficher les arrivées</button>
                 </div>

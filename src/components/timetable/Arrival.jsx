@@ -19,9 +19,9 @@ function Arrival({arr, onClick}){
 
 
     if (arrival.lineCode == "") {
-        arrival.lineImg = `../img/lines/${arrival.trainType}.svg`;
+        arrival.lineImg = `../../img/lines/${arrival.trainType}.svg`;
     } else {
-        arrival.lineImg = `../img/lines/${arrival.trainType}_${arrival.lineCode}.svg`;
+        arrival.lineImg = `../../img/lines/${arrival.trainType}_${arrival.lineCode}.svg`;
     }
 
     const {isDelayed, delayClass} = calculateDelay(arrival.baseArrivalTime, arrival.realArrivalTime)
@@ -37,7 +37,7 @@ function Arrival({arr, onClick}){
                 className="logo train" 
                 onError={(e) => {
                     e.target.onerror = null
-                    e.target.src = "../img/lines/train-logo.svg"
+                    e.target.src = "../../img/lines/train-logo.svg"
                 }} />
                 <p className="number">{arrival.number}</p>
             </div>
