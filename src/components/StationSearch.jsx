@@ -34,8 +34,8 @@ function StationSearch() {
   };
   
 
-  const handleSelectStation = (station) => {
-    setResearch(station.nom); // remplir l'input
+  const handleSelectStation = () => {
+    setResearch("");
     setIsOpen(false);
   };
 
@@ -60,14 +60,14 @@ function StationSearch() {
       />
 
       {
-      // isOpen && 
+      isOpen && 
       stationsResult.length > 0 && (
         <ul className="station-search__list">
           {stationsResult.map((station) => (
             <li
               className="station-search__station"
               key={station.code}
-              onClick={() => handleSelectStation(station)}
+              onClick={() => handleSelectStation()}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
               <Link

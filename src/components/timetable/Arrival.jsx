@@ -3,18 +3,20 @@ import Origin from "./Origin";
 
 function Arrival({arr, onClick}){
 
-    const arrival = {
-        origin: getStationName(arr.stop_date_time.links[0].id),
-        baseArrivalTIme: arr.stop_date_time.base_arrival_date_time,
-        realArrivalTime: arr.stop_date_time.arrival_date_time,
-        hour: getTimeHour(arr.stop_date_time.base_arrival_date_time),
-        minutes: getTimeMinutes(arr.stop_date_time.base_arrival_date_time),
-        vehicleJourneyId: arr.links[1].id,
-        number: arr.display_informations.trip_short_name,
-        lineCode: arr.display_informations.code,
-        trainType: arr.display_informations.network,
-        lineImg: ""
+    const arrival = new function(){
+        this.origin = getStationName(arr.stop_date_time.links[0].id),
+        this.baseArrivalTime = arr.stop_date_time.base_arrival_date_time || arr.stop_date_time.arrival_date_time,
+        this.realArrivalTime = arr.stop_date_time.arrival_date_time || arr.stop_date_time.arrival_date_time,
+        this.hour = getTimeHour(this.baseArrivalTime),
+        this.minutes = getTimeMinutes(this.baseArrivalTime),
+        this.vehicleJourneyId = arr.links[1].id,
+        this.number = arr.display_informations.trip_short_name,
+        this.lineCode = arr.display_informations.code,
+        this.trainType = arr.display_informations.network,
+        this.lineImg = ""
     }
+
+
 
     if (arrival.lineCode == "") {
         arrival.lineImg = `./img/lines/${arrival.trainType}.svg`;
@@ -22,7 +24,7 @@ function Arrival({arr, onClick}){
         arrival.lineImg = `./img/lines/${arrival.trainType}_${arrival.lineCode}.svg`;
     }
 
-    const {isDelayed, delayClass} = calculateDelay(arrival.baseArrivalTIme, arrival.realArrivalTime)
+    const {isDelayed, delayClass} = calculateDelay(arrival.baseArrivalTime, arrival.realArrivalTime)
 
     const className = `is-delayed ${delayClass}`
 

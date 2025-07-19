@@ -2,18 +2,18 @@ import { calculateDelay, getStationName, getTimeHour, getTimeMinutes } from "../
 
 function Departure({dep, onClick}) {
 
-  const departure = {
-    direction: getStationName(dep.stop_date_time.links[1].id) || dep.display_informations.direction.split("(", 1),
-    baseDepartureTime: dep.stop_date_time.base_departure_date_time,
-    realDepartureTime: dep.stop_date_time.departure_date_time,
-    hour: getTimeHour(dep.stop_date_time.base_departure_date_time),
-    minutes: getTimeMinutes(dep.stop_date_time.base_departure_date_time),
-    vehicleJourneyId: dep.links[1].id,
-    number: dep.display_informations.trip_short_name,
-    trainType: dep.display_informations.network,
-    lineCode: dep.display_informations.code,
-    lineImg: ""
-  };
+  const departure = new function(){
+    this.direction = getStationName(dep.stop_date_time.links[1].id),
+    this.baseDepartureTime = dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time,
+    this.realDepartureTime = dep.stop_date_time.departure_date_time || dep.stop_date_time.departure_date_time,
+    this.hour = getTimeHour(this.baseDepartureTime),
+    this.minutes = getTimeMinutes(this.baseDepartureTime),
+    this.vehicleJourneyId = dep.links[1].id,
+    this.number = dep.display_informations.trip_short_name,
+    this.trainType = dep.display_informations.network,
+    this.lineCode = dep.display_informations.code,
+    this.lineImg = ""
+  }
 
   if (departure.lineCode == "") {
     departure.lineImg = `./img/lines/${departure.trainType}.svg`;

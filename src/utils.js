@@ -3,9 +3,9 @@ import stations from "./gares.json";
 export function getStationName(stationCode) {
   let stationName = "";
   for (let i = 0; i < stations.length; i++) {
-    if (stations[i].code === stationCode) {
-      stations[i].code;
-      stationName = stations[i].nom;
+    if (stations[i].id === stationCode) {
+      stations[i].id;
+      stationName = stations[i].name;
       break;
     }
   }
