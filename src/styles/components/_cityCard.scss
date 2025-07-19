@@ -19,14 +19,14 @@
     font-weight: bold;
     padding: 10px;
     text-align: center;
-    cursor: pointer;
     position: relative;
   }
-
+  
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 
     p {
       margin: 0;
@@ -72,7 +72,6 @@
         text-decoration: none;
         display: block;
         padding: 5px 10px;
-        width: 100%;
       }
     }
 

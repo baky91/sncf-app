@@ -3,50 +3,50 @@
       "name": "Lille",
       "image": "./img/cities/lille.webp",
       "stations": [
-        { "name": "Lille-Flandres", "value": "stop_area:SNCF:87286005" },
-        { "name": "Lille-Europe", "value": "stop_area:SNCF:87223263" }
+        { "name": "Lille Flandres", "value": "stop_area:SNCF:87286005" },
+        { "name": "Lille Europe", "value": "stop_area:SNCF:87223263" }
       ]
     },
     {
       "name": "Paris",
       "image": "./img/cities/paris.webp",
       "stations": [
-        { "name": "Paris-Nord", "value": "stop_area:SNCF:87271007" },
-        { "name": "Paris-Est", "value": "stop_area:SNCF:87113001" },
-        { "name": "Paris-Gare-de-Lyon", "value": "stop_area:SNCF:87686006" },
-        { "name": "Paris-Austerlitz", "value": "stop_area:SNCF:87547000" },
-        { "name": "Paris-Montparnasse", "value": "stop_area:SNCF:87391003" },
-        { "name": "Paris-St-Lazare", "value": "stop_area:SNCF:87384008" },
-        { "name": "Paris-Bercy", "value": "stop_area:SNCF:87686667" }
+        { "name": "Paris Nord", "value": "stop_area:SNCF:87271007" },
+        { "name": "Paris Est", "value": "stop_area:SNCF:87113001" },
+        { "name": "Paris - Gare de Lyon - Hall 1 & 2", "value": "stop_area:SNCF:87686006" },
+        { "name": "Paris Austerlitz", "value": "stop_area:SNCF:87547000" },
+        { "name": "Paris - Montparnasse - Hall 1 & 2", "value": "stop_area:SNCF:87391003" },
+        { "name": "Paris Saint-Lazare", "value": "stop_area:SNCF:87384008" },
+        { "name": "Paris-Bercy Bourgogne - Pays d'Auvergne", "value": "stop_area:SNCF:87686667" }
       ]
     },
     {
       "name": "Lyon",
       "image": "./img/cities/lyon.webp",
       "stations": [
-        { "name": "Lyon-Part-Dieu", "value": "stop_area:SNCF:87723197" },
-        { "name": "Lyon-Perrache", "value": "stop_area:SNCF:87723197" }
+        { "name": "Lyon Part Dieu", "value": "stop_area:SNCF:87723197" },
+        { "name": "Lyon Perrache", "value": "stop_area:SNCF:87723197" }
       ]
     },
     {
       "name": "Bordeaux",
       "image": "./img/cities/bordeaux.webp",
       "stations": [
-        { "name": "Bordeaux-St-Jean", "value": "stop_area:SNCF:87581009" }
+        { "name": "Bordeaux Saint-Jean", "value": "stop_area:SNCF:87581009" }
       ]
     },
     {
       "name": "Marseille",
       "image": "./img/cities/marseille.webp",
       "stations": [
-        { "name": "Marseille-St-Charles", "value": "stop_area:SNCF:87751008" }
+        { "name": "Marseille Saint-Charles", "value": "stop_area:SNCF:87751008" }
       ]
     },
     {
       "name": "Strasbourg",
       "image": "./img/cities/strasbourg.webp",
       "stations": [
-        { "name": "Strasbourg-Ville", "value": "stop_area:SNCF:87212027" }
+        { "name": "Strasbourg", "value": "stop_area:SNCF:87212027" }
       ]
     }
   ]

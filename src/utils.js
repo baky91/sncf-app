@@ -2,10 +2,10 @@ import stations from "./gares.json";
 
 export function getStationName(stationCode) {
   let stationName = "";
-  for (let i = 0; i < stations.results.length; i++) {
-    if (stations.results[i].code === stationCode) {
-      stations.results[i].code;
-      stationName = stations.results[i].nom;
+  for (let i = 0; i < stations.length; i++) {
+    if (stations[i].code === stationCode) {
+      stations[i].code;
+      stationName = stations[i].nom;
       break;
     }
   }

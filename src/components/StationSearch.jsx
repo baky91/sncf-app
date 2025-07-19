@@ -9,41 +9,21 @@ function StationSearch() {
   const [isOpen, setIsOpen] = useState(false);
 
   const stationsList = useMemo(() => {
-    return stations.results.map((station) => ({
-      code: station.code,
-      nom: station.nom
+    return stations.map((station) => ({
+      code: station.id,
+      nom: station.name,
+      ville: station.city
     }));
   }, []);
-
-  const {data} = useFetch(`https://api.sncf.com/v1/coverage/sncf/places?type%5B%5D=stop_area&count=10&q=${research}&`, [research])
   
-  const stationsApi = data?.places?.map(station => ({
-    code: station.id,
-    nom: station.name
-  })) || []
-  
-  const handleChange = (e) => {
-    const value = e.target.value
-    setResearch(value)
-
-    if (value.length > 0){
-      setStationsResult(stationsApi)
-      setIsOpen(true)
-    } else {
-      setStationsResult([])
-      setIsOpen(false)
-    }
-
-  }
-
-  /*
   const handleChange = (e) => {
     const value = e.target.value;
     setResearch(value);
 
     if (value.length > 1) {
       const filtered = stationsList.filter((station) => 
-        normalize(station.nom).includes(normalize(value))
+        normalize(station.nom).includes(normalize(value)) 
+        || normalize(station.ville).includes(normalize(value))
       );
       setStationsResult(filtered.slice(0, 10)); // limiter à 10 résultats
       setIsOpen(true);
@@ -52,7 +32,7 @@ function StationSearch() {
       setIsOpen(false);
     }
   };
-  */
+  
 
   const handleSelectStation = (station) => {
     setResearch(station.nom); // remplir l'input
@@ -79,12 +59,11 @@ function StationSearch() {
         }}
       />
 
-
       {
-      isOpen && 
+      // isOpen && 
       stationsResult.length > 0 && (
         <ul className="station-search__list">
-          {stationsApi.map((station) => (
+          {stationsResult.map((station) => (
             <li
               className="station-search__station"
               key={station.code}
@@ -94,9 +73,12 @@ function StationSearch() {
               <Link
                 to={`../${station.code}`}
                 state={{ stationName: station.nom }}>
-                <span>
+                <p>
                   {station.nom}
-                </span>{" "}
+                  <span>
+                    {"("}{station.ville}{")"}
+                  </span>
+                </p>
               </Link>
             </li>
           ))}
