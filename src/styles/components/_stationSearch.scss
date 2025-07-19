@@ -5,11 +5,12 @@
     display: flex;
     justify-content: center;
 
-    #inp-station {
+    &__input {
+        background-color: #f4f2f2;
         width: 80%;
         padding: 12px 16px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
+        border: none;
+        border-radius: 30px;
         font-size: 16px;
         outline: none;
         transition: box-shadow 0.2s, border-color 0.2s;
@@ -32,7 +33,6 @@
     }
     
     &__station {
-        padding: 10px 16px;
         cursor: pointer;
         border-bottom: 1px solid #eee;
 
@@ -40,6 +40,7 @@
             display: block;
             height: 100%;
             width: 100%;
+            padding: 10px 16px;
 
             span {
                 color: #333;

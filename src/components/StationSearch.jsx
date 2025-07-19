@@ -19,8 +19,8 @@ function StationSearch() {
     setResearch(value);
 
     if (value.length > 1) {
-      const filtered = stationsList.filter((station) =>
-        normalize(station.nom).includes(normalize(research))
+      const filtered = stationsList.filter((station) => 
+        normalize(station.nom).includes(normalize(value))
       );
       setStationsResult(filtered.slice(0, 10)); // limiter à 10 résultats
       setIsOpen(true);
@@ -36,14 +36,14 @@ function StationSearch() {
   };
 
   return (
-    <div
-      className="station-search"
-    >
+    <div className="station-search">
       <input
         type="text"
         id="inp-station"
+        className="station-search__input"
         placeholder="Rechercher une gare"
         value={research}
+        autoComplete="off"
         onChange={handleChange}
         onFocus={() => research && setIsOpen(true)}
         onBlur={() => {
@@ -54,6 +54,7 @@ function StationSearch() {
           if (stationsResult.length > 0) setIsOpen(true);
         }}
       />
+
 
       {isOpen && stationsResult.length > 0 && (
         <ul className="station-search__list">
