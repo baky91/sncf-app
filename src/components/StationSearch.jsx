@@ -38,7 +38,7 @@ function StationSearch() {
   return (
     <div className="station-search">
       <input
-        type="text"
+        type="search"
         id="inp-station"
         className="station-search__input"
         placeholder="Rechercher une gare"
@@ -56,7 +56,9 @@ function StationSearch() {
       />
 
 
-      {isOpen && stationsResult.length > 0 && (
+      {
+      isOpen && 
+      stationsResult.length > 0 && (
         <ul className="station-search__list">
           {stationsResult.map((station) => (
             <li
