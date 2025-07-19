@@ -19,7 +19,7 @@ function useFetch(url, dependancies) {
           setError("Erreur");
           console.error("Erreur :", e);
         })
-        .finally(setLoading(false));
+        .finally(() => setLoading(false));
     }
     renderAfterCalled.current = true;
   }, dependancies);
