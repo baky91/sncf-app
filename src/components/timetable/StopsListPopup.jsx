@@ -1,11 +1,9 @@
-import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 
-function StopsListPopup({ data, onClose }) {
-  // data : departure / arrival
-  const [stopsData, loading, error] = useFetch(`https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${data.vehicleJourneyId}`, [data])
-  const stops = stopsData.vehicle_journeys?.[0].stop_times || []
+function StopsListPopup({ train, onClose }) {
+  // train : departure / arrival
+  const {data, loading, error} = useFetch(`https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${train.vehicleJourneyId}`, [train])
+  const stops = data.vehicle_journeys?.[0].stop_times || []
 
   return (
     <div className="popup-overlay" onClick={onClose}>
@@ -16,9 +14,9 @@ function StopsListPopup({ data, onClose }) {
         <button className="popup-close" onClick={onClose}>
           ✖
         </button>
-        <img src={data.lineImg} alt=""/>
-        <h3>{data.trainType} {data.number}</h3>
-        <p>Destination : {data.direction}</p>
+        <img src={train.lineImg} alt=""/>
+        <h3>{train.trainType} {train.number}</h3>
+        <p>Destination : {train.direction}</p>
 
         {loading && <p>Chargement des arrêts...</p>}
         {error && <p>❌ Impossible de charger les arrêts.</p>

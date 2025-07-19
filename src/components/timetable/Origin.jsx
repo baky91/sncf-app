@@ -1,30 +1,17 @@
-import { useEffect, useRef, useState } from "react"
+import useFetch from "../../hooks/useFetch"
 
 export function Origin({vehicleJourneyId}){
 
-    const [origin, setOrigin] = useState(null)
-    const url = `https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${vehicleJourneyId}`
-    const renderAfterCalled = useRef(false)
-    renderAfterCalled.current = false
+  const {data, loading, error} = useFetch(`https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${vehicleJourneyId}`, [vehicleJourneyId])
+  const origin = data.vehicle_journeys?.[0].stop_times[0].stop_point.name
 
-    useEffect(() => {
-      if (!renderAfterCalled.current){
-        fetch(url, {
-            headers: { Authorization: `${import.meta.env.VITE_API_KEY}` }
-        })
-        .then(res => res.json())
-        .then(data => {
-            setOrigin(data.vehicle_journeys[0].stop_times[0].stop_point.name)
-            // console.log(data);
-        })
-        .catch(error => console.error("Erreur :", error))
-      }
-      renderAfterCalled.current = true
-    }, [vehicleJourneyId])
-
-    return (
-        <p className="destination">{origin}</p>
-    )
+  return (
+    <>
+      {loading && <p className="destination">Chargement...</p>}
+      {error && <p className="destination" style={{color: "#ff6b6b", fontSize: "1rem"}}>Erreur lors du chargement!</p>}
+      {origin && <p className="destination">{origin}</p>}
+    </>
+  )
 }
 
 export default Origin

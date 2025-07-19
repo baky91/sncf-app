@@ -9,11 +9,10 @@ function Departures(){
 
     const {stationCode} = useParams()
 
-    const [data, loading, error] = useFetch(`https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/departures`, [stationCode])
+    const {data, loading, error} = useFetch(`https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/departures`, [stationCode])
     const nextDepartures = data.departures
 
     const [selectedDeparture, setSelectedDeparture] = useState(null)
-
 
     useEffect(() => {
         if (selectedDeparture) {
@@ -49,7 +48,7 @@ function Departures(){
 
             {selectedDeparture && (
                 <StopsListPopup
-                data={selectedDeparture}
+                train={selectedDeparture}
                 onClose={handleClosePopup} />
             )}
 
