@@ -36,7 +36,7 @@ function CityCard(props){
                         props.stations.map((station, index) => {
                             return <li key={`${station.value}-${index}`}>
                                 <Link
-                                    to={`../${station.value}`}
+                                    to={`/timetable/${station.value}`}
                                     state={{stationName: station.name}}
                                 >
                                     {station.name}

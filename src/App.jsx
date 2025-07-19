@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />}/>
-      <Route path="/:stationCode" element={<Timetable />}/>
+      <Route path="/timetable/:stationCode" element={<Timetable />}/>
     </Routes>
   )
   
