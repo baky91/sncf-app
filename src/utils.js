@@ -51,24 +51,3 @@ function parseDate(str) {
 
   return new Date(year, month, day, hour, minute, second);
 }
-
-export function setScrollSpeedStyle() {}
-
-/* 
-export function setScrollSpeedAll(speed = 100) {
-  document.querySelectorAll(".stops-wrapper").forEach((wrapper) => {
-    const stops = wrapper.querySelector(".stops");
-    const textWidth = stops.scrollWidth;
-    const wrapperWidth = wrapper.offsetWidth;
-
-    if (textWidth > wrapperWidth) {
-      const distance = textWidth + wrapperWidth;
-      const duration = distance / speed;
-
-      stops.style.animation = `scroll-left ${duration}s linear infinite`;
-    } else {
-      stops.style.animation = "none";
-    }
-  });
-}
-*/
