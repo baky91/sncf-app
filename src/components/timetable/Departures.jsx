@@ -9,7 +9,7 @@ function Departures(){
 
     const {stationCode} = useParams()
 
-    const {data, loading, error} = useFetch(`https://sncf-api-proxy.vercel.app/api/departures/${stationCode}`, [stationCode])
+    const {data, loading, error} = useFetch(`https://sncf-api-proxy.vercel.app/api/${stationCode}/departures`, [stationCode])
     const nextDepartures = data.departures
 
     const [selectedDeparture, setSelectedDeparture] = useState(null)
