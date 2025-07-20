@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 
 function StopsListPopup({ train, onClose }) {
   // train : departure / arrival
-  const {data, loading, error} = useFetch(`https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${train.vehicleJourneyId}`, [train])
+  const {data, loading, error} = useFetch(`https://sncf-api-proxy.vercel.app/api/vehicle_journeys/${train.vehicleJourneyId}`, [train])
   const stops = data.vehicle_journeys?.[0].stop_times || []
 
   return (

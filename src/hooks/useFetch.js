@@ -11,9 +11,7 @@ function useFetch(url, dependancies) {
 
   useEffect(() => {
     if (!renderAfterCalled.current) {
-      axios(url, {
-        headers: { Authorization: `${import.meta.env.VITE_API_KEY}` },
-      })
+      axios(url)
         .then((res) => setData(res.data))
         .catch((e) => {
           setError("Erreur");

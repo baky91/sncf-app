@@ -9,7 +9,7 @@ function Arrivals(){
 
     const {stationCode} = useParams()
 
-    const {data, loading, error} = useFetch(`https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}/arrivals?forbidden_id%5B%5D=commercial_mode%3ATNRER&forbidden_id%5B%5D=network%3ASNCF%3ATN&`, [stationCode])
+    const {data, loading, error} = useFetch(`https://sncf-api-proxy.vercel.app/api/arrivals/${stationCode}`, [stationCode])
     const nextArrivals = data.arrivals
 
     const [selectedArrival, setSelectedArrival] = useState(null)
