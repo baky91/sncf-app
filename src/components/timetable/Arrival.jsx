@@ -7,8 +7,8 @@ function Arrival({arr, onClick}){
         this.origin = getStationName(arr.stop_date_time.links[0].id),
         this.baseArrivalTime = arr.stop_date_time.base_arrival_date_time || arr.stop_date_time.arrival_date_time,
         this.realArrivalTime = arr.stop_date_time.arrival_date_time || arr.stop_date_time.arrival_date_time,
-        this.hour = getTimeHour(this.baseArrivalTime),
-        this.minutes = getTimeMinutes(this.baseArrivalTime),
+        this.hour = getTimeHour(this.realArrivalTime),
+        this.minutes = getTimeMinutes(this.realArrivalTime),
         this.vehicleJourneyId = arr.links[1].id,
         this.number = arr.display_informations.trip_short_name,
         this.lineCode = arr.display_informations.code,
@@ -29,7 +29,7 @@ function Arrival({arr, onClick}){
     const className = `is-delayed ${delayClass}`
 
     return (
-        <li onClick={() => onClick(arrival)}>
+        <li onClick={() => onClick(arrival)} className="timetable-row">
             <div className="line-type">
                 <img 
                 src={arrival.lineImg} 

@@ -1,0 +1,76 @@
+.stops-list {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+}
+
+.stop {
+  display: flex;
+  position: relative;
+  padding-left: 50px;
+
+  &__icon {
+    position: absolute;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    height: 100%;
+  }
+
+  &__circle {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 3px solid black; 
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  &__line {
+    background-color: #fff;
+    border: 0px;
+    height: 100%;
+    position: absolute;
+    top: 0.6875rem;
+    width: .75rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    & .stop__hour {
+      font-weight: 600;
+      color: #ffff00;
+      margin-bottom: 0.3rem;
+    }
+
+    & .stop__name {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    & .stop__duration {
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .stop {
+    padding-left: 40px; // un peu moins d’espace sur mobile
+  }
+  .stop__circle {
+    width: 12px;
+    height: 12px;
+  }
+  .stop__content .stop__hour {
+    font-size: 0.95rem;
+  }
+}

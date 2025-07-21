@@ -11,7 +11,7 @@
 
 }
 
-.timetables ul {
+.departures-list, .arrivals-list {
     width: 100%;
 }
 
@@ -27,7 +27,6 @@
             width: 50%;
             cursor: pointer;
             padding: 0.75rem 1rem;
-            // border-radius: 5px 5px 0 0;
             border: transparent;
             background: transparent;
             font-family: 'Montserrat';
@@ -60,9 +59,12 @@
 
 }
 
-.timetable-loading {
+.timetable-loading, .timetable-no-data {
     text-align: center;
     color: white;
+}
+
+.timetable-loading {
     font-style: italic;
 }
 
@@ -72,7 +74,7 @@
 }
 
 .timetables h2 {
-    color: var(--text-color-2);
+    color: #fff;
     text-indent: 2rem;
     margin: 1rem 0.2rem;
 }
@@ -81,7 +83,7 @@
     margin-bottom: 2rem;
 }
 
-.timetables li {
+.timetable-row {
     margin: 1rem 2rem;
     cursor: pointer;
     border: 2px solid rgb(31, 31, 31);
@@ -89,8 +91,8 @@
     background-color: rgba(0, 0, 0, 0.2);
     padding: 1rem;
     display: flex;
-    align-items: center; /* aligne verticalement sur une ligne */
-    justify-content: space-between; /* espace entre les blocs */
+    align-items: center;
+    justify-content: space-between; 
     gap: 1rem;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
@@ -167,8 +169,8 @@
 
 @media screen and (max-width: 750px) {
     .timetables li {
-        flex-direction: column; /* empile les éléments */
-        align-items: flex-start; /* aligne à gauche */
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .hour {
@@ -184,74 +186,3 @@
         width: initial;
     }
 }
-
-
-
-/*
-
-
-
-.timetables li {
-    margin: 0rem 2rem;
-    cursor: pointer;
-    border: solid rgb(31, 31, 31);
-    padding: .5rem;
-    display: flex;
-    align-items: center;
-}
-
-@media screen and (max-width: 750px) {
-    .timetables h2 {
-        text-indent: 1rem;
-    }
-
-    .timetables li {
-        margin: 0 1rem;
-    }
-}
-
-
-
-
-
-.hour{
-    color: #ffff00;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-left: 60px;
-    width: 61px;
-}
-
-.line{
-    color: white;
-    margin-left: 30px;
-    width: 400px;
-}
-
-.line-type{
-    width: 150px;
-    color: white;
-}
-
-.line-status{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-left: 50px;
-    width: 150px;
-}
-
-.line-status div{
-    height: 30px;
-    width: 30px;
-    border-radius: 15px;
-}
-
-.is-delayed{
-    position: absolute;
-    margin-left: 120px;
-    width: 13%;
-    font-weight: bold;
-}
-
-*/

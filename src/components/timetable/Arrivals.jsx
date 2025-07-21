@@ -9,8 +9,10 @@ function Arrivals(){
 
     const {stationCode} = useParams()
 
-    const {data, loading, error} = useFetch(`https://sncf-api-proxy.vercel.app/api/${stationCode}/arrivals`, [stationCode])
+    const {data, loading} = useFetch(`https://sncf-api-proxy.vercel.app/api/${stationCode}/arrivals`, [stationCode])
     const nextArrivals = data.arrivals
+
+    const length = nextArrivals?.length || 0
 
     const [selectedArrival, setSelectedArrival] = useState(null)
 
@@ -37,7 +39,7 @@ function Arrivals(){
             <h2>Arrivées</h2>
             <ul className="arrivals-list">
                 {loading && <h3 className="timetable-loading">Chargement des arrivées...</h3>}
-                {error && <TimetableError mode="arrivées" />}
+                {!loading && length === 0 && <h3 className="timetable-no-data">Aucune arrivée à afficher</h3>}
                 {nextArrivals && nextArrivals.map(arr => {
                     return <Arrival 
                     key={arr.links[1].id} 
@@ -49,7 +51,8 @@ function Arrivals(){
             {selectedArrival && (
                 <StopsListPopup
                 train={selectedArrival}
-                onClose={handleClosePopup} />
+                onClose={handleClosePopup} 
+                stationCode={stationCode}/>
             )}
 
         </div>

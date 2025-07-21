@@ -5,6 +5,7 @@
 @use "./components/timetableError";
 @use "./pages/timetable";
 @use "./components/popup";
+@use "./components/stopsList";
 
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
@@ -18,22 +19,15 @@
     list-style: none;
 }
 
-:root {
-    --primary-color: #0C131F;
-    --background-color: #FFFFFF;
-    --text-color-1: #000000;
-    --text-color-2: #ffffff;
-}
-
 html {
   scrollbar-gutter: stable;
     // overflow-y: scroll;
 }
 
 body {
-    // background: white;
+    background: white;
     font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
+    min-height: 101vh;
 }
 
 body.no-scroll {

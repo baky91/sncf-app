@@ -1,12 +1,13 @@
-import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo } from "react";
+import { Link, useParams } from "react-router-dom";
 import stations from "../gares.json"
-import useFetch from "../hooks/useFetch";
 
 function StationSearch() {
   const [research, setResearch] = useState("");
   const [stationsResult, setStationsResult] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const {mode} = useParams()
 
   const stationsList = useMemo(() => {
     return stations.map((station) => ({
@@ -71,7 +72,7 @@ function StationSearch() {
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
               <Link
-                to={`/timetable/${station.code}/departures`}
+                to={`/timetable/${station.code}/${mode}`}
                 state={{ stationName: station.nom }}>
                 <p>
                   {station.nom}

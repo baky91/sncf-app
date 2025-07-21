@@ -6,8 +6,8 @@ function Departure({dep, onClick}) {
     this.direction = getStationName(dep.stop_date_time.links[1].id),
     this.baseDepartureTime = dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time,
     this.realDepartureTime = dep.stop_date_time.departure_date_time || dep.stop_date_time.departure_date_time,
-    this.hour = getTimeHour(this.baseDepartureTime),
-    this.minutes = getTimeMinutes(this.baseDepartureTime),
+    this.hour = getTimeHour(this.realDepartureTime),
+    this.minutes = getTimeMinutes(this.realDepartureTime),
     this.vehicleJourneyId = dep.links[1].id,
     this.number = dep.display_informations.trip_short_name,
     this.trainType = dep.display_informations.network,
@@ -26,7 +26,7 @@ function Departure({dep, onClick}) {
   const className = `is-delayed ${delayClass}`
 
   return (
-    <li onClick={() => onClick(departure)}>
+    <li onClick={() => onClick(departure)} className="timetable-row">
       <div className="line-type">
         <img 
         className="line-img" 
@@ -41,7 +41,6 @@ function Departure({dep, onClick}) {
       <p className="hour">{departure.hour}:{departure.minutes}</p>
       <div className="line">
         <p className="destination">{departure.direction}</p>
-        
       </div>
     </li>
   );

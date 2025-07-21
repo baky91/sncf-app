@@ -39,37 +39,36 @@ function Timetable(){
     return (
         <>
             <Header title={stationName}/>
-            <StationSearch />
-            <div className="select-mode">
-                <div className="select-mode__buttons">
-                    <button 
-                    className={departureMode ? "departures-btn active" : "departures-btn" }
-                    ref={depRef}
-                    onClick={() => {
-                        handleClick("departures")
-                    }}
-                    >Afficher les départs</button>
+            <main>
+                <StationSearch />
+                <div className="select-mode">
+                    <div className="select-mode__buttons">
+                        <button 
+                        className={departureMode ? "departures-btn active" : "departures-btn" }
+                        ref={depRef}
+                        onClick={() => {
+                            handleClick("departures")
+                        }}
+                        >Afficher les départs</button>
 
-                    <button 
-                    className={departureMode ? "arrivals-btn" : "arrivals-btn active" }
-                    ref={arrRef}
-                    onClick={() => {
-                        handleClick("arrivals")
-                    }}
-                    >Afficher les arrivées</button>
+                        <button 
+                        className={departureMode ? "arrivals-btn" : "arrivals-btn active" }
+                        ref={arrRef}
+                        onClick={() => {
+                            handleClick("arrivals")
+                        }}
+                        >Afficher les arrivées</button>
+                    </div>
                 </div>
-            </div>
-            <div className="timetables">
-                <div className="timetables__container" style={{display: departureMode ? "block" : "none"}}>
-                    <Departures/>
+                <div className="timetables">
+                    <div className="timetables__container" style={{display: departureMode ? "block" : "none"}}>
+                        <Departures/>
+                    </div>
+                    <div className="timetables__container" style={{display: departureMode ? "none" : "block"}}>
+                        <Arrivals/>
+                    </div>
                 </div>
-                <div className="timetables__container" style={{display: departureMode ? "none" : "block"}}>
-                    <Arrivals/>
-                </div>
-
-                {/* {departureMode && <Departures stationCode={stationCode}/>}
-                {!departureMode && <Arrivals stationCode={stationCode} />} */}
-            </div>
+            </main>
         </>
     )
 }

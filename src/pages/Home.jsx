@@ -7,8 +7,10 @@ function Home(){
     return (
         <>
             <Header />
-            <StationSearch />
-            <CityCards />
+            <main>
+                <StationSearch />
+                <CityCards />
+            </main>
         </>
     )
 }
