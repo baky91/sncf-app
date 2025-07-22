@@ -24,7 +24,7 @@
     width: 16px;
     height: 16px;
     background: #fff;
-    border: 3px solid black; 
+    border: 3px solid black;
     border-radius: 50%;
     z-index: 2;
   }
@@ -66,10 +66,12 @@
   .stop {
     padding-left: 40px; // un peu moins d’espace sur mobile
   }
+
   .stop__circle {
     width: 12px;
     height: 12px;
   }
+
   .stop__content .stop__hour {
     font-size: 0.95rem;
   }

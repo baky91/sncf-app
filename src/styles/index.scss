@@ -13,24 +13,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
 html {
   scrollbar-gutter: stable;
-    // overflow-y: scroll;
+  // overflow-y: scroll;
 }
 
 body {
-    background: white;
-    font-family: 'Montserrat', sans-serif;
-    min-height: 101vh;
+  background: white;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 101vh;
 }
 
 body.no-scroll {
-    overflow: hidden;
-    // padding-right: 15px;
+  overflow: hidden;
+  // padding-right: 15px;
 }
