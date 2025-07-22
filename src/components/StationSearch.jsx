@@ -7,7 +7,7 @@ function StationSearch() {
   const [stationsResult, setStationsResult] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const {mode} = useParams()
+  let {mode} = useParams()
 
   const stationsList = useMemo(() => {
     return stations.map((station) => ({
@@ -72,7 +72,7 @@ function StationSearch() {
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
               <Link
-                to={`/timetable/${station.code}/${mode}`}
+                to={`/timetable/${station.code}/${mode || "departures"}`}
                 state={{ stationName: station.nom }}>
                 <p>
                   {station.nom}
