@@ -1,6 +1,5 @@
 import reloadIcon from "../../img/reload.svg"
 
-
 function TimetableError({mode}){
     // mode : départs ou arrivées
     return (

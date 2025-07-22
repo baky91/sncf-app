@@ -1,90 +1,88 @@
-import { useState, useMemo, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
-import stations from "../gares.json"
+import { useState, useMemo, useRef } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import stations from '../gares.json'
 
-function StationSearch({onSelectStation}) {
-  const [research, setResearch] = useState("");
-  const [stationsResult, setStationsResult] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+function StationSearch({ onSelectStation }) {
+  const [research, setResearch] = useState('')
+  const [stationsResult, setStationsResult] = useState([])
+  const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
 
-  let {mode} = useParams()
+  const { mode } = useParams()
 
   const stationsList = useMemo(() => {
     return stations.map((station) => ({
       code: station.id,
       nom: station.name,
-      ville: station.city
-    }));
-  }, []);
-  
+      ville: station.city,
+    }))
+  }, [])
+
   const handleChange = (e) => {
-    const value = e.target.value;
-    setResearch(value);
+    const value = e.target.value
+    setResearch(value)
 
     if (value.length > 1) {
-      const filtered = stationsList.filter((station) => 
-        normalize(station.nom).includes(normalize(value)) 
-        || normalize(station.ville).includes(normalize(value))
-      );
-      setStationsResult(filtered.slice(0, 10)); // limiter à 10 résultats
-      setIsOpen(true);
+      const filtered = stationsList.filter(
+        (station) =>
+          normalize(station.nom).includes(normalize(value)) ||
+          normalize(station.ville).includes(normalize(value))
+      )
+      setStationsResult(filtered.slice(0, 10)) // limiter à 10 résultats
+      setIsOpen(true)
     } else {
-      setStationsResult([]);
-      setIsOpen(false);
+      setStationsResult([])
+      setIsOpen(false)
     }
-  };
-  
+  }
 
   const handleSelectStation = (name) => {
     onSelectStation(name)
-    setResearch("");
+    setResearch('')
     setStationsResult([])
     inputRef.current.blur()
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   return (
-    <div className="station-search">
+    <div className='station-search'>
       <input
-        type="search"
-        id="inp-station"
-        className="station-search__input"
+        type='search'
+        id='inp-station'
+        className='station-search__input'
         ref={inputRef}
-        placeholder="Rechercher une gare"
+        placeholder='Rechercher une gare'
         value={research}
-        autoComplete="off"
+        autoComplete='off'
         onChange={handleChange}
         onFocus={() => research && setIsOpen(true)}
         onBlur={() => {
           // attendre un petit délai avant de fermer pour autoriser le clic
-          setTimeout(() => setIsOpen(false), 100);
+          setTimeout(() => setIsOpen(false), 100)
         }}
         onFocusCapture={() => {
-          if (stationsResult.length > 0) setIsOpen(true);
+          if (stationsResult.length > 0) setIsOpen(true)
         }}
       />
 
-      {
-      isOpen && 
-      stationsResult.length > 0 && (
-        <ul className="station-search__list">
+      {isOpen && stationsResult.length > 0 && (
+        <ul className='station-search__list'>
           {stationsResult.map((station) => (
             <li
-              className="station-search__station"
+              className='station-search__station'
               key={station.code}
               onClick={() => {
                 handleSelectStation(station.nom)
               }}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
-              <Link
-                to={`/timetable/${station.code}/${mode || "departures"}`}
-                state={{ stationName: station.nom }}>
+              <Link to={`/timetable/${station.code}/${mode || 'departures'}`}>
                 <p>
                   {station.nom}
                   <span>
-                    {"("}{station.ville}{")"}
+                    {'('}
+                    {station.ville}
+                    {')'}
                   </span>
                 </p>
               </Link>
@@ -93,15 +91,15 @@ function StationSearch({onSelectStation}) {
         </ul>
       )}
     </div>
-  );
+  )
 }
 
-export default StationSearch;
+export default StationSearch
 
 function normalize(str) {
   return str
     .toLowerCase()
-    .normalize("NFD")               // décomposer les caractères accentués
-    .replace(/[\u0300-\u036f]/g, "") // supprimer accents
-    .replace(/[\s\-_]/g, "");       // supprimer espaces, tirets et underscores
+    .normalize('NFD') // décomposer les caractères accentués
+    .replace(/[\u0300-\u036f]/g, '') // supprimer accents
+    .replace(/[\s\-_]/g, '') // supprimer espaces, tirets et underscores
 }

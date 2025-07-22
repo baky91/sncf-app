@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home onSelectStation={setHeaderTitle}/>}/>
         <Route path="/timetable/:stationCode" element={<Navigate to="departures" replace />} />
-        <Route path="/timetable/:stationCode/:mode" element={<Timetable />}/>
+        <Route path="/timetable/:stationCode/:mode" element={<Timetable onStationSelected={setHeaderTitle} />}/>
       </Routes>
     </>
     

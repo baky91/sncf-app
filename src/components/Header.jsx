@@ -1,17 +1,13 @@
 import homeImg from '../img/home.svg'
-import { Link, useParams } from 'react-router-dom'
-import { getStationName } from '../utils'
+import { Link } from 'react-router-dom'
 
 function Header({ title }) {
-
-  const {stationCode} = useParams()
-
   return (
     <header>
-      <Link to="/">
-        <img src={homeImg} alt="home button" />
+      <Link to='/'>
+        <img src={homeImg} alt='home button' />
       </Link>
-      <h1>{title || getStationName(stationCode)}</h1>
+      <h1>{title}</h1>
     </header>
   )
 }

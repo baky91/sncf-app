@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 function CityCard({ city, onSelectStation }) {
-  
   const imgUrl = city.image
   const cardRef = useRef(null)
 
@@ -38,10 +37,7 @@ function CityCard({ city, onSelectStation }) {
                 key={`${station.value}-${index}`}
                 onClick={() => onSelectStation(station.name)}
               >
-                <Link
-                  to={`/timetable/${station.value}/departures`}
-                  state={{ stationName: station.name }}
-                >
+                <Link to={`/timetable/${station.value}/departures`}>
                   {station.name}
                 </Link>
               </li>

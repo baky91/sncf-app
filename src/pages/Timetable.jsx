@@ -1,78 +1,90 @@
-import StationSearch from "../components/StationSearch"
-import { useLocation, useNavigate, useParams } from "react-router-dom"
-import Header from "../components/Header"
-import Departures from "../components/timetable/Departures"
-import Arrivals from "../components/timetable/Arrivals"
-import { getStationName } from "../utils"
-import { useRef, useState } from "react"
+import StationSearch from '../components/StationSearch'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import Header from '../components/Header'
+import Departures from '../components/timetable/Departures'
+import Arrivals from '../components/timetable/Arrivals'
+import { getStationName } from '../utils'
+import { useEffect, useRef, useState } from 'react'
 
-function Timetable(){
-    const navigate = useNavigate()
-    const {stationCode, mode} = useParams()
+function Timetable({ onStationSelected }) {
+  const navigate = useNavigate()
+  const { stationCode, mode } = useParams()
 
-    if (!mode) {
-        // Rediriger vers departures si le mode n'est pas spécifié
-        return <Navigate to={`/timetable/${stationCode}/departures`} replace />;
+  if (!mode) {
+    // Rediriger vers departures si le mode n'est pas spécifié
+    return <Navigate to={`/timetable/${stationCode}/departures`} replace />
+  }
+
+  const location = useLocation()
+  const stationName = location.state?.stationName || getStationName(stationCode)
+  const [departureMode, setDepartureMode] = useState(mode === 'departures')
+
+  const depRef = useRef()
+  const arrRef = useRef()
+
+  const handleClick = (mode) => {
+    setDepartureMode(mode === 'departures')
+
+    if (mode === 'departures') {
+      depRef.current.classList.add('active')
+      arrRef.current.classList.remove('active')
+    } else {
+      depRef.current.classList.remove('active')
+      arrRef.current.classList.add('active')
     }
 
-    const location = useLocation()
-    const stationName = location.state?.stationName || getStationName(stationCode)
-    const [departureMode, setDepartureMode] = useState(mode === "departures")
+    navigate(`/timetable/${stationCode}/${mode}`)
+  }
 
-    const depRef = useRef()
-    const arrRef = useRef()
+  useEffect(() => {
+    onStationSelected(stationName)
 
-    const handleClick = (mode) => {
-        setDepartureMode(mode === "departures")
+    return () => onStationSelected('')
+  }, [])
 
-        if(mode === "departures"){
-            depRef.current.classList.add("active")
-            arrRef.current.classList.remove("active")
-        } else {
-            depRef.current.classList.remove("active")
-            arrRef.current.classList.add("active")
-        }
+  return (
+    <main>
+      <div className='select-mode'>
+        <div className='select-mode__buttons'>
+          <button
+            className={
+              departureMode ? 'departures-btn active' : 'departures-btn'
+            }
+            ref={depRef}
+            onClick={() => {
+              handleClick('departures')
+            }}
+          >
+            Afficher les départs
+          </button>
 
-        navigate(`/timetable/${stationCode}/${mode}`)
-    }
-
-    return (
-        <>
-            {/* <Header title={stationName}/> */}
-            <main>
-                {/* <StationSearch /> */}
-                <div className="select-mode">
-                    <div className="select-mode__buttons">
-                        <button 
-                        className={departureMode ? "departures-btn active" : "departures-btn" }
-                        ref={depRef}
-                        onClick={() => {
-                            handleClick("departures")
-                        }}
-                        >Afficher les départs</button>
-
-                        <button 
-                        className={departureMode ? "arrivals-btn" : "arrivals-btn active" }
-                        ref={arrRef}
-                        onClick={() => {
-                            handleClick("arrivals")
-                        }}
-                        >Afficher les arrivées</button>
-                    </div>
-                </div>
-                <div className="timetables">
-                    <div className="timetables__container" style={{display: departureMode ? "block" : "none"}}>
-                        <Departures/>
-                    </div>
-                    <div className="timetables__container" style={{display: departureMode ? "none" : "block"}}>
-                        <Arrivals/>
-                    </div>
-                </div>
-            </main>
-        </>
-    )
+          <button
+            className={departureMode ? 'arrivals-btn' : 'arrivals-btn active'}
+            ref={arrRef}
+            onClick={() => {
+              handleClick('arrivals')
+            }}
+          >
+            Afficher les arrivées
+          </button>
+        </div>
+      </div>
+      <div className='timetables'>
+        <div
+          className='timetables__container'
+          style={{ display: departureMode ? 'block' : 'none' }}
+        >
+          <Departures />
+        </div>
+        <div
+          className='timetables__container'
+          style={{ display: departureMode ? 'none' : 'block' }}
+        >
+          <Arrivals />
+        </div>
+      </div>
+    </main>
+  )
 }
 
 export default Timetable
-
-
