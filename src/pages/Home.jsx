@@ -1,18 +1,11 @@
-import CityCards from "../components/CityCards"
-import Header from "../components/Header"
-import StationSearch from "../components/StationSearch"
+import CityCards from '../components/CityCards'
 
-function Home(){
-
-    return (
-        <>
-            <Header />
-            <main>
-                <StationSearch />
-                <CityCards />
-            </main>
-        </>
-    )
+function Home({onSelectStation}) {
+  return (
+    <main>
+      <CityCards onSelectStation={onSelectStation}/>
+    </main>
+  )
 }
 
 export default Home

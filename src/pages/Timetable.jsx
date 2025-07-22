@@ -38,9 +38,9 @@ function Timetable(){
 
     return (
         <>
-            <Header title={stationName}/>
+            {/* <Header title={stationName}/> */}
             <main>
-                <StationSearch />
+                {/* <StationSearch /> */}
                 <div className="select-mode">
                     <div className="select-mode__buttons">
                         <button 

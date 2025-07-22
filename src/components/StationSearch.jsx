@@ -1,11 +1,12 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import stations from "../gares.json"
 
-function StationSearch() {
+function StationSearch({onSelectStation}) {
   const [research, setResearch] = useState("");
   const [stationsResult, setStationsResult] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const inputRef = useRef(null)
 
   let {mode} = useParams()
 
@@ -35,8 +36,11 @@ function StationSearch() {
   };
   
 
-  const handleSelectStation = () => {
+  const handleSelectStation = (name) => {
+    onSelectStation(name)
     setResearch("");
+    setStationsResult([])
+    inputRef.current.blur()
     setIsOpen(false);
   };
 
@@ -46,6 +50,7 @@ function StationSearch() {
         type="search"
         id="inp-station"
         className="station-search__input"
+        ref={inputRef}
         placeholder="Rechercher une gare"
         value={research}
         autoComplete="off"
@@ -68,7 +73,9 @@ function StationSearch() {
             <li
               className="station-search__station"
               key={station.code}
-              onClick={() => handleSelectStation()}
+              onClick={() => {
+                handleSelectStation(station.nom)
+              }}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
               <Link

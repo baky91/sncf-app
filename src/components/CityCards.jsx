@@ -1,7 +1,7 @@
 import cities from "../cities.json"
 import CityCard from "./CityCard"
 
-function CityCards(){
+function CityCards({onSelectStation}){
 
     return (
         <>
@@ -16,7 +16,7 @@ function CityCards(){
                 <div className="cities">
                     {
                         cities.map(city => {
-                            return <CityCard key={city.name} {...city} />
+                            return <CityCard key={city.name} city={city} onSelectStation={onSelectStation} />
                         })
                     }
                 </div>
