@@ -161,11 +161,15 @@
     font-weight: bold;
     font-size: 1rem;
     text-align: left;
+    background: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
   }
 
   .non-delayed {
-    color: #82ff69;
+    color: #29883a;
   }
+
 
   .delayed {
     color: rgb(255, 88, 58);
