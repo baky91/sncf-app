@@ -1,26 +1,20 @@
-import {
-  calculateDelay,
-  getStationName,
-  getTimeHour,
-  getTimeMinutes,
-} from '../../utils'
+import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '../../utils'
 
 function Departure({ dep, onClick }) {
   const departure = new (function () {
-    ;(this.direction = getStationName(dep.stop_date_time.links[1].id)),
-      (this.baseDepartureTime =
-        dep.stop_date_time.base_departure_date_time ||
-        dep.stop_date_time.departure_date_time),
-      (this.realDepartureTime =
-        dep.stop_date_time.departure_date_time ||
-        dep.stop_date_time.departure_date_time),
-      (this.hour = getTimeHour(this.realDepartureTime)),
-      (this.minutes = getTimeMinutes(this.realDepartureTime)),
-      (this.vehicleJourneyId = dep.links[1].id),
-      (this.number = dep.display_informations.trip_short_name),
-      (this.trainType = dep.display_informations.network),
-      (this.lineCode = dep.display_informations.code),
-      (this.lineImg = '')
+    (this.direction = getStationName(dep.stop_date_time.links[1].id)),
+    (this.baseDepartureTime =
+      dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time),
+    (this.realDepartureTime =
+      dep.stop_date_time.departure_date_time || dep.stop_date_time.departure_date_time),
+    (this.hour = getTimeHour(this.realDepartureTime)),
+    (this.minutes = getTimeMinutes(this.realDepartureTime)),
+    (this.vehicleJourneyId = dep.links[1].id),
+    (this.number = dep.display_informations.trip_short_name),
+    (this.trainType = dep.display_informations.network),
+    (this.physicalMode = dep.display_informations.physical_mode),
+    (this.lineCode = dep.display_informations.code),
+    (this.lineImg = '')
   })()
 
   if (departure.lineCode == '') {
@@ -43,7 +37,11 @@ function Departure({ dep, onClick }) {
           src={departure.lineImg}
           onError={(e) => {
             e.target.onerror = null
-            e.target.src = '../../img/lines/train-logo.svg'
+            if(departure.physicalMode.includes("TER")){
+              e.target.src = '../../img/lines/SNCF.svg'
+            } else {
+              e.target.src = '../../img/lines/train-logo.svg'
+            }
           }}
         />
         <p className='timetable-row__number'>{departure.number}</p>
