@@ -69,15 +69,15 @@ function Timetable({ onStationSelected }) {
           </button>
         </div>
       </div>
-      <div className='timetables'>
+      <div className='timetable'>
         <div
-          className='timetables__container'
+          className='timetable__container'
           style={{ display: departureMode ? 'block' : 'none' }}
         >
           <Departures />
         </div>
         <div
-          className='timetables__container'
+          className='timetable__container'
           style={{ display: departureMode ? 'none' : 'block' }}
         >
           <Arrivals />

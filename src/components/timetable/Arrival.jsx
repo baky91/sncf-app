@@ -34,25 +34,24 @@ function Arrival({ arr, onClick }) {
 
   return (
     <li onClick={() => onClick(arrival)} className='timetable-row'>
-      <div className='line-type'>
+      <div className='timetable-row__line-type'>
         <img
           src={arrival.lineImg}
           alt=''
-          className='logo train'
           onError={(e) => {
             e.target.onerror = null
             e.target.src = '../../img/lines/train-logo.svg'
           }}
         />
-        <p className='number'>{arrival.number}</p>
+        <p className='timetable-row__number'>{arrival.number}</p>
       </div>
       <p className={className}>{isDelayed}</p>
-      <p className='hour'>
+      <p className='timetable-row__hour'>
         {arrival.hour}:{arrival.minutes}
       </p>
-      <div className='line'>
+      <div className='timetable-row__line'>
         {arrival.origin ? (
-          <p className='destination'>{arrival.origin}</p>
+          <p className='timetable-row__origin'>{arrival.origin}</p>
         ) : (
           <Origin vehicleJourneyId={arrival.vehicleJourneyId} />
         )}
