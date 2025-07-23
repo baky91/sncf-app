@@ -1,4 +1,4 @@
-.timetables {
+.timetable {
   display: flex;
   justify-content: center;
   margin: 1rem 1rem;
@@ -7,6 +7,20 @@
   &__container {
     max-width: 815px;
     width: 100%;
+  }
+
+  h2 {
+    color: #fff;
+    text-indent: 2rem;
+    margin: 1rem 0.2rem;
+  }
+
+  ul {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    height: 40px;
   }
 
 }
@@ -76,30 +90,6 @@
   padding: .1rem 0;
 }
 
-.timetables h2 {
-  color: #fff;
-  text-indent: 2rem;
-  margin: 1rem 0.2rem;
-}
-
-.timetables ul {
-  margin-bottom: 2rem;
-}
-
-.timetable-row {
-  margin: 1rem 2rem;
-  cursor: pointer;
-  border: 2px solid rgb(31, 31, 31);
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
 .departures-list li {
   background-color: #0053a7;
 }
@@ -121,72 +111,91 @@
   border-color: white;
 }
 
-.line-type {
+.timetable-row {
+  margin: 1rem 2rem;
+  cursor: pointer;
+  border: 2px solid rgb(31, 31, 31);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 25%;
-}
+  gap: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 
-.timetables img {
-  height: 40px;
-}
+  &__line-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+  }
 
-.number {
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  text-align: right;
-}
+  &__number {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-align: right;
+  }
 
-.destination {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffffff;
-}
+  &__destination,
+  &__origin {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
 
-.hour {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #ffff00;
-  min-width: 80px;
-  text-align: center;
-}
+  &__hour {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffff00;
+    min-width: 80px;
+    text-align: center;
+  }
 
-.is-delayed {
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: left;
-}
+  &__line {
+    width: 40%;
+  }
 
-.non-delayed {
-  color: #82ff69;
-}
+  .is-delayed {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: left;
+    background: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+  }
 
-.delayed {
-  color: rgb(255, 88, 58);
-}
+  .non-delayed {
+    color: #29883a;
+  }
 
-.line {
-  width: 40%;
+
+  .delayed {
+    color: rgb(255, 88, 58);
+  }
+
 }
 
 @media screen and (max-width: 750px) {
-  .timetables li {
+  .timetable li {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .hour {
-    text-align: left;
-    margin-top: 0.5rem;
+  .timetable-row {
+    &__hour {
+      text-align: left;
+      margin-top: 0.5rem;
+    }
+  
+    &__line-type {
+      gap: 0.5rem;
+    }
+  
+    &__line {
+      width: initial;
+    }
   }
 
-  .line-type {
-    gap: 0.5rem;
-  }
-
-  .line {
-    width: initial;
-  }
 }

@@ -34,39 +34,41 @@ function StopsListPopup({stationCode, train, onClose }) {
         {!loading && !error && (
           <>
             <h4>Liste des arrêts :</h4>
-            <ul className="stops-list">
-              {stops.map((stop, index) => {
+            <div className="stops-list-container">
+              <ul className="stops-list">
+                {stops.map((stop, index) => {
 
-                const stopDuration = calculateStopDuration(stop.arrival_time, stop.departure_time)
-                
-                if(stop.stop_point.id.includes(currentStation)){
-                  stopPassed = true
-                }
+                  const stopDuration = calculateStopDuration(stop.arrival_time, stop.departure_time)
+                  
+                  if(stop.stop_point.id.includes(currentStation)){
+                    stopPassed = true
+                  }
 
-                return (
-                <li key={index} className="stop">
-                  <div className="stop__icon">
-                    <span className="stop__circle" 
-                    style={{background: stopPassed ? "#fff" : "#818181"}}></span>
-                    {index !== stops.length - 1 && 
-                      <span className="stop__line" 
-                      style={{background: stopPassed ? "#fff" : "#818181"}}></span>}
-                  </div>
-                  <div className="stop__content">
-                    <span className="stop__hour">{getStopTime(stop.arrival_time)}</span>
-                    <div className="stop__infos">
-                      <p className="stop__name">{stop.stop_point.label}</p>
-                      {stop.arrival_time !== stop.departure_time && stopDuration > 1 ? (
-                        <p className="stop__duration">
-                          {stopDuration} minutes d'arrêt
-                        </p>
-                      ) : undefined}
+                  return (
+                  <li key={index} className="stop">
+                    <div className="stop__icon">
+                      <span className="stop__circle" 
+                      style={{background: stopPassed ? "#fff" : "#818181"}}></span>
+                      {index !== stops.length - 1 && 
+                        <span className="stop__line" 
+                        style={{background: stopPassed ? "#fff" : "#818181"}}></span>}
                     </div>
-                  </div>
-                </li>
-              )
-              })}
-            </ul>
+                    <div className="stop__content">
+                      <span className="stop__hour">{getStopTime(stop.arrival_time)}</span>
+                      <div className="stop__infos">
+                        <p className="stop__name">{stop.stop_point.label}</p>
+                        {stop.arrival_time !== stop.departure_time && stopDuration > 1 ? (
+                          <p className="stop__duration">
+                            {stopDuration} minutes d'arrêt
+                          </p>
+                        ) : undefined}
+                      </div>
+                    </div>
+                  </li>
+                )
+                })}
+              </ul>
+            </div>
           </>
         )}
       </div>
