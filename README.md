@@ -18,7 +18,7 @@ Pour l'interface, j'ai repris les couleurs de SNCF Connect et je me suis inspir√
 
 - Vite + React
 - React Router
-- SASS (styles avanc√©s)
+- SASS (styles)
 
 ### Backend
 
