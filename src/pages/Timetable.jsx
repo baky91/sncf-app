@@ -19,6 +19,11 @@ function Timetable({ onStationSelected }) {
   const depRef = useRef()
   const arrRef = useRef()
 
+  // Remonter en haut lors du changement de page
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [stationCode])
+
   const handleClick = (mode) => {
     setDepartureMode(mode === 'departures')
 
