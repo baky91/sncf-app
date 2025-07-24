@@ -1,7 +1,14 @@
+import { useEffect } from 'react'
 import cities from '../cities.json'
 import CityCard from '../components/city/CityCard'
 
 function Cities({onSelectStation}) {
+
+  // Remonter en haut lors du changement de page
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+
   return (
     <main>
       <p style={{ textAlign: 'center' }}>... ou</p>
