@@ -1,21 +1,19 @@
 import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '../../utils'
-import Origin from './Origin'
 
-function Arrival({ arr, onClick }) {
+function ArrivalRow({ arr, onClick }) {
   const arrival = new (function () {
     (this.origin = getStationName(arr.stop_date_time.links[0].id)),
-    (this.baseArrivalTime =
-      arr.stop_date_time.base_arrival_date_time ||
-      arr.stop_date_time.arrival_date_time),
+    (this.baseArrivalTime = 
+      arr.stop_date_time.base_arrival_date_time || arr.stop_date_time.arrival_date_time),
     (this.realArrivalTime =
-      arr.stop_date_time.arrival_date_time ||
-      arr.stop_date_time.arrival_date_time),
+      arr.stop_date_time.arrival_date_time || arr.stop_date_time.arrival_date_time),
     (this.hour = getTimeHour(this.realArrivalTime)),
     (this.minutes = getTimeMinutes(this.realArrivalTime)),
     (this.vehicleJourneyId = arr.links[1].id),
     (this.number = arr.display_informations.trip_short_name),
     (this.lineCode = arr.display_informations.code),
     (this.trainType = arr.display_informations.network),
+    (this.physicalMode = arr.display_informations.physical_mode),
     (this.lineImg = '')
   })()
 
@@ -40,7 +38,11 @@ function Arrival({ arr, onClick }) {
           alt=''
           onError={(e) => {
             e.target.onerror = null
-            e.target.src = '../../img/lines/train-logo.svg'
+            if(arrival.physicalMode.includes("TER")){
+              e.target.src = '../../img/lines/SNCF.svg'
+            } else {
+              e.target.src = '../../img/lines/train-logo.svg'
+            }
           }}
         />
         <p className='timetable-row__number'>{arrival.number}</p>
@@ -50,14 +52,10 @@ function Arrival({ arr, onClick }) {
         {arrival.hour}:{arrival.minutes}
       </p>
       <div className='timetable-row__line'>
-        {arrival.origin ? (
-          <p className='timetable-row__origin'>{arrival.origin}</p>
-        ) : (
-          <Origin vehicleJourneyId={arrival.vehicleJourneyId} />
-        )}
+        <p className='timetable-row__origin'>{arrival.origin}</p>
       </div>
     </li>
   )
 }
 
-export default Arrival
+export default ArrivalRow

@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import stations from '../gares.json'
+import stations from '../../gares.json'
 
 function StationSearch({ onSelectStation }) {
   const [research, setResearch] = useState('')

@@ -1,9 +1,9 @@
 import cities from '../cities.json'
-import CityCard from './CityCard'
+import CityCard from '../components/city/CityCard'
 
-function CityCards({ onSelectStation }) {
+function Cities({onSelectStation}) {
   return (
-    <>
+    <main>
       <p style={{ textAlign: 'center' }}>... ou</p>
       <div className='station-select'>
         <h3>Séléctionner une gare</h3>
@@ -22,8 +22,8 @@ function CityCards({ onSelectStation }) {
           })}
         </div>
       </div>
-    </>
+    </main>
   )
 }
 
-export default CityCards
+export default Cities

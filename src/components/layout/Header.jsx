@@ -1,4 +1,4 @@
-import homeImg from '../img/home.svg'
+import homeImg from '../../img/home.svg'
 import { Link } from 'react-router-dom'
 
 function Header({ title }) {
