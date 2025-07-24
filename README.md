@@ -1,24 +1,57 @@
 # sncf-app
 
--- En développement --
+Lien : https://sncf-app.vercel.app
 
-Application Web réalisé en HTML, CSS et JavaScript qui permet de consulter les horaires en gare grâce à l'API SNCF.
+Application web qui permet de consulter en temps réel les départs et arrivées des trains en gare. Elle utilise l'API de la SNCF pour récupérer les données et offre une interface responsive.
+Pour l'interface, j'ai repris les couleurs de SNCF Connect et je me suis inspiré des panneaux d'affichage en gare (bleu pour les départs et vert pour les arrivées).
 
 ## Fonctionnalités
 
-• Rechercher une gare par son nom\
-• Sélectionner une gare parmi différentes possiblités regroupées par ville\
-• Afficher les départs en gare et les arrivés en gare\
-• Informations sur le type de train, l'heure de départ/arrivée, le retard, la destination/provenance, les arrêts
+- Rechercher une gare par son nom avec autocomplétion
+- Sélectionner une gare parmi différentes possibilités regroupées par ville
+- Afficher les départs et les arrivées en gare
+- Consulter les détails d'un trajet (tous les arrêts avec les heures d'arrivée)
 
-## Lancer l'application
+## Technologies
 
-Pour le fonctionnement de l'application, une clé API est nécessaire:
-- Cliquez sur ce lien : https://numerique.sncf.com/startup/api/
-- Demandeé une clé d'accès à l'API SNCF en cliquant sur **Commencer à utiliser l'API**
-- Dans le fichier **api.js** à la ligne 12 ```export const API_KEY = "API_KEY";```, remplacez "API_KEY" par votre clé API\
-Exemple :
+### Frontend
+
+- Vite + React
+- React Router
+- SASS (styles avancés)
+
+### Backend
+
+- NodeJS + Express
+- Axios (requêtes API)
+- dotenv (gestion des variables d'environnement)
+- Serveur proxy pour ne pas exposer la clé API et limiter les appels côté client
+
+## 🚀 Installation et lancement
+
+### Prérequis
+- Node.js
+- npm
+
+### Installation
+
+```bash
+# Cloner le repository
+git clone https://github.com/baky91/sncf-app.git
+cd sncf-app
+
+# Installer les dépendances
+npm install
 ```
-export const API_KEY = "aaaa-bbbb-cccc-dddd";
 
+### Lancement en développement
+
+```bash
+npm run dev
 ```
+
+L'application sera accessible sur `http://localhost:5173`
+
+## 📄 Licence
+
+Ce projet est sous licence MIT.
