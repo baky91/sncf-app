@@ -1,6 +1,6 @@
 import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '../../utils'
 
-function Departure({ dep, onClick }) {
+function DepartureRow({ dep, onClick }) {
   const departure = new (function () {
     (this.direction = getStationName(dep.stop_date_time.links[1].id)),
     (this.baseDepartureTime =
@@ -57,4 +57,4 @@ function Departure({ dep, onClick }) {
   )
 }
 
-export default Departure
+export default DepartureRow

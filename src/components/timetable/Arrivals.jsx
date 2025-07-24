@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Arrival from './Arrival'
+import ArrivalRow from './ArrivalRow'
 import { useParams } from 'react-router-dom'
 import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
@@ -48,7 +48,7 @@ function Arrivals() {
         {nextArrivals &&
           nextArrivals.map((arr) => {
             return (
-              <Arrival
+              <ArrivalRow
                 key={arr.links[1].id}
                 arr={arr}
                 onClick={handleArrivalClick}

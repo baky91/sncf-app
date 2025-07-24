@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Departure from './Departure'
+import DepartureRow from './DepartureRow'
 import { useParams } from 'react-router-dom'
 import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
@@ -48,7 +48,7 @@ function Departures() {
         {nextDepartures &&
           nextDepartures.map((dep) => {
             return (
-              <Departure
+              <DepartureRow
                 key={dep.links[1].id}
                 dep={dep}
                 onClick={handleDepartureClick}

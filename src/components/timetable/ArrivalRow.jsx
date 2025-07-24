@@ -1,7 +1,6 @@
 import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '../../utils'
-// import Origin from './Origin'
 
-function Arrival({ arr, onClick }) {
+function ArrivalRow({ arr, onClick }) {
   const arrival = new (function () {
     (this.origin = getStationName(arr.stop_date_time.links[0].id)),
     (this.baseArrivalTime = 
@@ -54,14 +53,9 @@ function Arrival({ arr, onClick }) {
       </p>
       <div className='timetable-row__line'>
         <p className='timetable-row__origin'>{arrival.origin}</p>
-        {/* {arrival.origin ? (
-          <p className='timetable-row__origin'>{arrival.origin}</p>
-        ) : (
-          <Origin vehicleJourneyId={arrival.vehicleJourneyId} />
-        )} */}
       </div>
     </li>
   )
 }
 
-export default Arrival
+export default ArrivalRow
