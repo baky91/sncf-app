@@ -12,7 +12,6 @@ function Departures() {
     [stationCode]
   )
   const nextDepartures = data.departures
-console.log(nextDepartures);
 
   const length = nextDepartures?.length || 0
 
