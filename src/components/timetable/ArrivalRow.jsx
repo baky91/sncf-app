@@ -1,8 +1,9 @@
 import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '../../utils'
+import { useMemo } from 'react'
 
 function ArrivalRow({ arr, onClick }) {
   const arrival = new (function () {
-    (this.origin = getStationName(arr.stop_date_time.links[0].id)),
+    (this.origin = useMemo(() => getStationName(arr.stop_date_time.links[0].id), [arr.stop_date_time.links[0].id])),
     (this.baseArrivalTime = 
       arr.stop_date_time.base_arrival_date_time || arr.stop_date_time.arrival_date_time),
     (this.realArrivalTime =

@@ -2,7 +2,7 @@ import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '..
 
 function DepartureRow({ dep, onClick }) {
   const departure = new (function () {
-    (this.direction = getStationName(dep.stop_date_time.links[1].id)),
+    (this.direction = dep.display_informations.direction.split(" (")[0]),
     (this.baseDepartureTime =
       dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time),
     (this.realDepartureTime =

@@ -1,16 +1,9 @@
 import stations from './gares.json'
 
-export function getStationName(stationCode) {
-  let stationName = ''
-  for (let i = 0; i < stations.length; i++) {
-    if (stations[i].id === stationCode) {
-      stations[i].id
-      stationName = stations[i].name
-      break
-    }
-  }
+const stationMap = new Map(stations.map((station) => [station.id, station.name]))
 
-  return stationName
+export function getStationName(stationCode) {
+  return stationMap.get(stationCode) || ''
 }
 
 export function getTimeHour(dateTime) {
