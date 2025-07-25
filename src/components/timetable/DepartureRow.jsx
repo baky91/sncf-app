@@ -37,7 +37,10 @@ function DepartureRow({ dep, onClick }) {
           src={departure.lineImg}
           onError={(e) => {
             e.target.onerror = null
-            if(departure.physicalMode.includes("TER")){
+            // Ex: OUIGO Train Classique
+            if (departure.trainType.includes("OUIGO")){
+              e.target.src = '../../img/lines/OUIGO.svg'
+            } else if(departure.physicalMode.includes("TER") || departure.trainType.includes("TER")){
               e.target.src = '../../img/lines/SNCF.svg'
             } else {
               e.target.src = '../../img/lines/train-logo.svg'

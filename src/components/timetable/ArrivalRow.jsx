@@ -39,7 +39,10 @@ function ArrivalRow({ arr, onClick }) {
           alt=''
           onError={(e) => {
             e.target.onerror = null
-            if(arrival.physicalMode.includes("TER")){
+            // Ex: OUIGO Train Classique
+            if (arrival.trainType.includes("OUIGO")){
+              e.target.src = '../../img/lines/OUIGO.svg'
+            } else if(arrival.physicalMode.includes("TER") || arrival.trainType.includes("TER")){
               e.target.src = '../../img/lines/SNCF.svg'
             } else {
               e.target.src = '../../img/lines/train-logo.svg'

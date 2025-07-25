@@ -12,7 +12,7 @@ function Arrivals() {
     [stationCode]
   )
   const nextArrivals = data.arrivals
-console.log(nextArrivals)
+
   const length = nextArrivals?.length || 0
 
   const [selectedArrival, setSelectedArrival] = useState(null)
