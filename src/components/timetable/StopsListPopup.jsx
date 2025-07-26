@@ -8,7 +8,6 @@ function StopsListPopup({ stationCode, train, onClose }) {
     [train]
   )
   const stops = data.vehicle_journeys?.[0].stop_times || []
-  const currentStation = stationCode.split('stop_area:')[1]
 
   let stopPassed = false
 
@@ -55,7 +54,7 @@ function StopsListPopup({ stationCode, train, onClose }) {
                     stop.departure_time
                   )
 
-                  if (stop.stop_point.id.includes(currentStation)) {
+                  if (stop.stop_point.stop_area.id === stationCode) {
                     stopPassed = true
                   }
 
@@ -82,7 +81,7 @@ function StopsListPopup({ stationCode, train, onClose }) {
                           {getStopTime(stop.arrival_time)}
                         </span>
                         <div className='stop__infos'>
-                          <p className='stop__name'>{stop.stop_point.label}</p>
+                          <p className='stop__name'>{stop.stop_point.stop_area.label}</p>
                           {stop.arrival_time !== stop.departure_time &&
                           stopDuration > 1 ? (
                             <p className='stop__duration'>
