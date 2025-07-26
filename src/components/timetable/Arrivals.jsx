@@ -3,11 +3,12 @@ import ArrivalRow from './ArrivalRow'
 import { useParams } from 'react-router-dom'
 import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
+import TimetableError from './TimetableError'
 
 function Arrivals() {
   const { stationCode } = useParams()
 
-  const { data, loading } = useFetch(
+  const { data, loading, error } = useFetch(
     `https://sncf-api-proxy.vercel.app/api/${stationCode}/arrivals`,
     [stationCode]
   )
@@ -39,13 +40,11 @@ function Arrivals() {
     <div className='arrivals'>
       <h2>Arrivées</h2>
       <ul className='arrivals-list'>
-        {loading && (
-          <h3 className='timetable-loading'>Chargement des arrivées...</h3>
-        )}
-        {!loading && length === 0 && (
-          <h3 className='timetable-no-data'>Aucune arrivée à afficher</h3>
-        )}
-        {nextArrivals &&
+        {error ? (
+          <TimetableError mode='arrivées' />
+        ) : loading ? (
+          <h3 className='timetable-no-data'>Chargement des arrivées...</h3>
+        ) : length !== 0 ? (
           nextArrivals.map((arr) => {
             return (
               <ArrivalRow
@@ -54,7 +53,8 @@ function Arrivals() {
                 onClick={handleArrivalClick}
               />
             )
-          })}
+          })
+        ) : (<h3 className='timetable-no-data'>Aucune arrivée à afficher</h3>)}
       </ul>
 
       {selectedArrival && (

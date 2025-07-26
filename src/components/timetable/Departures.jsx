@@ -3,11 +3,12 @@ import DepartureRow from './DepartureRow'
 import { useParams } from 'react-router-dom'
 import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
+import TimetableError from './TimetableError'
 
 function Departures() {
   const { stationCode } = useParams()
 
-  const { data, loading } = useFetch(
+  const { data, loading, error } = useFetch(
     `https://sncf-api-proxy.vercel.app/api/${stationCode}/departures`,
     [stationCode]
   )
@@ -39,13 +40,11 @@ function Departures() {
     <div className='departures'>
       <h2>Départs</h2>
       <ul className='departures-list'>
-        {loading && (
+        {error ? (
+          <TimetableError mode='départs' />
+        ) : loading ? (
           <h3 className='timetable-loading'>Chargement des départs...</h3>
-        )}
-        {!loading && length === 0 && (
-          <h3 className='timetable-no-data'>Aucun départ à afficher</h3>
-        )}
-        {nextDepartures &&
+        ) : length !== 0 ? (
           nextDepartures.map((dep) => {
             return (
               <DepartureRow
@@ -54,7 +53,8 @@ function Departures() {
                 onClick={handleDepartureClick}
               />
             )
-          })}
+          })
+        ) : (<h3 className='timetable-no-data'>Aucun départ à afficher</h3>)}
       </ul>
 
       {selectedDeparture && (
