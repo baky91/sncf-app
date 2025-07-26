@@ -10,15 +10,22 @@ function useFetch(url, dependancies) {
   renderAfterCalled.current = false
 
   useEffect(() => {
+    const fetch = async () => {
+      try {
+        const response = await axios.get(url)
+
+        setData(response.data)
+      } catch (e) {
+        if (!e.isAxiosError && e.response) {
+          setError('Error')
+        }
+        console.error('Erreur :', e)
+      }
+      setLoading(false)
+    }
+
     if (!renderAfterCalled.current) {
-      setData([])
-      axios(url)
-        .then((res) => setData(res.data))
-        .catch((e) => {
-          setError('Erreur')
-          console.error('Erreur :', e)
-        })
-        .finally(() => setLoading(false))
+      fetch()
     }
     renderAfterCalled.current = true
   }, dependancies)
