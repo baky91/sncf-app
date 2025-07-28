@@ -16,8 +16,7 @@
         { "name": "Paris - Gare de Lyon - Hall 1 & 2", "value": "stop_area:SNCF:87686006" },
         { "name": "Paris Austerlitz", "value": "stop_area:SNCF:87547000" },
         { "name": "Paris - Montparnasse - Hall 1 & 2", "value": "stop_area:SNCF:87391003" },
-        { "name": "Paris Saint-Lazare", "value": "stop_area:SNCF:87384008" },
-        { "name": "Paris-Bercy Bourgogne - Pays d'Auvergne", "value": "stop_area:SNCF:87686667" }
+        { "name": "Paris Saint-Lazare", "value": "stop_area:SNCF:87384008" }
       ]
     },
     {
