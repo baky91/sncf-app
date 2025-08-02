@@ -64,14 +64,15 @@ function StopsListPopup({ stationCode, train, onClose }) {
                         <span
                           className='stop__circle'
                           style={{
-                            background: stopPassed ? '#fff' : '#818181',
+                            background: '#fff',
+                            border: `3px solid ${stopPassed ? (train.color ? `#${train.color}` : '#000') : '#818181'}`
                           }}
                         ></span>
                         {index !== stops.length - 1 && (
                           <span
                             className='stop__line'
                             style={{
-                              background: stopPassed ? '#fff' : '#818181',
+                              background: stopPassed ? (train.color ? `#${train.color}` : '#fff') : '#818181',
                             }}
                           ></span>
                         )}
