@@ -13,11 +13,31 @@ function Timetable({ onStationSelected }) {
     return <Navigate to={`/timetable/${stationCode}/departures`} replace />
   }
 
-  const stationName = getStationName(stationCode)
-  const [departureMode, setDepartureMode] = useState(mode === 'departures')
+  const [station, setStation] = useState(null)
 
+  
+  const [departureMode, setDepartureMode] = useState(mode === 'departures')
+  const [physicalMode, setPhysicalMode] = useState(null)
+  
   const depRef = useRef()
   const arrRef = useRef()
+  
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/stations?code=${stationCode}`)
+    .then(res => res.json())
+    .then(data => {
+      setStation(data.stations[0])
+      onStationSelected(data.stations[0].name)
+    })
+    .catch(e => {
+      console.error("Erreur :", e)
+    })
+
+    return () => {
+      onStationSelected('')
+      setPhysicalMode(null)
+    }
+  }, [stationCode])
 
   // Remonter en haut lors du changement de page
   useEffect(() => {
@@ -38,14 +58,33 @@ function Timetable({ onStationSelected }) {
     navigate(`/timetable/${stationCode}/${mode}`, {replace: true})
   }
 
-  useEffect(() => {
-    onStationSelected(stationName)    
-
-    return () => onStationSelected('')
-  }, [])
-
   return (
     <main>
+      {station?.physical_modes.length > 1 && (
+        <div className='select-physical-mode'>
+          <div className="select-physical-mode__container">
+            <ul className='select-physical-mode__list'>
+              <li onClick={() => setPhysicalMode(null)}>
+                <button className={!physicalMode ? 'active' : ''}>
+                  Toutes les lignes
+                </button>
+              </li>
+              {station?.physical_modes.map((mode, index) => (
+                <li key={`${mode}-${index}`}>
+                  <button
+                    className={physicalMode === mode.id ? 'active' : ''}
+                    onClick={() => {
+                      setPhysicalMode(mode.id)
+                    }}
+                  >
+                    {mode.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
       <div className='select-mode'>
         <div className='select-mode__buttons'>
           <button
@@ -76,13 +115,13 @@ function Timetable({ onStationSelected }) {
           className='timetable__container'
           style={{ display: departureMode ? 'block' : 'none' }}
         >
-          <Departures />
+          <Departures physicalMode={physicalMode} />
         </div>
         <div
           className='timetable__container'
           style={{ display: departureMode ? 'none' : 'block' }}
         >
-          <Arrivals />
+          <Arrivals physicalMode={physicalMode} />
         </div>
       </div>
     </main>

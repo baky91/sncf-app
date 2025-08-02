@@ -5,12 +5,12 @@ import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
 import TimetableError from './TimetableError'
 
-function Departures() {
+function Departures({physicalMode}) {
   const { stationCode } = useParams()
 
   const { data, loading, error } = useFetch(
-    `https://sncf-api-proxy.vercel.app/api/${stationCode}/departures`,
-    [stationCode]
+    `http://localhost:3000/api/${stationCode}/departures${physicalMode ? `?physical_mode=${physicalMode}` : ""}`,
+    [stationCode, physicalMode]
   )
   const nextDepartures = data.departures
 
