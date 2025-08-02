@@ -4,7 +4,7 @@ import { getStopTime, calculateStopDuration } from '../../utils'
 function StopsListPopup({ stationCode, train, onClose }) {
   // train : departure / arrival
   const { data, loading, error } = useFetch(
-    `https://sncf-api-proxy.vercel.app/api/${train.vehicleJourneyId}/vehicle_journeys`,
+    `${import.meta.env.VITE_API_URL}/api/${train.vehicleJourneyId}/vehicle_journeys`,
     [train]
   )
   const stops = data.vehicle_journeys?.[0].stop_times || []

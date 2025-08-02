@@ -9,7 +9,7 @@ function Arrivals({physicalMode}) {
   const { stationCode } = useParams()
 
   const { data, loading, error } = useFetch(
-    `http://localhost:3000/api/${stationCode}/arrivals${physicalMode ? `?physical_mode=${physicalMode}` : ""}`,
+    `${import.meta.env.VITE_API_URL}/api/${stationCode}/arrivals${physicalMode ? `?physical_mode=${physicalMode}` : ""}`,
     [stationCode, physicalMode]
   )
   const nextArrivals = data.arrivals

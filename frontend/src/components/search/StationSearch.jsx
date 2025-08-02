@@ -14,7 +14,7 @@ function StationSearch({ onSelectStation }) {
     setResearch(value)
 
     if (value.length > 1) {
-      fetch(`http://localhost:3000/api/stations?q=${value}`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/stations?q=${value}`)
       .then(res => res.json())
       .then(data => {
         setStationsResult(data.stations.slice(0, 10))

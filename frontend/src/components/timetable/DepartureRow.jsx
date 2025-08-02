@@ -1,4 +1,4 @@
-import { calculateDelay, getStationName, getTimeHour, getTimeMinutes, } from '../../utils'
+import { calculateDelay, getTimeHour, getTimeMinutes, } from '../../utils'
 
 function DepartureRow({ dep, onClick }) {
   const departure = new (function () {
