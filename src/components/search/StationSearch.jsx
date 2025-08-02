@@ -1,6 +1,5 @@
-import { useState, useMemo, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import stations from '../../gares.json'
 
 function StationSearch({ onSelectStation }) {
   const [research, setResearch] = useState('')
@@ -10,26 +9,18 @@ function StationSearch({ onSelectStation }) {
 
   const { mode } = useParams()
 
-  const stationsList = useMemo(() => {
-    return stations.map((station) => ({
-      code: station.id,
-      nom: station.name,
-      ville: station.city,
-    }))
-  }, [])
-
   const handleChange = (e) => {
     const value = e.target.value
     setResearch(value)
 
     if (value.length > 1) {
-      const filtered = stationsList.filter(
-        (station) =>
-          normalize(station.nom).includes(normalize(value)) ||
-          normalize(station.ville).includes(normalize(value))
-      )
-      setStationsResult(filtered.slice(0, 10)) // limiter à 10 résultats
-      setIsOpen(true)
+      fetch(`http://localhost:3000/api/stations?q=${value}`)
+      .then(res => res.json())
+      .then(data => {
+        setStationsResult(data.stations.slice(0, 10))
+        setIsOpen(true)
+      })
+
     } else {
       setStationsResult([])
       setIsOpen(false)
@@ -70,18 +61,18 @@ function StationSearch({ onSelectStation }) {
           {stationsResult.map((station) => (
             <li
               className='station-search__station'
-              key={station.code}
+              key={station.id}
               onClick={() => {
-                handleSelectStation(station.nom)
+                handleSelectStation(station.name)
               }}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
-              <Link to={`/timetable/${station.code}/${mode || 'departures'}`}>
+              <Link to={`/timetable/${station.id}/${mode || 'departures'}`}>
                 <p>
-                  {station.nom}
+                  {station.name}
                   <span>
                     {'('}
-                    {station.ville}
+                    {station.city}
                     {')'}
                   </span>
                 </p>
