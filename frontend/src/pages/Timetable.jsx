@@ -23,7 +23,7 @@ function Timetable({ onStationSelected }) {
   const arrRef = useRef()
   
   useEffect(() => {
-    fetch(`http://localhost:3000/api/stations?code=${stationCode}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/stations?code=${stationCode}`)
     .then(res => res.json())
     .then(data => {
       setStation(data.stations[0])
