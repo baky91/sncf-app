@@ -14,6 +14,7 @@ function DepartureRow({ dep, onClick }) {
     (this.trainType = dep.display_informations.network),
     (this.physicalMode = dep.display_informations.physical_mode),
     (this.lineCode = dep.display_informations.code),
+    (this.color = dep.display_informations.color),
     (this.lineImg = '')
   })()
 
