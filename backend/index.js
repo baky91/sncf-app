@@ -21,7 +21,7 @@ app.use('/api', limiter)
 
 app.use(cors())
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.json({
     message: "Bienvenue sur l'API SNCF Proxy",
     endpoints: [
