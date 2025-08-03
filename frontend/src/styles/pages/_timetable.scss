@@ -22,7 +22,6 @@
   img {
     height: 40px;
   }
-
 }
 
 .departures-list,
@@ -31,57 +30,60 @@
 }
 
 .select-physical-mode {
-    margin-bottom: 1rem;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  &__container {
     width: 100%;
     overflow-x: auto;
-    
-    &__container {
-      min-width: min-content;
-      padding: 0 1rem;
-      display: flex;
-      justify-content: center;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
     }
-    
-    &__list {
-      display: flex;
-      gap: 1rem;
-      padding-bottom: 0.5rem;
-      min-width: min-content;
-      width: max-content;
-      max-width: 100%;
+  }
 
-      li {
-        flex: 0 0 auto;
-        
-        button {
-          cursor: pointer;
-          padding: 0.5rem 1rem;
-          border-radius: 1.5rem;
-          border: none;
-          background: rgba(170, 170, 170, 0.15);
-          white-space: nowrap;
-          display: inline-block;
-          text-align: center;
-          font-family: 'Montserrat';
-          font-size: .8rem;
-          font-weight: 600;
-          color: #000;
-        }
+  &__list {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    box-sizing: border-box;
 
-        button:hover {
-          background: rgba(170, 170, 170, 0.25);
-        }
+    li {
+      flex: 0 0 auto;
 
-        button:active {
-          background: rgba(170, 170, 170, 0.5);
-        }
+      button {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 1.5rem;
+        border: none;
+        background: rgba(170, 170, 170, 0.15);
+        white-space: nowrap;
+        display: inline-block;
+        text-align: center;
+        font-family: 'Montserrat';
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #000;
+      }
 
-        button.active {
-          background: #8de8fe;
-        }
+      button:hover {
+        background: rgba(170, 170, 170, 0.25);
+      }
+
+      button:active {
+        background: rgba(170, 170, 170, 0.5);
+      }
+
+      button.active {
+        background: #8de8fe;
       }
     }
   }
+}
 
 .select-mode {
   display: flex;
@@ -121,9 +123,7 @@
     .arrivals-btn {
       border-radius: 0 10px 0 0;
     }
-
   }
-
 }
 
 .timetable-loading,
@@ -139,7 +139,7 @@
 .departures,
 .arrivals {
   background-color: rgb(31, 31, 31);
-  padding: .1rem 0;
+  padding: 0.1rem 0;
 }
 
 .departures-list li {
@@ -222,11 +222,9 @@
     color: #29883a;
   }
 
-
   .delayed {
     color: rgb(255, 88, 58);
   }
-
 }
 
 @media screen and (max-width: 750px) {
@@ -240,14 +238,13 @@
       text-align: left;
       margin-top: 0.5rem;
     }
-  
+
     &__line-type {
       gap: 0.5rem;
     }
-  
+
     &__line {
       width: initial;
     }
   }
-
 }
