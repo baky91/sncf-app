@@ -23,7 +23,6 @@ router.get('/:stationCode/departures', cache('1 minute'), async (req, res) => {
   } catch (e) {
     // Erreur qui vient d'axios et a une réponse (ex: aucune données)
     if (e.isAxiosError && e.response) {
-      console.error('Erreur API :', e.response.data)
       res.status(e.response.status).json(e.response.data)
     } else {
       // Autre type d'erreur (ex: réseau, objet introuvable...)
@@ -51,7 +50,6 @@ router.get('/:stationCode/arrivals', cache('1 minute'), async (req, res) => {
   } catch (e) {
     // Erreur qui vient d'axios et a une réponse (ex: aucune données)
     if (e.isAxiosError && e.response) {
-      console.error('Erreur API :', e.response.data)
       res.status(e.response.status).json(e.response.data)
     } else {
       // Autre type d'erreur (ex: réseau, objet introuvable...)

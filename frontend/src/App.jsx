@@ -8,9 +8,9 @@ function App() {
   return (
     <StationsProvider>
       <Routes>
-        <Route path="/" element={<Cities onSelectStation={setHeaderTitle}/>}/>
+        <Route path="/" element={<Cities />}/>
         <Route path="/timetable/:stationCode" element={<Navigate to="departures" replace />} />
-        <Route path="/timetable/:stationCode/:mode" element={<Timetable onStationSelected={setHeaderTitle} />}/>
+        <Route path="/timetable/:stationCode/:mode" element={<Timetable />}/>
       </Routes>
     </StationsProvider>
   )
