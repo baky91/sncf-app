@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-function StationSearch({ onSelectStation }) {
+function StationSearch() {
   const [research, setResearch] = useState('')
   const [stationsResult, setStationsResult] = useState([])
   const [isOpen, setIsOpen] = useState(false)
@@ -28,7 +28,6 @@ function StationSearch({ onSelectStation }) {
   }
 
   const handleSelectStation = (name) => {
-    onSelectStation(name)
     setResearch('')
     setStationsResult([])
     inputRef.current.blur()
