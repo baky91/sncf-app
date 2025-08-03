@@ -10,7 +10,7 @@ export function StationsProvider({children}){
   useEffect(() => {
     const loadAllStations = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/stations/all`)
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations/all`)
         const data = await response.json()
 
         const stationMap = new Map()
