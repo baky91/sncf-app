@@ -45,13 +45,13 @@
     &__list {
       display: flex;
       gap: 1rem;
-      padding-bottom: 0.5rem; // Espace pour le scroll
+      padding-bottom: 0.5rem;
       min-width: min-content;
       width: max-content;
       max-width: 100%;
 
       li {
-        flex: 0 0 auto; // Empêche le redimensionnement des items
+        flex: 0 0 auto;
         
         button {
           cursor: pointer;
@@ -59,12 +59,13 @@
           border-radius: 1.5rem;
           border: none;
           background: rgba(170, 170, 170, 0.15);
-          white-space: nowrap; // Force le texte sur une ligne
+          white-space: nowrap;
           display: inline-block;
           text-align: center;
           font-family: 'Montserrat';
           font-size: .8rem;
           font-weight: 600;
+          color: #000;
         }
 
         button:hover {
@@ -98,7 +99,7 @@
       background: transparent;
       font-family: 'Montserrat';
       font-size: 1rem;
-      color: black;
+      color: #000;
     }
 
     button:hover {

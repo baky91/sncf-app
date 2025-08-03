@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import Departures from '../components/timetable/Departures'
 import Arrivals from '../components/timetable/Arrivals'
-import { getStationName } from '../utils'
 import { useEffect, useRef, useState } from 'react'
+import Header from '../components/layout/Header'
+import StationSearch from '../components/search/StationSearch'
 
-function Timetable({ onStationSelected }) {
+function Timetable() {
   const navigate = useNavigate()
   const { stationCode, mode } = useParams()
 
@@ -14,7 +15,6 @@ function Timetable({ onStationSelected }) {
   }
 
   const [station, setStation] = useState(null)
-
   
   const [departureMode, setDepartureMode] = useState(mode === 'departures')
   const [physicalMode, setPhysicalMode] = useState(null)
@@ -27,14 +27,12 @@ function Timetable({ onStationSelected }) {
     .then(res => res.json())
     .then(data => {
       setStation(data.stations[0])
-      onStationSelected(data.stations[0].name)
     })
     .catch(e => {
       console.error("Erreur :", e)
     })
 
     return () => {
-      onStationSelected('')
       setPhysicalMode(null)
     }
   }, [stationCode])
@@ -56,75 +54,79 @@ function Timetable({ onStationSelected }) {
     }
 
     navigate(`/timetable/${stationCode}/${mode}`, {replace: true})
-  }
+  }  
 
   return (
-    <main>
-      {station?.physical_modes.length > 1 && (
-        <div className='select-physical-mode'>
-          <div className="select-physical-mode__container">
-            <ul className='select-physical-mode__list'>
-              <li onClick={() => setPhysicalMode(null)}>
-                <button className={!physicalMode ? 'active' : ''}>
-                  Toutes les lignes
-                </button>
-              </li>
-              {station?.physical_modes.map((mode, index) => (
-                <li key={`${mode}-${index}`}>
-                  <button
-                    className={physicalMode === mode.id ? 'active' : ''}
-                    onClick={() => {
-                      setPhysicalMode(mode.id)
-                    }}
-                  >
-                    {mode.name}
+    <>
+      <Header title={station?.name} />
+      <StationSearch />
+      <main>
+        {station?.physical_modes.length > 1 && (
+          <div className='select-physical-mode'>
+            <div className="select-physical-mode__container">
+              <ul className='select-physical-mode__list'>
+                <li onClick={() => setPhysicalMode(null)}>
+                  <button className={!physicalMode ? 'active' : ''}>
+                    Toutes les lignes
                   </button>
                 </li>
-              ))}
-            </ul>
+                {station?.physical_modes.map((mode, index) => (
+                  <li key={`${mode}-${index}`}>
+                    <button
+                      className={physicalMode === mode.id ? 'active' : ''}
+                      onClick={() => {
+                        setPhysicalMode(mode.id)
+                      }}
+                    >
+                      {mode.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+        <div className='select-mode'>
+          <div className='select-mode__buttons'>
+            <button
+              className={
+                departureMode ? 'departures-btn active' : 'departures-btn'
+              }
+              ref={depRef}
+              onClick={() => {
+                handleClick('departures')
+              }}
+            >
+              Afficher les départs
+            </button>
+
+            <button
+              className={departureMode ? 'arrivals-btn' : 'arrivals-btn active'}
+              ref={arrRef}
+              onClick={() => {
+                handleClick('arrivals')
+              }}
+            >
+              Afficher les arrivées
+            </button>
           </div>
         </div>
-      )}
-      <div className='select-mode'>
-        <div className='select-mode__buttons'>
-          <button
-            className={
-              departureMode ? 'departures-btn active' : 'departures-btn'
-            }
-            ref={depRef}
-            onClick={() => {
-              handleClick('departures')
-            }}
+        <div className='timetable'>
+          <div
+            className='timetable__container'
+            style={{ display: departureMode ? 'block' : 'none' }}
           >
-            Afficher les départs
-          </button>
-
-          <button
-            className={departureMode ? 'arrivals-btn' : 'arrivals-btn active'}
-            ref={arrRef}
-            onClick={() => {
-              handleClick('arrivals')
-            }}
+            <Departures physicalMode={physicalMode} />
+          </div>
+          <div
+            className='timetable__container'
+            style={{ display: departureMode ? 'none' : 'block' }}
           >
-            Afficher les arrivées
-          </button>
+            <Arrivals physicalMode={physicalMode} />
+          </div>
         </div>
-      </div>
-      <div className='timetable'>
-        <div
-          className='timetable__container'
-          style={{ display: departureMode ? 'block' : 'none' }}
-        >
-          <Departures physicalMode={physicalMode} />
-        </div>
-        <div
-          className='timetable__container'
-          style={{ display: departureMode ? 'none' : 'block' }}
-        >
-          <Arrivals physicalMode={physicalMode} />
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 

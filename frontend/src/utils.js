@@ -1,11 +1,3 @@
-import stations from './gares.json'
-
-const stationMap = new Map(stations.map((station) => [station.id, station.name]))
-
-export function getStationName(stationCode) {
-  return stationMap.get(stationCode) || ''
-}
-
 export function getTimeHour(dateTime) {
   return dateTime.substring(9, 11)
 }

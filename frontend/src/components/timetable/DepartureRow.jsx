@@ -3,10 +3,8 @@ import { calculateDelay, getTimeHour, getTimeMinutes, } from '../../utils'
 function DepartureRow({ dep, onClick }) {
   const departure = new (function () {
     (this.direction = dep.display_informations.direction.split(" (")[0]),
-    (this.baseDepartureTime =
-      dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time),
-    (this.realDepartureTime =
-      dep.stop_date_time.departure_date_time || dep.stop_date_time.departure_date_time),
+    (this.baseDepartureTime = dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time),
+    (this.realDepartureTime = dep.stop_date_time.departure_date_time || dep.stop_date_time.departure_date_time),
     (this.hour = getTimeHour(this.realDepartureTime)),
     (this.minutes = getTimeMinutes(this.realDepartureTime)),
     (this.vehicleJourneyId = dep.links[1].id),
