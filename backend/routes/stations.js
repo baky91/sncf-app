@@ -11,6 +11,14 @@ const garesData = JSON.parse(
   fs.readFileSync(path.join(__dirname, '..', 'datas', 'gares.json'), 'utf8')
 )
 
+// Endpoint pour récupérer toutes les gares (pour le cache frontend)
+router.get('/all', cache('1 hour'), (req, res) => {
+  res.json({
+    total: garesData.length,
+    stations: garesData
+  })
+})
+
 // Recherche de gares
 router.get('/', cache('5 minutes'), (req, res) => {
   const { q, code } = req.query
