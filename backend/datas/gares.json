@@ -650,10 +650,6 @@
         "city": "Saint-Cyr-l'École",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -779,6 +775,17 @@
         ]
     },
     {
+        "id": "stop_area:SNCF:87743146",
+        "name": "Ambronay - Priay",
+        "city": "Ambronay",
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
+    },
+    {
         "id": "stop_area:SNCF:87695965",
         "name": "Ambronay-Priay - R.D. 1075",
         "city": "Ambronay",
@@ -789,10 +796,6 @@
         "name": "Amédée Gordini",
         "city": "Viry-Châtillon",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -2256,28 +2259,6 @@
         ]
     },
     {
-        "id": "stop_area:SNCF:87381038",
-        "name": "Avenue Foch",
-        "city": "Paris",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87381046",
-        "name": "Avenue Henri Martin",
-        "city": "Paris",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
-            }
-        ]
-    },
-    {
         "id": "stop_area:SNCF:87295725",
         "name": "Avesnelles",
         "city": "Avesnelles",
@@ -2700,10 +2681,6 @@
         "name": "Bailly T13",
         "city": "Bailly",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -4726,10 +4703,6 @@
         "city": "Évry-Courcouronnes",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -4746,10 +4719,6 @@
         "name": "Bois de Saint-Eutrope",
         "city": "Ris-Orangis",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -6459,10 +6428,6 @@
         "city": "Saint-Germain-en-Laye",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -6670,10 +6635,6 @@
         "name": "Carnoules",
         "city": "Carnoules",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
@@ -7202,6 +7163,12 @@
                 "name": "TER / Intercités"
             }
         ]
+    },
+    {
+        "id": "stop_area:SNCF:87766808",
+        "name": "Chalain-le-Comtal Aire covoiturage",
+        "city": "Chalain-le-Comtal",
+        "physical_modes": []
     },
     {
         "id": "stop_area:SNCF:87583690",
@@ -9775,10 +9742,6 @@
         "city": "Viry-Châtillon",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -11978,23 +11941,8 @@
         "city": "Épinay-sur-Orge",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87271148",
-        "name": "Épinay-sur-Seine",
-        "city": "Épinay-sur-Seine",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
             }
         ]
     },
@@ -12547,10 +12495,6 @@
         "city": "Évry-Courcouronnes",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -12782,10 +12726,6 @@
         "name": "Ferme Neuve",
         "city": "Grigny",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -13375,10 +13315,6 @@
         "name": "Fourqueux - Bel Air T13",
         "city": "Saint-Germain-en-Laye",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -14145,17 +14081,6 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87271205",
-        "name": "Gennevilliers",
-        "city": "Gennevilliers",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
             }
         ]
     },
@@ -17018,10 +16943,6 @@
         "name": "L'Etang - Les Sablons T13",
         "city": "L'Étang-la-Ville",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -21087,17 +21008,6 @@
         "physical_modes": []
     },
     {
-        "id": "stop_area:SNCF:87272146",
-        "name": "Les Grésillons",
-        "city": "Gennevilliers",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
-            }
-        ]
-    },
-    {
         "id": "stop_area:SNCF:87715516",
         "name": "Les Hôpitaux-Neufs",
         "city": "Les Hôpitaux-Neufs",
@@ -21284,10 +21194,6 @@
         "name": "Les Portes de Saint-Cyr T13",
         "city": "Versailles",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -21951,10 +21857,6 @@
         "name": "Lisière Per. T13",
         "city": "Saint-Germain-en-Laye",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -23704,10 +23606,6 @@
         "city": "Mareil-Marly",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -24126,10 +24024,6 @@
             {
                 "id": "physical_mode:LongDistanceTrain",
                 "name": "Train grande vitesse"
-            },
-            {
-                "id": "physical_mode:Train",
-                "name": "TER / Intercités"
             }
         ]
     },
@@ -25006,7 +24900,12 @@
         "id": "stop_area:SNCF:87725838",
         "name": "Mézériat",
         "city": "Mézériat",
-        "physical_modes": []
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
     },
     {
         "id": "stop_area:SNCF:87444208",
@@ -27275,10 +27174,6 @@
             {
                 "id": "physical_mode:RapidTransit",
                 "name": "RER / Transilien"
-            },
-            {
-                "id": "physical_mode:Train",
-                "name": "TER / Intercités"
             }
         ]
     },
@@ -27625,17 +27520,6 @@
         "physical_modes": []
     },
     {
-        "id": "stop_area:SNCF:87381020",
-        "name": "Neuilly - Porte Maillot",
-        "city": "Paris",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
-            }
-        ]
-    },
-    {
         "id": "stop_area:SNCF:87731448",
         "name": "Neuilly Porte Maillot RER E",
         "city": "Paris",
@@ -27889,10 +27773,6 @@
         "name": "Nice Saint-Augustin",
         "city": "Nice",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
@@ -28200,10 +28080,6 @@
         "name": "Noisy-le-Roi T13",
         "city": "Noisy-le-Roi",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -29195,10 +29071,6 @@
         "city": "Morsang-sur-Orge",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -29321,10 +29193,6 @@
             {
                 "id": "physical_mode:LongDistanceTrain",
                 "name": "Train grande vitesse"
-            },
-            {
-                "id": "physical_mode:Train",
-                "name": "TER / Intercités"
             }
         ]
     },
@@ -29558,17 +29426,6 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87381012",
-        "name": "Péreire Levallois",
-        "city": "Paris",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
             }
         ]
     },
@@ -30296,6 +30153,17 @@
         ]
     },
     {
+        "id": "stop_area:SNCF:87725846",
+        "name": "Polliat",
+        "city": "Polliat",
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
+    },
+    {
         "id": "stop_area:SNCF:87697706",
         "name": "Polliat Mairie",
         "city": "Polliat",
@@ -30485,7 +30353,12 @@
         "id": "stop_area:SNCF:87743120",
         "name": "Pont-d'Ain",
         "city": "Pont-d'Ain",
-        "physical_modes": []
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
     },
     {
         "id": "stop_area:SNCF:87741470",
@@ -30539,7 +30412,12 @@
         "id": "stop_area:SNCF:87725804",
         "name": "Pont-de-Veyle",
         "city": "Crottet",
-        "physical_modes": []
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
     },
     {
         "id": "stop_area:SNCF:87734087",
@@ -30988,17 +30866,6 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87111278",
-        "name": "Porte de Clichy",
-        "city": "Paris",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
             }
         ]
     },
@@ -33717,10 +33584,6 @@
         "city": "Versailles",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -34325,10 +34188,6 @@
         "city": "Saint-Germain-en-Laye",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -34428,17 +34287,6 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87276170",
-        "name": "Saint-Gratien",
-        "city": "Saint-Gratien",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
             }
         ]
     },
@@ -35161,6 +35009,17 @@
         "physical_modes": []
     },
     {
+        "id": "stop_area:SNCF:87743112",
+        "name": "Saint-Martin-du-Mont",
+        "city": "Saint-Martin-du-Mont",
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
+    },
+    {
         "id": "stop_area:SNCF:87696500",
         "name": "Saint-Martin-du-Mont - Le Farget",
         "city": "Druillat",
@@ -35391,10 +35250,6 @@
         "city": "L'Étang-la-Ville",
         "physical_modes": [
             {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
-            {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
             }
@@ -35419,17 +35274,6 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
-            }
-        ]
-    },
-    {
-        "id": "stop_area:SNCF:87271247",
-        "name": "Saint-Ouen",
-        "city": "Saint-Ouen-sur-Seine",
-        "physical_modes": [
-            {
-                "id": "physical_mode:RapidTransit",
-                "name": "RER / Transilien"
             }
         ]
     },
@@ -38826,6 +38670,12 @@
         ]
     },
     {
+        "id": "stop_area:SNCF:87766816",
+        "name": "Thiers Ouest – Plateforme multimodale",
+        "city": "Thiers",
+        "physical_modes": []
+    },
+    {
         "id": "stop_area:SNCF:87272054",
         "name": "Thieux - Nantouillet",
         "city": "Thieux",
@@ -39326,10 +39176,6 @@
         "name": "Traité de Rome",
         "city": "Évry-Courcouronnes",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Tramway",
                 "name": "Tramway"
@@ -40542,10 +40388,6 @@
         "name": "Ventimiglia",
         "city": "Ventimiglia",
         "physical_modes": [
-            {
-                "id": "physical_mode:LongDistanceTrain",
-                "name": "Train grande vitesse"
-            },
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
@@ -42138,7 +41980,12 @@
         "id": "stop_area:SNCF:87725820",
         "name": "Vonnas",
         "city": "Vonnas",
-        "physical_modes": []
+        "physical_modes": [
+            {
+                "id": "physical_mode:Train",
+                "name": "TER / Intercités"
+            }
+        ]
     },
     {
         "id": "stop_area:SNCF:87747337",
