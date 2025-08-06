@@ -8,14 +8,14 @@ const cache = apicache.middleware
 
 // Charger les données des gares
 const garesData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '..', 'datas', 'gares.json'), 'utf8')
+  fs.readFileSync(path.join(__dirname, '..', 'data', 'gares.json'), 'utf8')
 )
 
 // Endpoint pour récupérer toutes les gares (pour le cache frontend)
 router.get('/all', cache('1 hour'), (req, res) => {
   res.json({
     total: garesData.length,
-    stations: garesData
+    stations: garesData,
   })
 })
 
