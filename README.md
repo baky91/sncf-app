@@ -27,31 +27,143 @@ Pour l'interface, j'ai repris les couleurs de SNCF Connect et je me suis inspir�
 - dotenv (gestion des variables d'environnement)
 - Serveur proxy pour ne pas exposer la clé API et limiter les appels côté client
 
-## 🚀 Installation et lancement
+## Installation
 
 ### Prérequis
+
 - Node.js
 - npm
-
-### Installation
 
 ```bash
 # Cloner le repository
 git clone https://github.com/baky91/sncf-app.git
 cd sncf-app
-
-# Installer les dépendances
-npm install
 ```
 
-### Lancement en développement
+## Configuration
 
-```bash
-npm run dev
+**Choisissez votre mode selon votre situation :**
+
+- [Option A : Avec ma propre clé API SNCF](#-option-a--avec-ma-propre-clé-api-sncf)
+- [Option B : Sans clé API (serveur proxy)](#-option-b--sans-clé-api-serveur-proxy)
+
+### Option A : Avec ma propre clé API SNCF
+
+#### Backend
+
+1. **Obtenir une clé API SNCF**
+
+   - Demandez une clé API sur : https://numerique.sncf.com/startup/api
+
+2. **Configuration**
+
+   ```bash
+   cd backend
+   cp .env.example .env
+   ```
+
+   Contenu de `backend/.env` :
+
+   ```env
+   SNCF_API_KEY=votre_cle_api_sncf_ici
+   ```
+
+3. **Installation et lancement**
+
+   ```bash
+   cd backend
+   npm install
+   npm run dev
+   ```
+
+   Serveur accessible sur http://localhost:3000
+
+#### Frontend
+
+1. **Configuration**
+
+   ```bash
+   # Sur un autre terminal
+   cd frontend
+   ```
+
+    **(Facultatif)**
+
+   ```env
+   cp .env.example .env
+   ```
+   Contenu de `frontend/.env`:
+   ```env
+   VITE_API_BASE_URL=http://localhost:3000
+   ```
+
+2. **Installation et lancement**
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+   Application accessible sur http://localhost:5173
+
+---
+
+### Option B : Sans clé API (serveur proxy)
+
+#### Frontend uniquement (backend non nécessaire)
+
+1. **Configuration**
+
+   ```bash
+   cd frontend
+   cp .env.example .env
+   ```
+
+   Contenu de `frontend/.env` :
+
+   ```env
+   VITE_API_BASE_URL=https://sncf-app-backend.vercel.app
+   ```
+
+2. **Installation et lancement**
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+   Application accessible sur http://localhost:5173
+
+## Structure du projet
+
+```
+sncf-app/
+├── frontend/                    # Application React (Vite)
+│   ├── src/
+│   │   ├── components/          # Composants réutilisables
+│   │   ├── contexts/            # Contextes React
+│   │   ├── hooks/               # Hooks personnalisés
+│   │   ├── pages/               # Pages principales
+│   │   ├── styles/              # Fichiers SASS
+│   │   ├── utils/               # Fonctions utilitaires
+│   │   ├── img/                 # Images
+│   │   ├── App.jsx              # Composant principal
+│   │   ├── main.jsx             # Point d'entrée
+│   │   ├── cities.json          # Données des villes
+│   │   └── utils.js             # Utilitaires globaux
+│   ├── public/                  # Assets statiques
+│   ├── .env.example             # Template des variables d'environnements
+│   ├── package.json             # Dépendances frontend
+│   └── index.html
+├── backend/                     # Serveur Express API
+│   ├── routes/                  # Routes API
+│   ├── data/                    # Données des gares
+│   ├── .env.example             # Template des variables d'environnements
+│   ├── index.js                 # Serveur Express principal
+│   └── package.json             # Dépendances backend
+└── README.md                    # Documentation
 ```
 
-L'application sera accessible sur `http://localhost:5173`
-
-## 📄 Licence
+## License
 
 Ce projet est sous licence MIT.
