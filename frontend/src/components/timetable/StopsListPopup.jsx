@@ -20,21 +20,23 @@ function StopsListPopup({ stationCode, train, onClose }) {
         <button className='popup-close' onClick={onClose}>
           ✖
         </button>
-        <img
+        <div className='timetable-row__line-type__img'
+        style={{
+          display: 'flex',
+          gap: '3px',
+          marginBottom: '.5rem'
+        }}>
+          <img 
+          className='timetable-row__line-type__img__mode'
+          src={train.modeImg}
+          alt="" 
+          />
+          <img 
+          className='timetable-row__line-type__img__line'
           src={train.lineImg}
-          alt=''
-          onError={(e) => {
-            e.target.onerror = null
-            // Ex: OUIGO Train Classique
-            if (train.trainType.includes('OUIGO')) {
-              e.target.src = '../../img/lines/OUIGO.svg'
-            } else if (train.physicalMode.includes("TER") || train.trainType.includes("TER")) {
-              e.target.src = '../../img/lines/SNCF.svg'
-            } else {
-              e.target.src = '../../img/lines/train-logo.svg'
-            }
-          }}
-        />
+          alt="" 
+          />
+        </div>
         <h3>
           {train.trainType} {train.number}
         </h3>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<svg width="30.696184" height="30.696184" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+ <metadata id="metadata4455">image/svg+xml</metadata>
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="layer1" transform="translate(0 -1) translate(4.34 0) translate(-6 2) translate(-33 -1) matrix(1 0 0 1 -182.049 -216.581)">
+   <g id="g512" transform="matrix(3.8380091,0,0,3.8381789,-510.9354,-529.23043)">
+    <g id="g46726" transform="matrix(0.35277777,0,0,-0.35277777,195.78781,202.31147)">
+     <path d="m0,0l-12.47,0c-2.81,0 -5.1,2.28 -5.1,5.1l0,12.47c0,2.81 2.29,5.1 5.1,5.1l12.47,0c2.82,0 5.1,-2.29 5.1,-5.1l0,-12.47c0,-2.82 -2.28,-5.1 -5.1,-5.1" fill="#c797d2" fill-rule="nonzero" id="path46728"/>
+    </g>
+    <g id="g46730" transform="matrix(0.35277777,0,0,-0.35277777,192.26282,200.43113)">
+     <path d="m0,0l0,12.01l2.65,0l0,-9.85l4.87,0l0,-2.16l-7.52,0z" fill="#231f20" fill-rule="nonzero" id="path46732"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

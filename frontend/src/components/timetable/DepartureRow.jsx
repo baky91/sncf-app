@@ -1,6 +1,9 @@
 import { calculateDelay, getTimeHour, getTimeMinutes, } from '../../utils'
 
 function DepartureRow({ dep, onClick }) {
+
+  console.log(dep);
+  
   const departure = new (function () {
     (this.direction = dep.display_informations.direction.split(" (")[0]),
     (this.baseDepartureTime = dep.stop_date_time.base_departure_date_time || dep.stop_date_time.departure_date_time),
@@ -13,13 +16,21 @@ function DepartureRow({ dep, onClick }) {
     (this.physicalMode = dep.display_informations.physical_mode),
     (this.lineCode = dep.display_informations.code),
     (this.color = dep.display_informations.color),
-    (this.lineImg = '')
+    (this.lineImg = null),
+    (this.modeImg = null)
   })()
 
-  if (departure.lineCode == '') {
-    departure.lineImg = `../../img/lines/${departure.trainType}.svg`
+  if (["RER", "TRANSILIEN"].includes(departure.trainType)){
+    if (!["Bus", "Car", "Autocar"].includes(departure.physicalMode)){
+      departure.modeImg = `../../img/lines/${departure.trainType}.svg`
+    } else {
+      departure.modeImg = '../../img/lines/Bus.svg'
+    }
+    departure.lineImg = `../../img/lines/${departure.lineCode}.svg`
+  } else if (departure.physicalMode === "TER / Intercités"){
+    departure.modeImg = '../../img/lines/TER.svg'
   } else {
-    departure.lineImg = `../../img/lines/${departure.trainType}_${departure.lineCode}.svg`
+    departure.lineImg = `../../img/lines/${departure.trainType}.svg`
   }
 
   const { isDelayed, delayClass } = calculateDelay(
@@ -32,7 +43,23 @@ function DepartureRow({ dep, onClick }) {
   return (
     <li onClick={() => onClick(departure)} className='timetable-row'>
       <div className='timetable-row__line-type'>
-        <img
+        <div className='timetable-row__line-type__img'
+        style={{
+          display: 'flex',
+          gap: '3px'
+        }}>
+          <img 
+          className='timetable-row__line-type__img__mode'
+          src={departure.modeImg}
+          alt="" 
+          />
+          <img 
+          className='timetable-row__line-type__img__line'
+          src={departure.lineImg}
+          alt="" 
+          />
+        </div>
+        {/* <img
           src={departure.lineImg}
           onError={(e) => {
             e.target.onerror = null
@@ -45,7 +72,7 @@ function DepartureRow({ dep, onClick }) {
               e.target.src = '../../img/lines/train-logo.svg'
             }
           }}
-        />
+        /> */}
         <p className='timetable-row__number'>{departure.number}</p>
       </div>
       <p className={className}>{isDelayed}</p>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<svg width="30.427088999999995" height="30.427088999999995" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+ <metadata id="metadata4455">image/svg+xml</metadata>
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="layer1" transform="translate(0 -0.68) translate(4.52 0) translate(-5.08475 0.338983) translate(0.169492 0.338983) matrix(1 0 0 1 -236.351 -181.653)">
+   <g id="g16256" transform="matrix(1.3417597,0,0,-1.3417004,-244.0039,727.94418)">
+    <path d="m375.87,384.49l-12.47,0c-2.82,0 -5.1,2.28 -5.1,5.1l0,12.47c0,2.82 2.28,5.1 5.1,5.1l12.47,0c2.82,0 5.11,-2.28 5.11,-5.1l0,-12.47c0,-2.82 -2.29,-5.1 -5.11,-5.1" fill="#eb2132" fill-rule="nonzero" id="path115"/>
+    <path d="m370.08,397.25c-0.25,0.76 -0.46,1.75 -0.51,2.19l-0.03,0c-0.05,-0.44 -0.29,-1.43 -0.55,-2.19l-1.02,-3.15l3.13,0l-1.02,3.15zm2.42,-7.42l-0.75,2.28l-4.44,0l-0.75,-2.28l-2.62,0l4.25,12.03l2.88,0l4.27,-12.03l-2.84,0z" fill="#ffffff" fill-rule="nonzero" id="path119"/>
+   </g>
+  </g>
+ </g>
+</svg>
