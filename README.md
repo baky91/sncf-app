@@ -11,6 +11,7 @@ Pour l'interface, j'ai repris les couleurs de SNCF Connect et je me suis inspir�
 - Sélectionner une gare parmi différentes possibilités regroupées par ville
 - Afficher les départs et les arrivées en gare
 - Consulter les détails d'un trajet (tous les arrêts avec les heures d'arrivée)
+- Trier par le mode de transport (Train grande vitesse, TER...)
 
 ## Technologies
 
@@ -44,8 +45,8 @@ cd sncf-app
 
 **Choisissez votre mode selon votre situation :**
 
-- [Option A : Avec ma propre clé API SNCF](#-option-a--avec-ma-propre-clé-api-sncf)
-- [Option B : Sans clé API (serveur proxy)](#-option-b--sans-clé-api-serveur-proxy)
+- [Option A : Avec ma propre clé API SNCF](#option-a--avec-ma-propre-clé-api-sncf)
+- [Option B : Sans clé API](#option-b--sans-clé-api)
 
 ### Option A : Avec ma propre clé API SNCF
 
@@ -59,19 +60,20 @@ cd sncf-app
 
    ```bash
    cd backend
+   # Créer un fichier .env pour les variables d'environnements
    cp .env.example .env
    ```
 
    Contenu de `backend/.env` :
 
    ```env
-   SNCF_API_KEY=votre_cle_api_sncf_ici
+   # Remplacez par votre clé API
+   SNCF_API_KEY=your_sncf_api_key
    ```
 
 3. **Installation et lancement**
 
    ```bash
-   cd backend
    npm install
    npm run dev
    ```
@@ -89,7 +91,8 @@ cd sncf-app
 
     **(Facultatif)**
 
-   ```env
+   ```bash
+   # Créer un fichier .env pour les variables d'environnements
    cp .env.example .env
    ```
    Contenu de `frontend/.env`:
@@ -108,7 +111,7 @@ cd sncf-app
 
 ---
 
-### Option B : Sans clé API (serveur proxy)
+### Option B : Sans clé API
 
 #### Frontend uniquement (backend non nécessaire)
 
@@ -140,26 +143,15 @@ cd sncf-app
 sncf-app/
 ├── frontend/                    # Application React (Vite)
 │   ├── src/
-│   │   ├── components/          # Composants réutilisables
-│   │   ├── contexts/            # Contextes React
-│   │   ├── hooks/               # Hooks personnalisés
-│   │   ├── pages/               # Pages principales
-│   │   ├── styles/              # Fichiers SASS
-│   │   ├── utils/               # Fonctions utilitaires
-│   │   ├── img/                 # Images
-│   │   ├── App.jsx              # Composant principal
-│   │   ├── main.jsx             # Point d'entrée
-│   │   ├── cities.json          # Données des villes
-│   │   └── utils.js             # Utilitaires globaux
-│   ├── public/                  # Assets statiques
+│   ├── public/
 │   ├── .env.example             # Template des variables d'environnements
 │   ├── package.json             # Dépendances frontend
 │   └── index.html
-├── backend/                     # Serveur Express API
+├── backend/                     # Serveur Express
 │   ├── routes/                  # Routes API
 │   ├── data/                    # Données des gares
 │   ├── .env.example             # Template des variables d'environnements
-│   ├── index.js                 # Serveur Express principal
+│   ├── index.js
 │   └── package.json             # Dépendances backend
 └── README.md                    # Documentation
 ```
