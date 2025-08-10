@@ -35,7 +35,6 @@ router.get('/', cache('5 minutes'), (req, res) => {
     searchTerm = q.toLowerCase().trim()
   }
 
-  // Recherche dans le nom de la gare et le nom de la ville
   const results = garesData.filter(
     (gare) =>
       (q &&
@@ -50,12 +49,12 @@ router.get('/', cache('5 minutes'), (req, res) => {
     })
   }
 
-  // Limiter les résultats
   const limitedResults = count ? results.slice(0, count) : results
 
   res.json({
     query: q,
     code: code,
+    count: parseInt(count),
     total: results.length,
     returned: limitedResults.length,
     stations: limitedResults,
