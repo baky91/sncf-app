@@ -14,10 +14,10 @@ function StationSearch() {
     setResearch(value)
 
     if (value.length > 1) {
-      fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations?q=${value}`)
+      fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations?q=${value}&count=10`)
       .then(res => res.json())
       .then(data => {
-        setStationsResult(data.stations.slice(0, 10))
+        setStationsResult(data.stations)
         setIsOpen(true)
       })
 

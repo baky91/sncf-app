@@ -1,33 +1,15 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext } from 'react'
+import useFetch from '../hooks/useFetch'
 
 const StationsContext = createContext()
 
 export function StationsProvider({children}){
-  const [stations, setStations] = useState(new Map())
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const {data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations/all`)
+  const stations = new Map()
 
-  useEffect(() => {
-    const loadAllStations = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations/all`)
-        const data = await response.json()
-
-        const stationMap = new Map()
-        data.stations.forEach(station => {
-          stationMap.set(station.id, station.name)
-        })
-
-        setStations(stationMap)
-      } catch (error) {
-        setError(error.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadAllStations()
-  }, [])
+  data.stations?.forEach(station => {
+    stations.set(station.id, station.name)
+  })
   
   const getStationName = (stationCode) => {
     return stations.get(stationCode)

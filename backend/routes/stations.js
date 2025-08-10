@@ -21,7 +21,7 @@ router.get('/all', cache('1 hour'), (req, res) => {
 
 // Recherche de gares
 router.get('/', cache('5 minutes'), (req, res) => {
-  const { q, code } = req.query
+  const { q, code, count } = req.query  
 
   if (q && q.length < 2) {
     return res.status(400).json({
@@ -44,8 +44,14 @@ router.get('/', cache('5 minutes'), (req, res) => {
       gare.id === code
   )
 
-  // Limiter les résultats à 50 pour éviter des réponses trop lourdes
-  const limitedResults = results.slice(0, 50)
+  if (code && results.length === 0) {
+    return res.status(404).json({
+      error: `Aucune gare avec le code ${code} n'a été trouvée.`,
+    })
+  }
+
+  // Limiter les résultats
+  const limitedResults = count ? results.slice(0, count) : results
 
   res.json({
     query: q,

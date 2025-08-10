@@ -21,14 +21,15 @@ function useFetch(url, dependancies) {
           setError('Error')
         }
         console.error('Erreur :', e)
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     fetch()
 
     return () => controller.abort()
-  }, dependancies)
+  }, dependancies || [])
 
   return { data, loading, error }
 }
