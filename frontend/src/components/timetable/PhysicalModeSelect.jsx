@@ -1,10 +1,16 @@
-function PhysicalModeSelect({station, physicalMode, setPhysicalMode}) {
+function PhysicalModeSelect({station, physicalMode, setSearchParams}) {
   return (
     <div className='select-physical-mode'>
       <div className='select-physical-mode__container'>
         <ul className='select-physical-mode__list'>
-          <li onClick={() => setPhysicalMode(null)}>
-            <button className={!physicalMode ? 'active' : ''}>
+          <li onClick={() => {
+            setSearchParams(prev => {
+              prev.set('physical_mode', 'all')
+              return prev
+            }, {replace: true})
+            }}
+          >
+            <button className={physicalMode === 'all' ? 'active' : ''}>
               Toutes les lignes
             </button>
           </li>
@@ -13,7 +19,10 @@ function PhysicalModeSelect({station, physicalMode, setPhysicalMode}) {
               <button
                 className={physicalMode === mode.id ? 'active' : ''}
                 onClick={() => {
-                  setPhysicalMode(mode.id)
+                  setSearchParams(prev => {
+                    prev.set('physical_mode', mode.id)
+                    return prev
+                  }, {replace: true})
                 }}
               >
                 {mode.name}

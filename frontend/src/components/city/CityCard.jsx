@@ -36,7 +36,7 @@ function CityCard({ city }) {
               <li
                 key={`${station.value}-${index}`}
               >
-                <Link to={`/timetable/${station.value}/departures`}>
+                <Link to={`/timetable/${station.value}`}>
                   {station.name}
                 </Link>
               </li>

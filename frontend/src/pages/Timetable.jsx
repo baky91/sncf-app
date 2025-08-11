@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { replace, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Departures from '../components/timetable/Departures'
 import Arrivals from '../components/timetable/Arrivals'
 import { useEffect, useRef, useState } from 'react'
@@ -9,19 +9,16 @@ import PhysicalModeSelect from '../components/timetable/PhysicalModeSelect'
 
 function Timetable() {
   const navigate = useNavigate()
-  const { stationCode, mode } = useParams()
-
-  if (!mode) {
-    // Rediriger vers departures si le mode n'est pas spécifié
-    return <Navigate to={`/timetable/${stationCode}/departures`} replace />
-  }
+  const { stationCode } = useParams()
+  const [searchParams, setSearchParams] = useSearchParams({mode: 'departures', physical_mode: 'all'})
+  const mode = searchParams.get('mode')
+  const physicalMode = searchParams.get('physical_mode')
 
   const [station, setStation] = useState(null)
   
   const [departureMode, setDepartureMode] = useState(mode === 'departures')
-  const [physicalMode, setPhysicalMode] = useState(null)
   const [error, setError] = useState(null)
-  
+
   const depRef = useRef()
   const arrRef = useRef()
 
@@ -35,14 +32,21 @@ function Timetable() {
       setError("Erreur")
     })
 
-    return () => {
-      setPhysicalMode(null)
-    }
+    // return () => {
+    //   setPhysicalMode(null)
+    // }
   }, [stationCode])
 
-  // Remonter en haut lors du changement de page
+  // Remonter en haut lors du changement de page et définir les paramètres URL
   useEffect(() => {
     window.scrollTo(0,0)
+    
+    setSearchParams(prev => {
+      prev.set('mode', mode)
+      prev.set('physical_mode', physicalMode)
+      return prev
+    }, {replace: true})
+
   }, [stationCode])
 
   const handleClick = (mode) => {
@@ -56,7 +60,10 @@ function Timetable() {
       arrRef.current.classList.add('active')
     }
 
-    navigate(`/timetable/${stationCode}/${mode}`, {replace: true})
+    setSearchParams(prev => {
+      prev.set('mode', mode)
+      return prev
+    }, {replace: true})
   }  
 
   if (error) {
@@ -74,7 +81,7 @@ function Timetable() {
           <PhysicalModeSelect
             station={station}
             physicalMode={physicalMode}
-            setPhysicalMode={setPhysicalMode}
+            setSearchParams={setSearchParams}
           />
         )}
 
@@ -103,7 +110,7 @@ function Timetable() {
             </button>
           </div>
         </div>
-        
+
         <div className='timetable'>
           <div
             className='timetable__container'

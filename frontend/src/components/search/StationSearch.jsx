@@ -7,7 +7,6 @@ function StationSearch() {
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
 
-  const { mode } = useParams()
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -66,7 +65,7 @@ function StationSearch() {
               }}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
-              <Link to={`/timetable/${station.id}/${mode || 'departures'}`}>
+              <Link to={`/timetable/${station.id}`}>
                 <p>
                   {station.name}
                   <span>
@@ -85,11 +84,3 @@ function StationSearch() {
 }
 
 export default StationSearch
-
-function normalize(str) {
-  return str
-    .toLowerCase()
-    .normalize('NFD') // décomposer les caractères accentués
-    .replace(/[\u0300-\u036f]/g, '') // supprimer accents
-    .replace(/[\s\-_]/g, '') // supprimer espaces, tirets et underscores
-}

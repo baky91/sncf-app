@@ -12,10 +12,6 @@ const router = createBrowserRouter([
   },
   {
     path: 'timetable/:stationCode',
-    element: <Navigate to='departures' replace />
-  },
-  {
-    path: 'timetable/:stationCode/:mode',
     element: <Timetable />
   }
 ])
