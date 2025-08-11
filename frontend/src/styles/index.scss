@@ -4,6 +4,7 @@
 @use "./components/cityCards";
 @use "./components/timetableError";
 @use "./pages/timetable";
+@use "./pages/errorPage";
 @use "./components/popup";
 @use "./components/stopsList";
 
@@ -21,7 +22,6 @@
 
 html {
   scrollbar-gutter: stable;
-  // overflow-y: scroll;
 }
 
 body {
@@ -32,5 +32,4 @@ body {
 
 body.no-scroll {
   overflow: hidden;
-  // padding-right: 15px;
 }

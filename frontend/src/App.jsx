@@ -1,20 +1,31 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Cities from "./pages/Cities";
 import Timetable from "./pages/Timetable";
 import { StationsProvider } from "./contexts/StationsContext";
+import ErrorPage from "./pages/ErrorPage";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Cities />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: 'timetable/:stationCode',
+    element: <Navigate to='departures' replace />
+  },
+  {
+    path: 'timetable/:stationCode/:mode',
+    element: <Timetable />
+  }
+])
 
 function App() {
-
   return (
     <StationsProvider>
-      <Routes>
-        <Route path="/" element={<Cities />}/>
-        <Route path="/timetable/:stationCode" element={<Navigate to="departures" replace />} />
-        <Route path="/timetable/:stationCode/:mode" element={<Timetable />}/>
-      </Routes>
+      <RouterProvider router={router} />
     </StationsProvider>
   )
-
 }
 
 export default App

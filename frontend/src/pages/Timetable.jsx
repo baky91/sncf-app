@@ -4,6 +4,7 @@ import Arrivals from '../components/timetable/Arrivals'
 import { useEffect, useRef, useState } from 'react'
 import Header from '../components/layout/Header'
 import StationSearch from '../components/search/StationSearch'
+import ErrorPage from './ErrorPage'
 
 function Timetable() {
   const navigate = useNavigate()
@@ -18,10 +19,11 @@ function Timetable() {
   
   const [departureMode, setDepartureMode] = useState(mode === 'departures')
   const [physicalMode, setPhysicalMode] = useState(null)
+  const [error, setError] = useState(null)
   
   const depRef = useRef()
   const arrRef = useRef()
-  
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations?code=${stationCode}`)
     .then(res => res.json())
@@ -29,7 +31,7 @@ function Timetable() {
       setStation(data.stations[0])
     })
     .catch(e => {
-      console.error("Erreur :", e)
+      setError("Erreur")
     })
 
     return () => {
@@ -55,6 +57,12 @@ function Timetable() {
 
     navigate(`/timetable/${stationCode}/${mode}`, {replace: true})
   }  
+
+  if (error) {
+    return (
+      <ErrorPage />
+    )
+  }
 
   return (
     <>
