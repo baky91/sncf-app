@@ -1,75 +1,58 @@
-import { replace, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import Departures from '../components/timetable/Departures'
 import Arrivals from '../components/timetable/Arrivals'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../components/layout/Header'
 import StationSearch from '../components/search/StationSearch'
 import ErrorPage from './ErrorPage'
 import PhysicalModeSelect from '../components/timetable/PhysicalModeSelect'
 
 function Timetable() {
-  const navigate = useNavigate()
   const { stationCode } = useParams()
-  const [searchParams, setSearchParams] = useSearchParams({mode: 'departures', physical_mode: 'all'})
-  const mode = searchParams.get('mode')
-  const physicalMode = searchParams.get('physical_mode')
+  const [searchParams, setSearchParams] = useSearchParams({
+    mode: '',
+    physical_mode: '',
+  })
+  const mode = searchParams.get('mode') || 'departures'
+  const physicalMode = searchParams.get('physical_mode') || 'all'
 
   const [station, setStation] = useState(null)
-  
-  const [departureMode, setDepartureMode] = useState(mode === 'departures')
   const [error, setError] = useState(null)
 
-  const depRef = useRef()
-  const arrRef = useRef()
-
   useEffect(() => {
+    window.scrollTo(0, 0)
+
     fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations?code=${stationCode}`)
-    .then(res => res.json())
-    .then(data => {
-      setStation(data.stations[0])
-    })
-    .catch(e => {
-      setError("Erreur")
-    })
-
-    // return () => {
-    //   setPhysicalMode(null)
-    // }
-  }, [stationCode])
-
-  // Remonter en haut lors du changement de page et définir les paramètres URL
-  useEffect(() => {
-    window.scrollTo(0,0)
-    
-    setSearchParams(prev => {
-      prev.set('mode', mode)
-      prev.set('physical_mode', physicalMode)
-      return prev
-    }, {replace: true})
-
+      .then((res) => res.json())
+      .then((data) => {
+        setStation(data.stations[0])
+      })
+      .catch((e) => {
+        setError('Erreur')
+      })
+      
+    setSearchParams(
+      (prev) => {
+        prev.set('mode', mode)
+        prev.set('physical_mode', physicalMode)
+        return prev
+      },
+      { replace: true }
+    )
   }, [stationCode])
 
   const handleClick = (mode) => {
-    setDepartureMode(mode === 'departures')
-
-    if (mode === 'departures') {
-      depRef.current.classList.add('active')
-      arrRef.current.classList.remove('active')
-    } else {
-      depRef.current.classList.remove('active')
-      arrRef.current.classList.add('active')
-    }
-
-    setSearchParams(prev => {
-      prev.set('mode', mode)
-      return prev
-    }, {replace: true})
-  }  
+    setSearchParams(
+      (prev) => {
+        prev.set('mode', mode)
+        return prev
+      },
+      { replace: true }
+    )
+  }
 
   if (error) {
-    return (
-      <ErrorPage />
-    )
+    return <ErrorPage />
   }
 
   return (
@@ -89,9 +72,10 @@ function Timetable() {
           <div className='select-mode__buttons'>
             <button
               className={
-                departureMode ? 'departures-btn active' : 'departures-btn'
+                mode === 'departures'
+                  ? 'departures-btn active'
+                  : 'departures-btn'
               }
-              ref={depRef}
               onClick={() => {
                 handleClick('departures')
               }}
@@ -100,8 +84,9 @@ function Timetable() {
             </button>
 
             <button
-              className={departureMode ? 'arrivals-btn' : 'arrivals-btn active'}
-              ref={arrRef}
+              className={
+                mode === 'departures' ? 'arrivals-btn' : 'arrivals-btn active'
+              }
               onClick={() => {
                 handleClick('arrivals')
               }}
@@ -114,13 +99,13 @@ function Timetable() {
         <div className='timetable'>
           <div
             className='timetable__container'
-            style={{ display: departureMode ? 'block' : 'none' }}
+            style={{ display: mode === 'departures' ? 'block' : 'none' }}
           >
             <Departures physicalMode={physicalMode} />
           </div>
           <div
             className='timetable__container'
-            style={{ display: departureMode ? 'none' : 'block' }}
+            style={{ display: mode === 'departures' ? 'none' : 'block' }}
           >
             <Arrivals physicalMode={physicalMode} />
           </div>

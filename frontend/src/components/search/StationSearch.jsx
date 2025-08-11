@@ -65,7 +65,7 @@ function StationSearch() {
               }}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
-              <Link to={`/timetable/${station.id}`}>
+              <Link to={`/timetable/${station.id}?mode=departures&physical_mode=all`}>
                 <p>
                   {station.name}
                   <span>
