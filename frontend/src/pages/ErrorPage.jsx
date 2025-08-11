@@ -4,9 +4,7 @@ import Header from "../components/layout/Header"
 function ErrorPage(){
   const navigate = useNavigate()
 
-  const goHome = () => {
-    navigate('/', { replace: true })
-  }
+  const goHome = () => navigate('/', { replace: true })
 
   return (
     <>
