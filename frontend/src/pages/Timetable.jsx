@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import Header from '../components/layout/Header'
 import StationSearch from '../components/search/StationSearch'
 import ErrorPage from './ErrorPage'
+import PhysicalModeSelect from '../components/timetable/PhysicalModeSelect'
 
 function Timetable() {
   const navigate = useNavigate()
@@ -70,30 +71,13 @@ function Timetable() {
       <StationSearch />
       <main>
         {station?.physical_modes.length > 1 && (
-          <div className='select-physical-mode'>
-            <div className="select-physical-mode__container">
-              <ul className='select-physical-mode__list'>
-                <li onClick={() => setPhysicalMode(null)}>
-                  <button className={!physicalMode ? 'active' : ''}>
-                    Toutes les lignes
-                  </button>
-                </li>
-                {station?.physical_modes.map((mode, index) => (
-                  <li key={`${mode}-${index}`}>
-                    <button
-                      className={physicalMode === mode.id ? 'active' : ''}
-                      onClick={() => {
-                        setPhysicalMode(mode.id)
-                      }}
-                    >
-                      {mode.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <PhysicalModeSelect
+            station={station}
+            physicalMode={physicalMode}
+            setPhysicalMode={setPhysicalMode}
+          />
         )}
+
         <div className='select-mode'>
           <div className='select-mode__buttons'>
             <button
@@ -119,6 +103,7 @@ function Timetable() {
             </button>
           </div>
         </div>
+        
         <div className='timetable'>
           <div
             className='timetable__container'
