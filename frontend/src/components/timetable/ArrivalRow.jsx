@@ -14,16 +14,18 @@ function ArrivalRow({ arr, onClick }) {
     (this.vehicleJourneyId = arr.links[1].id),
     (this.number = arr.display_informations.trip_short_name),
     (this.lineCode = arr.display_informations.code),
-    (this.trainType = arr.display_informations.network),
+    (this.network = arr.display_informations.network),
     (this.physicalMode = arr.display_informations.physical_mode),
     (this.color = arr.display_informations.color),
     (this.lineImg = '')
   })()
 
-  if (arrival.lineCode == '') {
-    arrival.lineImg = `../../img/lines/${arrival.trainType}.svg`
+  if (arrival.physicalMode === 'TER / Intercités'){
+    arrival.lineImg = '../../img/lines/SNCF.svg'
+  } else if (arrival.physicalMode === 'RER / Transilien') {
+    arrival.lineImg = `../../img/lines/${arrival.network}_${arrival.lineCode}.svg`
   } else {
-    arrival.lineImg = `../../img/lines/${arrival.trainType}_${arrival.lineCode}.svg`
+    arrival.lineImg = `../../img/lines/${arrival.network}.svg`
   }
 
   const { isDelayed, delayClass } = calculateDelay(
@@ -41,14 +43,7 @@ function ArrivalRow({ arr, onClick }) {
           alt=''
           onError={(e) => {
             e.target.onerror = null
-            // Ex: OUIGO Train Classique
-            if (arrival.trainType.includes("OUIGO")){
-              e.target.src = '../../img/lines/OUIGO.svg'
-            } else if(arrival.physicalMode.includes("TER") || arrival.trainType.includes("TER")){
-              e.target.src = '../../img/lines/SNCF.svg'
-            } else {
-              e.target.src = '../../img/lines/train-logo.svg'
-            }
+            e.target.src = '../../img/lines/train-logo.svg'
           }}
         />
         <p className='timetable-row__number'>{arrival.number}</p>

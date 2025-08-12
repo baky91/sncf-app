@@ -9,17 +9,19 @@ function DepartureRow({ dep, onClick }) {
     (this.minutes = getTimeMinutes(this.realDepartureTime)),
     (this.vehicleJourneyId = dep.links[1].id),
     (this.number = dep.display_informations.trip_short_name),
-    (this.trainType = dep.display_informations.network),
+    (this.network = dep.display_informations.network),
     (this.physicalMode = dep.display_informations.physical_mode),
     (this.lineCode = dep.display_informations.code),
     (this.color = dep.display_informations.color),
     (this.lineImg = '')
   })()
 
-  if (departure.lineCode == '') {
-    departure.lineImg = `../../img/lines/${departure.trainType}.svg`
+  if (departure.physicalMode === 'TER / Intercités'){
+    departure.lineImg = '../../img/lines/SNCF.svg'
+  } else if (departure.physicalMode === 'RER / Transilien') {
+    departure.lineImg = `../../img/lines/${departure.network}_${departure.lineCode}.svg`
   } else {
-    departure.lineImg = `../../img/lines/${departure.trainType}_${departure.lineCode}.svg`
+    departure.lineImg = `../../img/lines/${departure.network}.svg`
   }
 
   const { isDelayed, delayClass } = calculateDelay(
@@ -36,14 +38,7 @@ function DepartureRow({ dep, onClick }) {
           src={departure.lineImg}
           onError={(e) => {
             e.target.onerror = null
-            // Ex: OUIGO Train Classique
-            if (departure.trainType.includes("OUIGO")){
-              e.target.src = '../../img/lines/OUIGO.svg'
-            } else if(departure.physicalMode.includes("TER") || departure.trainType.includes("TER")){
-              e.target.src = '../../img/lines/SNCF.svg'
-            } else {
-              e.target.src = '../../img/lines/train-logo.svg'
-            }
+            e.target.src = '../../img/lines/train-logo.svg'
           }}
         />
         <p className='timetable-row__number'>{departure.number}</p>

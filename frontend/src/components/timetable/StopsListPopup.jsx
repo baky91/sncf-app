@@ -25,18 +25,11 @@ function StopsListPopup({ stationCode, train, onClose }) {
           alt=''
           onError={(e) => {
             e.target.onerror = null
-            // Ex: OUIGO Train Classique
-            if (train.trainType.includes('OUIGO')) {
-              e.target.src = '../../img/lines/OUIGO.svg'
-            } else if (train.physicalMode.includes("TER") || train.trainType.includes("TER")) {
-              e.target.src = '../../img/lines/SNCF.svg'
-            } else {
-              e.target.src = '../../img/lines/train-logo.svg'
-            }
+            e.target.src = '../../img/lines/train-logo.svg'
           }}
         />
         <h3>
-          {train.trainType} {train.number}
+          {train.network} {train.number}
         </h3>
         <p>Destination : {train.direction}</p>
 
