@@ -12,10 +12,10 @@ function ArrivalRow({ arr, onClick }) {
     (this.hour = getTimeHour(this.realArrivalTime)),
     (this.minutes = getTimeMinutes(this.realArrivalTime)),
     (this.vehicleJourneyId = arr.links[1].id),
-    (this.number = arr.display_informations.trip_short_name),
     (this.lineCode = arr.display_informations.code),
     (this.network = arr.display_informations.network),
     (this.physicalMode = arr.display_informations.physical_mode),
+    (this.number = this.physicalMode === 'Bus' ? arr.display_informations.name :  arr.display_informations.trip_short_name),
     (this.color = arr.display_informations.color),
     (this.lineImg = '')
   })()
@@ -24,6 +24,8 @@ function ArrivalRow({ arr, onClick }) {
     arrival.lineImg = '../../img/lines/SNCF.svg'
   } else if (arrival.physicalMode === 'RER / Transilien') {
     arrival.lineImg = `../../img/lines/${arrival.network}_${arrival.lineCode}.svg`
+  } else if (arrival.physicalMode === 'Bus' || arrival.physicalMode === 'Autocar') {
+    arrival.lineImg = '../../img/lines/Bus.svg'
   } else {
     arrival.lineImg = `../../img/lines/${arrival.network}.svg`
   }

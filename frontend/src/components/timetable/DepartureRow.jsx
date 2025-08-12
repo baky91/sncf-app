@@ -8,9 +8,9 @@ function DepartureRow({ dep, onClick }) {
     (this.hour = getTimeHour(this.realDepartureTime)),
     (this.minutes = getTimeMinutes(this.realDepartureTime)),
     (this.vehicleJourneyId = dep.links[1].id),
-    (this.number = dep.display_informations.trip_short_name),
     (this.network = dep.display_informations.network),
     (this.physicalMode = dep.display_informations.physical_mode),
+    (this.number = this.physicalMode === 'Bus' ? dep.display_informations.name :  dep.display_informations.trip_short_name),
     (this.lineCode = dep.display_informations.code),
     (this.color = dep.display_informations.color),
     (this.lineImg = '')
@@ -20,6 +20,8 @@ function DepartureRow({ dep, onClick }) {
     departure.lineImg = '../../img/lines/SNCF.svg'
   } else if (departure.physicalMode === 'RER / Transilien') {
     departure.lineImg = `../../img/lines/${departure.network}_${departure.lineCode}.svg`
+  } else if (departure.physicalMode === 'Bus' || departure.physicalMode === 'Autocar') {
+    departure.lineImg = '../../img/lines/Bus.svg'
   } else {
     departure.lineImg = `../../img/lines/${departure.network}.svg`
   }

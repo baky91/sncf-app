@@ -13,6 +13,7 @@ function Departures({physicalMode}) {
     [stationCode, physicalMode]
   )
   const nextDepartures = data.departures
+console.log(nextDepartures);
 
   const length = nextDepartures?.length || 0
 
