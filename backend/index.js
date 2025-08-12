@@ -15,7 +15,7 @@ app.set('trust proxy', 1)
 // Limite les requêtes API
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 min
-  max: 30, // max 30 requetes par IP et par minute
+  max: 60, // max 60 requetes par IP et par minute
 })
 app.use('/api', limiter)
 
