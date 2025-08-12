@@ -2,7 +2,6 @@ import { calculateDelay, getTimeHour, getTimeMinutes, } from '../../utils'
 import { useStationName } from '../../contexts/StationsContext'
 
 function ArrivalRow({ arr, onClick }) {
-
   const {stationName} = useStationName(arr.stop_date_time.links[0].id)  
 
   const arrival = new (function () {
