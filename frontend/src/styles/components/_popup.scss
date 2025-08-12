@@ -21,6 +21,12 @@
   position: relative;
   max-height: 70vh;
   margin: 1rem;
+
+  img {
+    background-color: white;
+    padding: 0.2rem;
+    border-radius: 5px;
+  }
 }
 
 .popup-close {
