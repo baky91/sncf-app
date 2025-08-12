@@ -14,7 +14,7 @@ function ArrivalRow({ arr, onClick }) {
     (this.lineCode = arr.display_informations.code),
     (this.network = arr.display_informations.network),
     (this.physicalMode = arr.display_informations.physical_mode),
-    (this.number = this.physicalMode === 'Bus' ? arr.display_informations.name :  arr.display_informations.trip_short_name),
+    (this.number = this.physicalMode === 'Bus' ? arr.display_informations.name :  arr.display_informations.headsign),
     (this.color = arr.display_informations.color),
     (this.lineImg = '')
   })()

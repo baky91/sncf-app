@@ -13,7 +13,7 @@ function DepartureRow({ dep, onClick }) {
     (this.vehicleJourneyId = dep.links[1].id),
     (this.network = dep.display_informations.network),
     (this.physicalMode = dep.display_informations.physical_mode),
-    (this.number = this.physicalMode === 'Bus' ? dep.display_informations.name :  dep.display_informations.trip_short_name),
+    (this.number = this.physicalMode === 'Bus' ? dep.display_informations.name :  dep.display_informations.headsign),
     (this.lineCode = dep.display_informations.code),
     (this.color = dep.display_informations.color),
     (this.lineImg = '')
