@@ -11,10 +11,11 @@ router.get('/:stationCode/departures', cache('1 minute'), async (req, res) => {
   const { physical_mode } = req.query
 
   try {
+    // Exclusion : Bus, Autocar
     const response = await axios.get(
       `https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}${
         physical_mode ? `/physical_modes/${physical_mode}` : ''
-      }/departures?forbidden_id%5B%5D=physical_mode%3ABus&forbidden_id%5B%5D=physical_mode%3ACar&forbidden_id%5B%5D=physical_mode%3ACoach&`,
+      }/departures?forbidden_id%5B%5D=physical_mode%3ABus&forbidden_id%forbidden_id%5B%5D=physical_mode%3ACoach&`,
       {
         headers: { Authorization: `${process.env.SNCF_API_KEY}` },
       }
@@ -38,10 +39,11 @@ router.get('/:stationCode/arrivals', cache('1 minute'), async (req, res) => {
   const { physical_mode } = req.query
 
   try {
+    // Exclusion : RER, Transilien, Bus, Autocar
     const response = await axios.get(
       `https://api.sncf.com/v1/coverage/sncf/stop_areas/${stationCode}${
         physical_mode ? `/physical_modes/${physical_mode}` : ''
-      }/arrivals?forbidden_id%5B%5D=network%3ASNCF%3ATNRER&forbidden_id%5B%5D=network%3ASNCF%3ATN&forbidden_id%5B%5D=physical_mode%3ABus&forbidden_id%5B%5D=physical_mode%3ACar&forbidden_id%5B%5D=physical_mode%3ACoach&`,
+      }/arrivals?forbidden_id%5B%5D=network%3ASNCF%3ATNRER&forbidden_id%5B%5D=network%3ASNCF%3ATN&forbidden_id%5B%5D=physical_mode%3ABus&forbidden_id%5B%5D=physical_mode%3ACoach&`,
       {
         headers: { Authorization: `${process.env.SNCF_API_KEY}` },
       }
