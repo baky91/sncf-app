@@ -1,0 +1,56 @@
+.select-physical-mode {
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  &__container {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    li {
+      flex: 0 0 auto;
+
+      button {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 1.5rem;
+        border: none;
+        background: rgba(170, 170, 170, 0.15);
+        white-space: nowrap;
+        display: inline-block;
+        text-align: center;
+        font-family: 'Montserrat';
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #000;
+      }
+
+      button:hover {
+        background: rgba(170, 170, 170, 0.25);
+      }
+
+      button:active {
+        background: rgba(170, 170, 170, 0.5);
+      }
+
+      button.active {
+        background: #8de8fe;
+      }
+    }
+  }
+}
