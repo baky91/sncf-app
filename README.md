@@ -125,7 +125,7 @@ cd sncf-app
    Contenu de `frontend/.env` :
 
    ```env
-   VITE_API_BASE_URL=https://sncf-app-backend.vercel.app
+   VITE_API_BASE_URL=https://api-sncf-app.vercel.app
    ```
 
 2. **Installation et lancement**
