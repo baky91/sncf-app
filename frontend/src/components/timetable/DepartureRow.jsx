@@ -21,7 +21,7 @@ function DepartureRow({ dep, onClick }) {
 
   if (departure.physicalMode === 'TER / Intercités'){
     departure.lineImg = '../../img/lines/SNCF.svg'
-  } else if (departure.physicalMode === 'RER / Transilien') {
+  } else if (departure.physicalMode === 'RER / Transilien' || departure.physicalMode === 'Tramway') {
     departure.lineImg = `../../img/lines/${departure.network}_${departure.lineCode}.svg`
   } else if (departure.physicalMode === 'Bus' || departure.physicalMode === 'Autocar') {
     departure.lineImg = '../../img/lines/Bus.svg'

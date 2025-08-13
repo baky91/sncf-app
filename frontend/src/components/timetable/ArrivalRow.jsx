@@ -21,7 +21,7 @@ function ArrivalRow({ arr, onClick }) {
 
   if (arrival.physicalMode === 'TER / Intercités'){
     arrival.lineImg = '../../img/lines/SNCF.svg'
-  } else if (arrival.physicalMode === 'RER / Transilien') {
+  } else if (arrival.physicalMode === 'RER / Transilien' || arrival.physicalMode === 'Tramway') {
     arrival.lineImg = `../../img/lines/${arrival.network}_${arrival.lineCode}.svg`
   } else if (arrival.physicalMode === 'Bus' || arrival.physicalMode === 'Autocar') {
     arrival.lineImg = '../../img/lines/Bus.svg'
