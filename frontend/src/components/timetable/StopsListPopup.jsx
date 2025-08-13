@@ -29,7 +29,7 @@ function StopsListPopup({ stationCode, train, onClose }) {
           }}
         />
         <h3>
-          {train.network} {train.number}
+          {train.network} {train.lineCode} - {train.number}
         </h3>
         <p>Destination : {train.direction}</p>
 
