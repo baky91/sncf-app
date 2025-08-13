@@ -6,6 +6,7 @@ import Header from '../components/layout/Header'
 import StationSearch from '../components/search/StationSearch'
 import ErrorPage from './ErrorPage'
 import PhysicalModeSelect from '../components/timetable/PhysicalModeSelect'
+import useDocumentTitle from '../hooks/useDocumentTitle'
 
 function Timetable() {
   const { stationCode } = useParams()
@@ -19,6 +20,7 @@ function Timetable() {
   const [station, setStation] = useState(null)
   const [error, setError] = useState(null)
 
+  // Récupérer la gare actuelle
   useEffect(() => {
     window.scrollTo(0, 0)
 
@@ -40,6 +42,9 @@ function Timetable() {
       { replace: true }
     )
   }, [stationCode])
+
+  // Changer le title de la page
+  useDocumentTitle(`${station?.name} - Horaires`)
 
   const handleClick = (mode) => {
     setSearchParams(
