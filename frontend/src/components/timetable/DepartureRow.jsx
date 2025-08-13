@@ -44,7 +44,11 @@ function DepartureRow({ dep, onClick }) {
             src={departure.lineImg}
             onError={(e) => {
               e.target.onerror = null
-              e.target.src = '../../img/lines/train-logo.svg'
+              if (departure.physicalMode === 'Tramway'){
+                e.target.src = '../../img/lines/Tramway.svg'
+              } else {
+                e.target.src = '../../img/lines/Train.svg'
+              }
             }}
           />
         </div>

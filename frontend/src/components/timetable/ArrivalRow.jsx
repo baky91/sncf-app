@@ -45,7 +45,11 @@ function ArrivalRow({ arr, onClick }) {
             alt=''
             onError={(e) => {
               e.target.onerror = null
-              e.target.src = '../../img/lines/train-logo.svg'
+              if (arrival.physicalMode === 'Tramway'){
+                e.target.src = '../../img/lines/Tramway.svg'
+              } else {
+                e.target.src = '../../img/lines/Train.svg'
+              }
             }}
           />
         </div>

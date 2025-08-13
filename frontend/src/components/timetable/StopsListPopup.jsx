@@ -25,7 +25,11 @@ function StopsListPopup({ stationCode, train, onClose }) {
           alt=''
           onError={(e) => {
             e.target.onerror = null
-            e.target.src = '../../img/lines/train-logo.svg'
+            if (train.physicalMode === 'Tramway'){
+                e.target.src = '../../img/lines/Tramway.svg'
+              } else {
+                e.target.src = '../../img/lines/Train.svg'
+              }
           }}
         />
         <h3>
