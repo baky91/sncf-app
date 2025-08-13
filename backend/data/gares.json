@@ -1532,6 +1532,17 @@
         ]
     },
     {
+        "id": "stop_area:SNCF:87758755",
+        "name": "Antony",
+        "city": "Antony",
+        "physical_modes": [
+            {
+                "id": "physical_mode:RapidTransit",
+                "name": "RER / Transilien"
+            }
+        ]
+    },
+    {
         "id": "stop_area:SNCF:88210060",
         "name": "Antwerpen-Centraal",
         "city": "Antwerpen",
@@ -9383,6 +9394,17 @@
         ]
     },
     {
+        "id": "stop_area:SNCF:87680694",
+        "name": "Chamalieres Place Parking M.",
+        "city": "Chamalières-sur-Loire",
+        "physical_modes": [
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
+            }
+        ]
+    },
+    {
         "id": "stop_area:SNCF:87734731",
         "name": "Chamalières-sur-Loire",
         "city": "Chamalières-sur-Loire",
@@ -10545,6 +10567,10 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
+            },
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
             }
         ]
     },
@@ -17117,6 +17143,17 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
+            }
+        ]
+    },
+    {
+        "id": "stop_area:SNCF:87758763",
+        "name": "Fontaine Michalon",
+        "city": "Antony",
+        "physical_modes": [
+            {
+                "id": "physical_mode:RapidTransit",
+                "name": "RER / Transilien"
             }
         ]
     },
@@ -27205,6 +27242,17 @@
         ]
     },
     {
+        "id": "stop_area:SNCF:87758771",
+        "name": "Les Baconnets",
+        "city": "Antony",
+        "physical_modes": [
+            {
+                "id": "physical_mode:RapidTransit",
+                "name": "RER / Transilien"
+            }
+        ]
+    },
+    {
         "id": "stop_area:SNCF:87592048",
         "name": "Les Bardys",
         "city": "Saint-Priest-Taurion",
@@ -27894,6 +27942,17 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
+            }
+        ]
+    },
+    {
+        "id": "stop_area:SNCF:87680504",
+        "name": "Les Trilliers Pn Carrefour",
+        "city": "Vaux",
+        "physical_modes": [
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
             }
         ]
     },
@@ -31751,6 +31810,10 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
+            },
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
             }
         ]
     },
@@ -32652,6 +32715,17 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
+            }
+        ]
+    },
+    {
+        "id": "stop_area:SNCF:87705467",
+        "name": "Millançay Bourg",
+        "city": "Millançay",
+        "physical_modes": [
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
             }
         ]
     },
@@ -40459,6 +40533,10 @@
             {
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
+            },
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
             }
         ]
     },
@@ -42234,6 +42312,17 @@
                 "id": "physical_mode:Train",
                 "name": "TER / Intercités"
             },
+            {
+                "id": "physical_mode:Coach",
+                "name": "Autocar"
+            }
+        ]
+    },
+    {
+        "id": "stop_area:SNCF:87705459",
+        "name": "Romorantin Gendarmerie",
+        "city": "Romorantin-Lanthenay",
+        "physical_modes": [
             {
                 "id": "physical_mode:Coach",
                 "name": "Autocar"
