@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useState, useRef, useEffect, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 
 function StationSearch() {
   const [research, setResearch] = useState('')
@@ -7,26 +7,33 @@ function StationSearch() {
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
 
-
-  const handleChange = (e) => {
-    const value = e.target.value
-    setResearch(value)
-
-    if (value.length > 1) {
-      fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations?q=${value}&count=10`)
-      .then(res => res.json())
-      .then(data => {
-        setStationsResult(data.stations)
-        setIsOpen(true)
-      })
-
+  const searchStations = useCallback((research) => {
+    if (research.length > 1) {
+      fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/stations?q=${research}&count=10`)
+        .then(res => res.json())
+        .then(data => {
+          setStationsResult(data.stations)
+          setIsOpen(true)
+        })
     } else {
       setStationsResult([])
       setIsOpen(false)
     }
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      searchStations(research)
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [research, searchStations])
+
+  const handleChange = (e) => {
+    setResearch(e.target.value)
   }
 
-  const handleSelectStation = (name) => {
+  const handleSelectStation = () => {
     setResearch('')
     setStationsResult([])
     inputRef.current.blur()
@@ -60,9 +67,7 @@ function StationSearch() {
             <li
               className='station-search__station'
               key={station.id}
-              onClick={() => {
-                handleSelectStation(station.name)
-              }}
+              onClick={handleSelectStation}
               onMouseDown={(e) => e.preventDefault()} // éviter perte de focus
             >
               <Link to={`/timetable/${station.id}?mode=departures&physical_mode=all`}>
