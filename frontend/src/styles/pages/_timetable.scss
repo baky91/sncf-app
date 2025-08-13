@@ -128,7 +128,6 @@
 
     &__image {
       width: 50%;
-      float: left;
     }
   }
 
@@ -136,7 +135,6 @@
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    text-align: right;
   }
 
   &__destination,
@@ -190,7 +188,11 @@
 
     &__line-type {
       justify-content: space-between;
-      gap: 4rem;
+      gap: 1rem;
+
+      &__image {
+        width: initial;
+      }
     }
 
     &__line {
