@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Cities from "./pages/Cities";
 import Timetable from "./pages/Timetable";
 import { StationsProvider } from "./contexts/StationsContext";

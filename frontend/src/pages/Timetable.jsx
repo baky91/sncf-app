@@ -30,7 +30,7 @@ function Timetable() {
         setStation(data.stations[0])
       })
       .catch((e) => {
-        setError('Erreur')
+        setError('Erreur', e.message)
       })
       
     setSearchParams(
