@@ -22,7 +22,7 @@ function useFetch(url, dependancies) {
         if (!e.isAxiosError && e.response) {
           setError('Error')
         }
-        console.error('Erreur lors du chargement des données')
+        console.error('Erreur :', e.message)
       } finally {
         setLoading(false)
       }
