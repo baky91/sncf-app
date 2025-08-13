@@ -13,7 +13,6 @@ function Arrivals({physicalMode}) {
     [stationCode, physicalMode]
   )
   const nextArrivals = data.arrivals
-
   const length = nextArrivals?.length || 0
 
   const [selectedArrival, setSelectedArrival] = useState(null)

@@ -11,16 +11,18 @@ function useFetch(url, dependancies) {
     const signal = controller.signal
 
     const fetch = async () => {
+      setLoading(true)
+      setError(null)
+
       try {
         const response = await axios.get(url, { signal })
-
         setData(response.data)
       } catch (e) {
         setData([])
         if (!e.isAxiosError && e.response) {
           setError('Error')
         }
-        console.error('Erreur :', e)
+        console.error('Erreur lors du chargement des données')
       } finally {
         setLoading(false)
       }

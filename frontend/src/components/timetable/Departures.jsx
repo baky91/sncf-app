@@ -13,7 +13,6 @@ function Departures({physicalMode}) {
     [stationCode, physicalMode]
   )
   const nextDepartures = data.departures
-
   const length = nextDepartures?.length || 0
 
   const [selectedDeparture, setSelectedDeparture] = useState(null)
