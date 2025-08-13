@@ -123,8 +123,13 @@
   &__line-type {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1.75rem;
     width: 25%;
+
+    &__image {
+      width: 50%;
+      float: left;
+    }
   }
 
   &__number {
@@ -184,7 +189,8 @@
     }
 
     &__line-type {
-      gap: 0.5rem;
+      justify-content: space-between;
+      gap: 4rem;
     }
 
     &__line {

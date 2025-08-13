@@ -39,13 +39,15 @@ function DepartureRow({ dep, onClick }) {
   return (
     <li onClick={() => onClick(departure)} className='timetable-row'>
       <div className='timetable-row__line-type'>
-        <img
-          src={departure.lineImg}
-          onError={(e) => {
-            e.target.onerror = null
-            e.target.src = '../../img/lines/train-logo.svg'
-          }}
-        />
+        <div className="timetable-row__line-type__image">
+          <img
+            src={departure.lineImg}
+            onError={(e) => {
+              e.target.onerror = null
+              e.target.src = '../../img/lines/train-logo.svg'
+            }}
+          />
+        </div>
         <p className='timetable-row__number'>{departure.number}</p>
       </div>
       <p className={className}>{isDelayed}</p>
