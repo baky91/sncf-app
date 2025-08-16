@@ -43,8 +43,8 @@ function Timetable() {
     )
   }, [stationCode])
 
-  // Changer le title de la page
-  useDocumentTitle(`${station?.name} - Horaires`)
+  // Changer le titre de la page
+  useDocumentTitle(station ? `${station?.name} - Horaires` : null)
 
   const handleClick = (mode) => {
     setSearchParams(
