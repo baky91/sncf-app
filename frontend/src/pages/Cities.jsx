@@ -1,11 +1,8 @@
 import { useEffect } from 'react'
 import cities from '../cities.json'
 import CityCard from '../components/city/CityCard'
-import Header from '../components/layout/Header'
-import StationSearch from '../components/search/StationSearch'
 
 function Cities() {
-
   // Remonter en haut lors du changement de page
   useEffect(() => {
     window.scrollTo(0,0)
