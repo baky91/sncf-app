@@ -8,6 +8,7 @@ function ErrorPage(){
 
   return (
     <>
+      <Header />
       <div className="not-found">
         <h1>Page introuvable</h1>
         <p>Il semble que l'URL que vous avez saisie n'existe pas. Vérifiez l'adresse ou retournez à la page d'accueil.</p>

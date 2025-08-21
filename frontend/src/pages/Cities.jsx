@@ -13,25 +13,23 @@ function Cities() {
 
   return (
     <>
-      <main>
-        <p style={{ textAlign: 'center' }}>... ou</p>
-        <div className='station-select'>
-          <h3>Séléctionner une gare</h3>
-        </div>
+      <p style={{ textAlign: 'center' }}>... ou</p>
+      <div className='station-select'>
+        <h3>Séléctionner une gare</h3>
+      </div>
 
-        <div className='city-cards'>
-          <div className='cities'>
-            {cities.map((city) => {
-              return (
-                <CityCard
-                  key={city.name}
-                  city={city}
-                />
-              )
-            })}
-          </div>
+      <div className='city-cards'>
+        <div className='cities'>
+          {cities.map((city) => {
+            return (
+              <CityCard
+                key={city.name}
+                city={city}
+              />
+            )
+          })}
         </div>
-      </main>
+      </div>
     </>
   )
 }

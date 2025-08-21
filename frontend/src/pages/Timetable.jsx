@@ -72,58 +72,56 @@ function Timetable() {
 
   return (
     <>
-      <main>
-        {station?.physical_modes.length > 1 && (
-          <PhysicalModeSelect
-            station={station}
-            physicalMode={physicalMode}
-            setSearchParams={setSearchParams}
-          />
-        )}
+      {station?.physical_modes.length > 1 && (
+        <PhysicalModeSelect
+          station={station}
+          physicalMode={physicalMode}
+          setSearchParams={setSearchParams}
+        />
+      )}
 
-        <div className='select-mode'>
-          <div className='select-mode__buttons'>
-            <button
-              className={
-                mode === 'departures'
-                  ? 'departures-btn active'
-                  : 'departures-btn'
-              }
-              onClick={() => {
-                handleClick('departures')
-              }}
-            >
-              Afficher les départs
-            </button>
-
-            <button
-              className={
-                mode === 'departures' ? 'arrivals-btn' : 'arrivals-btn active'
-              }
-              onClick={() => {
-                handleClick('arrivals')
-              }}
-            >
-              Afficher les arrivées
-            </button>
-          </div>
-        </div>
-
-        <div className='timetable'>
-          <div
-            className='timetable__container'
-            style={{ display: mode === 'departures' ? 'block' : 'none' }}
+      <div className='select-mode'>
+        <div className='select-mode__buttons'>
+          <button
+            className={
+              mode === 'departures'
+                ? 'departures-btn active'
+                : 'departures-btn'
+            }
+            onClick={() => {
+              handleClick('departures')
+            }}
           >
-            <Departures physicalMode={physicalMode} />
-          </div>
-          <div
-            className='timetable__container'
-            style={{ display: mode === 'departures' ? 'none' : 'block' }}
+            Afficher les départs
+          </button>
+
+          <button
+            className={
+              mode === 'departures' ? 'arrivals-btn' : 'arrivals-btn active'
+            }
+            onClick={() => {
+              handleClick('arrivals')
+            }}
           >
-            <Arrivals physicalMode={physicalMode} />
-          </div>
+            Afficher les arrivées
+          </button>
         </div>
-      </main>
+      </div>
+
+      <div className='timetable'>
+        <div
+          className='timetable__container'
+          style={{ display: mode === 'departures' ? 'block' : 'none' }}
+        >
+          <Departures physicalMode={physicalMode} />
+        </div>
+        <div
+          className='timetable__container'
+          style={{ display: mode === 'departures' ? 'none' : 'block' }}
+        >
+          <Arrivals physicalMode={physicalMode} />
+        </div>
+      </div>
     </>
   )
 }

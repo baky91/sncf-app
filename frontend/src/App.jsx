@@ -13,7 +13,9 @@ const router = createBrowserRouter([
     element: <>
       <Header />
       <StationSearch />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>,
     errorElement: <ErrorPage />,
     children: [
