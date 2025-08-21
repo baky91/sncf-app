@@ -7,6 +7,7 @@ import StationSearch from '../components/search/StationSearch'
 import ErrorPage from './ErrorPage'
 import PhysicalModeSelect from '../components/timetable/PhysicalModeSelect'
 import useDocumentTitle from '../hooks/useDocumentTitle'
+import { useHeaderTitle } from '../contexts/HeaderContext'
 
 function Timetable() {
   const { stationCode } = useParams()
@@ -19,6 +20,8 @@ function Timetable() {
 
   const [station, setStation] = useState(null)
   const [error, setError] = useState(null)
+
+  const {setHeaderTitle} = useHeaderTitle()
 
   // Récupérer la gare actuelle
   useEffect(() => {
@@ -41,8 +44,15 @@ function Timetable() {
       },
       { replace: true }
     )
+
+    return () => setHeaderTitle(null)
   }, [stationCode])
 
+  useEffect(() => {
+    // Changer le titre du haut de page
+    setHeaderTitle(station?.name)
+  }, [station])
+  
   // Changer le titre de la page
   useDocumentTitle(station ? `${station?.name} - Horaires` : null)
 
@@ -57,13 +67,11 @@ function Timetable() {
   }
 
   if (error) {
-    return <ErrorPage />
+    throw new Error(error)
   }
 
   return (
     <>
-      <Header title={station?.name} />
-      <StationSearch />
       <main>
         {station?.physical_modes.length > 1 && (
           <PhysicalModeSelect

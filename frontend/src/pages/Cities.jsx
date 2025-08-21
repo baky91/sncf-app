@@ -13,8 +13,6 @@ function Cities() {
 
   return (
     <>
-      <Header />
-      <StationSearch />
       <main>
         <p style={{ textAlign: 'center' }}>... ou</p>
         <div className='station-select'>
