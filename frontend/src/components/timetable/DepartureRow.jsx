@@ -10,7 +10,7 @@ function DepartureRow({ dep, onClick }) {
     (this.realDepartureTime = dep.stop_date_time.departure_date_time || dep.stop_date_time.departure_date_time),
     (this.hour = getTimeHour(this.realDepartureTime)),
     (this.minutes = getTimeMinutes(this.realDepartureTime)),
-    (this.vehicleJourneyId = dep.links[1].id),
+    (this.vehicleJourneyId = dep.links[2].id),
     (this.network = dep.display_informations.network),
     (this.physicalMode = dep.display_informations.physical_mode),
     (this.number = this.physicalMode === 'Bus' ? dep.display_informations.name :  dep.display_informations.headsign),

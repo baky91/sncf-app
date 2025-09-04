@@ -10,7 +10,7 @@ function ArrivalRow({ arr, onClick }) {
     (this.realArrivalTime = arr.stop_date_time.arrival_date_time || arr.stop_date_time.arrival_date_time),
     (this.hour = getTimeHour(this.realArrivalTime)),
     (this.minutes = getTimeMinutes(this.realArrivalTime)),
-    (this.vehicleJourneyId = arr.links[1].id),
+    (this.vehicleJourneyId = arr.links[2].id),
     (this.lineCode = arr.display_informations.code),
     (this.network = arr.display_informations.network),
     (this.physicalMode = arr.display_informations.physical_mode),
