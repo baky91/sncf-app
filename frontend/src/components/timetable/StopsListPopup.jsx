@@ -25,11 +25,11 @@ function StopsListPopup({ stationCode, train, onClose }) {
           alt=''
           onError={(e) => {
             e.target.onerror = null
-            if (train.physicalMode === 'Tramway'){
-                e.target.src = '../../img/lines/Tramway.svg'
-              } else {
-                e.target.src = '../../img/lines/Train.svg'
-              }
+            if (train.physicalMode === 'Tramway') {
+              e.target.src = '../../img/lines/Tramway.svg'
+            } else {
+              e.target.src = '../../img/lines/Train.svg'
+            }
           }}
         />
         <h3>
@@ -62,14 +62,18 @@ function StopsListPopup({ stationCode, train, onClose }) {
                           className='stop__circle'
                           style={{
                             background: '#fff',
-                            border: `3px solid ${stopPassed ? (train.color ? `#${train.color}` : '#000') : '#818181'}`
+                            border: `3px solid ${stopPassed ? (train.color ? `#${train.color}` : '#000') : '#818181'}`,
                           }}
                         ></span>
                         {index !== stops.length - 1 && (
                           <span
                             className='stop__line'
                             style={{
-                              background: stopPassed ? (train.color ? `#${train.color}` : '#fff') : '#818181',
+                              background: stopPassed
+                                ? train.color
+                                  ? `#${train.color}`
+                                  : '#fff'
+                                : '#818181',
                             }}
                           ></span>
                         )}
@@ -79,10 +83,21 @@ function StopsListPopup({ stationCode, train, onClose }) {
                           {getStopTime(stop.arrival_time)}
                         </span>
                         <div className='stop__infos'>
-                          <p className='stop__name'>{stop.stop_point.stop_area.label}</p>
+                          <div className='stop__infos__name'>
+                            <p className='stop__infos__name__label'>
+                              {stop.stop_point.stop_area.label}
+                            </p>
+                            <a
+                              className='stop__infos__name__link'
+                              aria-label='Aller à la station'
+                              href={`/timetable/${stop.stop_point.stop_area.id}`}
+                            >
+                              →
+                            </a>
+                          </div>
                           {stop.arrival_time !== stop.departure_time &&
                           stopDuration > 1 ? (
-                            <p className='stop__duration'>
+                            <p className='stop__infos__duration'>
                               {stopDuration} minutes d'arrêt
                             </p>
                           ) : undefined}
