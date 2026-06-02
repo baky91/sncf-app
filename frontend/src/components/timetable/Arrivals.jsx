@@ -5,11 +5,11 @@ import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
 import TimetableError from './TimetableError'
 
-function Arrivals({physicalMode}) {
+function Arrivals({ physicalMode }) {
   const { stationCode } = useParams()
 
   const { data, loading, error } = useFetch(
-    `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/${stationCode}/arrivals${physicalMode !== 'all' ? `?physical_mode=${physicalMode}` : ""}`,
+    `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/${stationCode}/arrivals${physicalMode !== 'all' ? `?physical_mode=${physicalMode}` : ''}`,
     [stationCode, physicalMode]
   )
   const nextArrivals = data.arrivals
@@ -44,16 +44,18 @@ function Arrivals({physicalMode}) {
         ) : loading ? (
           <h3 className='timetable-no-data'>Chargement des arrivées...</h3>
         ) : length !== 0 ? (
-          nextArrivals.map((arr) => {
+          nextArrivals.map((arr, idx) => {
             return (
               <ArrivalRow
-                key={arr.links[1].id}
+                key={'arr-' + idx}
                 arr={arr}
                 onClick={handleArrivalClick}
               />
             )
           })
-        ) : (<h3 className='timetable-no-data'>Aucune arrivée à afficher</h3>)}
+        ) : (
+          <h3 className='timetable-no-data'>Aucune arrivée à afficher</h3>
+        )}
       </ul>
 
       {selectedArrival && (

@@ -5,11 +5,11 @@ import StopsListPopup from './StopsListPopup'
 import useFetch from '../../hooks/useFetch'
 import TimetableError from './TimetableError'
 
-function Departures({physicalMode}) {
+function Departures({ physicalMode }) {
   const { stationCode } = useParams()
 
   const { data, loading, error } = useFetch(
-    `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/${stationCode}/departures${physicalMode !== 'all' ? `?physical_mode=${physicalMode}` : ""}`,
+    `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/${stationCode}/departures${physicalMode !== 'all' ? `?physical_mode=${physicalMode}` : ''}`,
     [stationCode, physicalMode]
   )
   const nextDepartures = data.departures
@@ -44,16 +44,18 @@ function Departures({physicalMode}) {
         ) : loading ? (
           <h3 className='timetable-loading'>Chargement des départs...</h3>
         ) : length !== 0 ? (
-          nextDepartures.map((dep) => {
+          nextDepartures.map((dep, idx) => {
             return (
               <DepartureRow
-                key={dep.links[1].id}
+                key={'dep-' + idx}
                 dep={dep}
                 onClick={handleDepartureClick}
               />
             )
           })
-        ) : (<h3 className='timetable-no-data'>Aucun départ à afficher</h3>)}
+        ) : (
+          <h3 className='timetable-no-data'>Aucun départ à afficher</h3>
+        )}
       </ul>
 
       {selectedDeparture && (
